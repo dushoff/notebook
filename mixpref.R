@@ -33,7 +33,7 @@ mix2pref <- function(rho
 ){
 	rho <- symMat(rho)
 	nr <- nrow(rho)
-	T <- rowSums(rho)
+	T <- colSums(rho)
 
 	phi <- alpha*matrix(rep(1, nr^2)
 		, nrow = nr
@@ -61,18 +61,7 @@ mixAdj <- function(rho, Tnew
 	phi_est <- mix2pref(rho, delta, alpha, iterations, verbose)
 	return(pref2mix(phi_est, Tnew))
 }
-
-## To apply
-## Convert Prem to a total-contact matrix (multiply columns (?) by pops)
-## Symmetrize
-## Take the margin (total-activity vector ⇒ T)
-## There are decisions involved in applying to a new population
-## The simplest way might be divide T by old pop sizes to get indiv activity
-## then multiply by new pop sizes to get Tnew
-## Run mixAdj to get a new rho.
-## Then adjust that to whatever version the program wants (divide by new pops, maybe)
-
-convertPrem <- function(mm, orig_pop, new_pop = orig_pop){
+indAdj <- function(mm, orig_pop, new_pop = orig_pop){
   # Convert Prem to a total-contact matrix (multiply rows by pops)
   tc <- sweep(mm, 1, orig_pop, `*`) 
   # Symmetrize
@@ -82,9 +71,28 @@ convertPrem <- function(mm, orig_pop, new_pop = orig_pop){
   ta_new <- ta / orig_pop * new_pop
   # Run mixAdj to get a new rho
   tc_new <- mixAdj(tc_sym, ta_new)
+  tc_new <- tc_sym
   # Adjust that to version the model wants
   betas_new <- sweep(tc_new, 1, new_pop, `/`)
   return(betas_new)
+}
+
+## Adjust a Prem-style matrix (with per-individual mixing rates)
+indAdj2 <- function(mm, orig_pop, new_pop = orig_pop){
+  # Convert to a total-contact matrix: multiply rows by pops and symmetrize
+  tc <- sweep(mm, 1, orig_pop, `*`) 
+  tc_sym <- symMat(tc) 
+
+  # Calculate total-activity vectors
+  ta <- rowSums(tc_sym)
+  ta_new <- ta  * new_pop / orig_pop
+
+  # Adjust the matrix to new activity levels
+  tc_new <- mixAdj(tc_sym, ta_new)
+  tc_new <- tc_sym
+
+  # Return the individual-level version
+  return(sweep(tc_new, 1, new_pop, `/`))
 }
 
 ### Values
@@ -107,3 +115,6 @@ print(rho)
 
 print(mixAdj(rho, T, Tnew))
 print(mixAdj(rho, T, Tnew, alpha=0.5))
+## Gives NAs now 2020 May 20 (Wed)
+## print(I1 <- indAdj(phi, orig_pop=T))
+## print(indAdj(I1, orig_pop=T))
