@@ -29,7 +29,7 @@ pref2mix <- function(phi, T=NULL){
 ## It would be good to add checks
 mix2pref <- function(rho
 	, delta=1, alpha=0.1
-	, iterations=20, verbose=FALSE
+	, iterations=100, verbose=FALSE
 ){
 	rho <- symMat(rho)
 	nr <- nrow(rho)
@@ -61,24 +61,9 @@ mixAdj <- function(rho, Tnew
 	phi_est <- mix2pref(rho, delta, alpha, iterations, verbose)
 	return(pref2mix(phi_est, Tnew))
 }
-indAdj <- function(mm, orig_pop, new_pop = orig_pop){
-  # Convert Prem to a total-contact matrix (multiply rows by pops)
-  tc <- sweep(mm, 1, orig_pop, `*`) 
-  # Symmetrize
-  tc_sym <- symMat(tc) 
-  # Take the margin (total-activity vector ⇒ T)
-  ta <- rowSums(tc_sym)
-  ta_new <- ta / orig_pop * new_pop
-  # Run mixAdj to get a new rho
-  tc_new <- mixAdj(tc_sym, ta_new)
-  tc_new <- tc_sym
-  # Adjust that to version the model wants
-  betas_new <- sweep(tc_new, 1, new_pop, `/`)
-  return(betas_new)
-}
 
 ## Adjust a Prem-style matrix (with per-individual mixing rates)
-indAdj2 <- function(mm, orig_pop, new_pop = orig_pop){
+indAdj <- function(mm, orig_pop, new_pop = orig_pop){
   # Convert to a total-contact matrix: multiply rows by pops and symmetrize
   tc <- sweep(mm, 1, orig_pop, `*`) 
   tc_sym <- symMat(tc) 
@@ -89,7 +74,6 @@ indAdj2 <- function(mm, orig_pop, new_pop = orig_pop){
 
   # Adjust the matrix to new activity levels
   tc_new <- mixAdj(tc_sym, ta_new)
-  tc_new <- tc_sym
 
   # Return the individual-level version
   return(sweep(tc_new, 1, new_pop, `/`))
@@ -101,7 +85,7 @@ phi <- matrix(
 	c(
 		1, 0, 0
 	 , 0, 1, 0
-	 , 0, 1, 1
+	 , 0.3, 1, 1
 	), nrow=3, byrow=TRUE
 )
 
@@ -112,9 +96,10 @@ Tnew <- c(1, 2, 2)
 
 rho <- pref2mix(phi, T)
 print(rho)
+print(mixAdj(rho, T))
+print(mixAdj(rho, Tnew))
+print(mixAdj(rho, Tnew, alpha=0.5))
 
-print(mixAdj(rho, T, Tnew))
-print(mixAdj(rho, T, Tnew, alpha=0.5))
-## Gives NAs now 2020 May 20 (Wed)
-## print(I1 <- indAdj(phi, orig_pop=T))
-## print(indAdj(I1, orig_pop=T))
+print(I1 <- indAdj(phi, orig_pop=T))
+print(indAdj(I1, orig_pop=T))
+print(indAdj(I1, orig_pop=T, new_pop=Tnew))

@@ -48,6 +48,7 @@ Sources += hetSusc.wikitext
 
 ## Adjust mixing matrices using the balance trick of Busenberg and CCC
 ## This is an ALPHA version
+## Not as stable as I would like, but this may require linear algebra to fix
 
 mixpref.Rout: mixpref.R
 
