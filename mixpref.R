@@ -72,6 +72,21 @@ mixAdj <- function(rho, Tnew
 ## Run mixAdj to get a new rho.
 ## Then adjust that to whatever version the program wants (divide by new pops, maybe)
 
+convertPrem <- function(mm, orig_pop, new_pop = orig_pop){
+  # Convert Prem to a total-contact matrix (multiply rows by pops)
+  tc <- sweep(mm, 1, orig_pop, `*`) 
+  # Symmetrize
+  tc_sym <- symMat(tc) 
+  # Take the margin (total-activity vector ⇒ T)
+  ta <- rowSums(tc_sym)
+  ta_new <- ta / orig_pop * new_pop
+  # Run mixAdj to get a new rho
+  tc_new <- mixAdj(tc_sym, ta_new)
+  # Adjust that to version the model wants
+  betas_new <- sweep(tc_new, 1, new_pop, `/`)
+  return(betas_new)
+}
+
 ### Values
 
 phi <- matrix(
