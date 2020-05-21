@@ -29,7 +29,7 @@ pref2mix <- function(phi, T=NULL){
 ## It would be good to add checks
 mix2pref <- function(rho
 	, delta=1, alpha=0.1
-	, iterations=100, verbose=FALSE
+	, iterations=40, verbose=FALSE
 ){
 	rho <- symMat(rho)
 	nr <- nrow(rho)
@@ -51,9 +51,9 @@ mix2pref <- function(rho
 ## This is the key function, it takes a mixing matrix, symmetrizes it,
 ## and tries to return a new mixing matrix with the supplied total activity
 ## and similar "preferences"
-mixAdj <- function(rho, Tnew
+popAdj <- function(rho, Tnew
 	, delta=1, alpha=0.1
-	, iterations=20, verbose=FALSE
+	, iterations=40, verbose=FALSE
 ){
 	rho <- symMat(rho)
 
@@ -62,8 +62,11 @@ mixAdj <- function(rho, Tnew
 	return(pref2mix(phi_est, Tnew))
 }
 
-## Adjust a Prem-style matrix (with per-individual mixing rates)
-indAdj <- function(mm, orig_pop, new_pop = orig_pop){
+## Wrapper to adjust a Prem-style matrix (with per-individual mixing rates)
+indAdj <- function(mm, orig_pop, new_pop = orig_pop
+	, delta=1, alpha=0.1
+	, iterations=40, verbose=FALSE
+){
   # Convert to a total-contact matrix: multiply rows by pops and symmetrize
   tc <- sweep(mm, 1, orig_pop, `*`) 
   tc_sym <- symMat(tc) 
@@ -73,7 +76,7 @@ indAdj <- function(mm, orig_pop, new_pop = orig_pop){
   ta_new <- ta  * new_pop / orig_pop
 
   # Adjust the matrix to new activity levels
-  tc_new <- mixAdj(tc_sym, ta_new)
+  tc_new <- popAdj(tc_sym, ta_new, delta, alpha, iterations, verbose)
 
   # Return the individual-level version
   return(sweep(tc_new, 1, new_pop, `/`))
@@ -96,9 +99,9 @@ Tnew <- c(1, 2, 2)
 
 rho <- pref2mix(phi, T)
 print(rho)
-print(mixAdj(rho, T))
-print(mixAdj(rho, Tnew))
-print(mixAdj(rho, Tnew, alpha=0.5))
+print(popAdj(rho, T))
+print(popAdj(rho, Tnew))
+print(popAdj(rho, Tnew, alpha=0.5))
 
 print(I1 <- indAdj(phi, orig_pop=T))
 print(indAdj(I1, orig_pop=T))
