@@ -8,7 +8,7 @@ symMat <- function(m){
 }
 
 ## Make a mixing matrix from a preference matrix and a Total activity vector
-## If not specified, T is just 1s
+## If not specified, total activity in each class is set to 1
 pref2mix <- function(phi, T=NULL){
 
 	phi <- symMat(phi)
@@ -39,10 +39,10 @@ mix2pref <- function(rho
 		, nrow = nr
 	) + (delta-alpha)*diag(rep(1, nr))
 
-	for (i in 1:10){
+	for (i in 1:iterations){
 		rhoc <- pref2mix(phi, T)
 		if(verbose) print(rhoc)
-		phi <- phi*rho/rhoc
+		phi <- phi*(rho/rhoc) ## ^cpow Tried this. <1 is wimpy and >1 unstable
 	}
 	
 	return(phi)
