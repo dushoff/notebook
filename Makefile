@@ -503,10 +503,10 @@ elves.out: elves.pl
 elves.html: elves.md
 
 ## Batting averages
+average.md:
 Ignore += average.out
 average.out: average.pl
 	$(PUSH)
-average.md:
 average.Rout: average.out average.R
 
 ### Hmm. this all seems a bunch of nonsense. Understand (document?) before trying to hack.
