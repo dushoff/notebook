@@ -18,6 +18,10 @@ current: target
 
 ######################################################################
 
+## Dummy variables from Steve C.
+
+dummy.Rout: dummy.R
+
 ## Craig Payne asked me for a pdf
 Sources += close.pdf close.txt
 close.pdf: close.txt
