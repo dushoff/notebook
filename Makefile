@@ -17,15 +17,23 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
-
 locker.out: locker.pl
 	$(PUSH)
 
+## Dummy variables from Steve C.
+
+dummy.Rout: dummy.R
+
+## Craig Payne asked me for a pdf
 Sources += close.pdf close.txt
 close.pdf: close.txt
+	## sleep 5
 	pdfroff $< | cpdf -crop "0.9in 10.8in 1.8in 0.2in" -stdin -o $@ 
 
-## Test curving
+######################################################################
+
+## Test curving 2020 online final was too hard.
+## Not sure what I did here; I think just a simple OR adjustment (unlike the older wiki stuff)
 
 test_curve.Rout: test_curve.R
 
@@ -496,6 +504,10 @@ genFit.Rout: genFit.R
 ##################################################################
 
 ## Testing
+
+flog:
+	sleep 5
+	make deriv.Rout
 
 deriv.Rout: deriv.R
 
