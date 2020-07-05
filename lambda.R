@@ -2,10 +2,11 @@ library(ggplot2)
 
 set.seed(444332)
 
-reps <- 5e2
-dmax <- 4
 reps <- 5e3
 dmax <- 20
+
+reps <- 5e2
+dmax <- 4
 
 euclid <- function(v1, v2){
 	return(sqrt(mean((v1-v2)^2)))
