@@ -17,6 +17,8 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
+locker.out: locker.pl
+	$(PUSH)
 
 ## Dummy variables from Steve C.
 
