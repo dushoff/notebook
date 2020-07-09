@@ -311,6 +311,7 @@ Ignore += answer_match
 ## Testing the RData pipeline??
 ## Answer: you need better documentation
 ## Also: RData is generally hidden in wrapR, since it's meant to be called indirectly
+runmake = TRUE
 wrap.Rout: wrap.R
 unwrap.Rout: wrap.Rout unwrap.R
 
@@ -620,6 +621,7 @@ makestuff/Makefile:
 -include makestuff/git.mk
 -include makestuff/visual.mk
 -include makestuff/projdir.mk
--include makestuff/wrapR.mk
+# -include makestuff/wrapR.mk
+-include makestuff/makeR.mk
 -include makestuff/pandoc.mk
 -include makestuff/forms.mk
