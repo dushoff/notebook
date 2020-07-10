@@ -1,5 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
-# http://localhost:4111/notebook/covid.html
+# http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/
 # http://dushoff.github.io/notebook/
 # make serve ##
@@ -462,6 +462,8 @@ pythagoras.Rout: pythagoras.R
 cards.Rout: cards.R
 
 logistic.Rout: logistic.R
+
+17.html: 17.md
 
 19.html: 19.md
 
