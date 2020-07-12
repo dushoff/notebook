@@ -11,7 +11,7 @@ To calculate the “incidence” eigenvector, we need the “discounted” versi
 
 $$δ_j(r) = \int \beta_j(\tau) F_j(\tau) \exp(-rτ) dτ$$, 
 
-where $$F$$ is the probability of being infectious at time τ after infection (ignored for a pure generation approach) and $$β$$ is the infectiousness given that you're infected (constant for a pure SEIR). $$δ_j(0)$$ is just the subgroup reproduction number $$δ_j$$.
+where $$F$$ is the probability of being infectious at time τ after infection (ignored for a pure generation approach) and $$β$$ is the infectiousness given that you're infectious (constant for a pure SEIR). $$δ_j(0)$$ is just the subgroup reproduction number $$δ_j$$.
 
 We can rewrite the generational eigenvector equation as  $$gR = PΔ(0)g$$, reflecting the fact that we have generalized the $$Δ$$ vector. This determines both the eigenvector and the reproductive number $$R$$.
 
