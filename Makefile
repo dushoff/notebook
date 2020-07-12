@@ -1,4 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
+# http://localhost:4111/notebook/severity.html
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/
 # http://dushoff.github.io/notebook/
@@ -474,6 +475,8 @@ islr_boot.Rout: islr_boot.R
 # Ongoing
 moments.html: moments.md
 moments.Rout: moments.R
+
+## severity.md:
 
 ######################################################################
 
