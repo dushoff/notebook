@@ -17,5 +17,18 @@ We can rewrite the generational eigenvector equation as  $$gR = PΔ(0)g$$, refle
 
 The incidence eigenvector equation is then $$i = PΔ(r)i$$, and determines both the eigenvector and the rate of exponential growth $$r$$. 
 
-Park's “incidence reproductive number” is then the sum of $$δ(0) i_j$$. Since we've specified $$Δ$$ as a diagonal matrix, this works out in linear algebra as $$R_p = \vec{1} Δ(0) \hat i$$, where $$\vec 1$$ is a horizontal vector of 1s, and $$\hat i$$ is the incidence eigenvector normalized to sum to 1. I'm not sure what's the slick way to show that $$R_p$$ is (or is not!) a threshold quantity.
+Park's “incidence reproductive number” is then the sum of $$δ(0) i_j$$. Since we've specified $$Δ$$ as a diagonal matrix, this works out in linear algebra as $$R_p = \vec{1} Δ(0) \hat i$$, where $$\vec 1$$ is a horizontal vector of 1s, and $$\hat i$$ is the incidence eigenvector normalized to sum to 1. 
 
+We can show that $$R_p$$ is a threshold quantity by pre-multiplying the incidence eigenvector equation by $$\vec 1$$.
+
+$$\vec 1 \hat i = \vec 1 PΔ(r)\hat i$$
+
+The product on the left is just 1, since we normalized $$i$$ without loss of generality. The product $$\vec 1 P$$ is just $$\vec 1$$ since $$P$$ is a matrix of proportions.
+
+$$ 1 = \vec 1 Δ(r)\hat i$$.
+
+We compare this to:
+
+$$R_p = \vec 1 Δ(0)\hat i = R_p$$.
+
+Since $$Δ(0) > Δ(r)$$ precisely when $$r>0$$, $$R_p$$ is a threshold quantity.
