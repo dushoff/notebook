@@ -29,6 +29,6 @@ $$ 1 = \vec 1 Δ(r)\hat i$$.
 
 We compare this to:
 
-$$R_p = \vec 1 Δ(0)\hat i = R_p$$.
+$$R_p = \vec 1 Δ(0)\hat i$$.
 
 Since $$Δ(0) > Δ(r)$$ precisely when $$r>0$$, $$R_p$$ is a threshold quantity.
