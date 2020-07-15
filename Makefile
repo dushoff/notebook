@@ -48,6 +48,11 @@ logcurve.mac.out: logcurve.mac
 
 ######################################################################
 
+## P values of t tests from an exponential distribution
+
+pt.Rout: pt.R
+	$(makeR)
+
 sandbox.Rout: sandbox.R
 
 ## Heterogeneous susceptibility notes
