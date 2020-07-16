@@ -5,16 +5,13 @@ ptgamma <- function(samp=30, shape=1){
 }
 
 ## Good behaviour with high shape
-v <- replicate(10000, ptgamma(shape=100))
-mean(v < 0.025)
-mean(v > 0.975)
+v <- replicate(1e5, ptgamma(shape=100))
+mean(v < 0.05)
 
 ## Bad behaviour with exponential
-v <- replicate(10000, ptgamma(shape=1))
-mean(v < 0.025)
-mean(v > 0.975)
+v <- replicate(1e5, ptgamma(shape=1))
+mean(v < 0.05)
 
 ## Larger sample size makes things better
-v <- replicate(10000, ptgamma(samp=100, shape=1))
-mean(v < 0.025)
-mean(v > 0.975)
+v <- replicate(1e5, ptgamma(samp=100, shape=1))
+mean(v < 0.05)

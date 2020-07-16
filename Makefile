@@ -52,6 +52,9 @@ logcurve.mac.out: logcurve.mac
 pt.Rout: pt.R
 	$(makeR)
 
+ptt.Rout: ptt.R
+	$(makeR)
+
 sandbox.Rout: sandbox.R
 
 ## Heterogeneous susceptibility notes
@@ -348,6 +351,7 @@ cauchy.Rout: cauchy.R
 
 ## Stats on a list of lists of fake data (or something)
 
+## GrandMean is here, and is bad.
 lndata.liststats.Rout:
 %.liststats.Rout: %.Rout liststats.R
 	$(run-R)
