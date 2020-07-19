@@ -18,6 +18,8 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
+
+## Sorting dates and times in a dumb way to explain how David Braley did that
 locker.out: locker.pl
 	$(PUSH)
 
