@@ -1,7 +1,8 @@
 # notebook (gh-pages branch, which is the only one I use)
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/
-# http://dushoff.github.io/notebook/
+
+# http://dushoff.github.io/notebook/pt.R
 # make serve ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
@@ -17,6 +18,8 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
+
+## Sorting dates and times in a dumb way to explain how David Braley did that
 locker.out: locker.pl
 	$(PUSH)
 
@@ -45,6 +48,14 @@ logcurve.mac.out: logcurve.mac
 	maxima -b $< > $@
 
 ######################################################################
+
+## P values of t tests from an exponential distribution
+
+pt.Rout: pt.R
+	$(makeR)
+
+ptt.Rout: ptt.R
+	$(makeR)
 
 sandbox.Rout: sandbox.R
 
@@ -342,6 +353,7 @@ cauchy.Rout: cauchy.R
 
 ## Stats on a list of lists of fake data (or something)
 
+## GrandMean is here, and is bad.
 lndata.liststats.Rout:
 %.liststats.Rout: %.Rout liststats.R
 	$(run-R)
@@ -474,6 +486,8 @@ islr_boot.Rout: islr_boot.R
 # Ongoing
 moments.html: moments.md
 moments.Rout: moments.R
+
+## severity.md:
 
 ######################################################################
 
