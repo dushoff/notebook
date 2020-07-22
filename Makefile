@@ -58,6 +58,7 @@ ptt.Rout: ptt.R
 	$(makeR)
 
 sandbox.Rout: sandbox.R
+	$(makeR)
 
 ## Heterogeneous susceptibility notes
 

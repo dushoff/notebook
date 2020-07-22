@@ -1,7 +1,10 @@
+
+source("makestuff/makeRfuns.R")
+commandEnvironments()
+
 library(dplyr)
 
-(3
-	%>% cos()
-	%T>% (. %>% sqrt() %>% print())
-	%>% sin()
-) %>% print()
+ss<-round(runif(1,0,10000))
+set.seed(23)
+print(ss)
+round(runif(1,0,10000))
