@@ -1,5 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
-# http://localhost:4111/notebook/17.html
+# http://localhost:4111/notebook/shifts.html
 # http://localhost:4111/notebook/
 
 # http://dushoff.github.io/notebook/pt.R
@@ -16,6 +16,15 @@ current: target
 -include target.mk
 
 -include makestuff/perl.def
+
+######################################################################
+
+## Exploring deconvolution
+
+backproj.Rout: backproj.R
+	$(makeR)
+
+## shifts.md.voice: shifts.md voice.pl
 
 ######################################################################
 
