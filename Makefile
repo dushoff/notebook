@@ -2,7 +2,7 @@
 # http://localhost:4111/notebook/shifts.html
 # http://localhost:4111/notebook/
 
-# http://dushoff.github.io/notebook/pt.R
+# http://dushoff.github.io/notebook/shifts.html
 # make serve ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
