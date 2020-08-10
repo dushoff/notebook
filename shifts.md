@@ -23,7 +23,7 @@ Estimating the _infection-based_ instantaneous reproductive number using symptom
 
 A commonly employed, “second-best” method, is to directly infer time-dependent reproductive numbers from the observed time series. This is reasonably straightforward to do, but harder to interpret.
 
-In this context, the instantaneous reproductive number assumes that the number of people who become _symptomatic_ on a given day is proportional to conditions on that day. In fact, the number of people who become symptomatic today certainly depends on conditions in the past. Thus, in this case, the instantaneous reproductive attributes effects _later_ than they occur (because the observation occurs after the infection).
+In this context, the instantaneous reproductive number assumes that the number of people who become _symptomatic_ on a given day is proportional to conditions on that day. In fact, the number of people who become symptomatic today certainly depends on conditions in the past. Thus, in this case, the instantaneous reproductive number attributes effects _later_ than they occur (because the observation occurs after the infection).
 
 But we already know that case reproductive numbers tend to attribute effects _earlier_ than they occur. Could these two effects cancel out? If we naively apply the case reproductive number to a symptom onset time series, we are assuming that the likelihood of transmission is related to conditions at the time when the infectors become symptomatic. The quality of this assumption depends on the nature of a given disease, but this seems like a pretty good fit for Covid-19.
 
