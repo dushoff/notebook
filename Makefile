@@ -1,8 +1,10 @@
 # notebook (gh-pages branch, which is the only one I use)
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/aberdeen.html
+# http://localhost:4111/notebook/shifts.html
+# http://localhost:4111/notebook/
 
-# http://dushoff.github.io/notebook/pt.R
+# http://dushoff.github.io/notebook/aberdeen.html
 # make serve ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
@@ -20,8 +22,16 @@ current: target
 ######################################################################
 
 ## Aberdeen diet
-
 ## aberdeen.md
+
+## Exploring deconvolution
+
+backproj.Rout: backproj.R
+	$(makeR)
+
+## shifts.md.voice: shifts.md voice.pl
+
+######################################################################
 
 ## Sorting dates and times in a dumb way to explain how David Braley did that
 locker.out: locker.pl
@@ -62,6 +72,7 @@ ptt.Rout: ptt.R
 	$(makeR)
 
 sandbox.Rout: sandbox.R
+	$(makeR)
 
 ## Heterogeneous susceptibility notes
 
