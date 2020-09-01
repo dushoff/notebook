@@ -5,6 +5,7 @@
 # http://localhost:4111/notebook/
 
 # http://dushoff.github.io/notebook/aberdeen.html
+# http://dushoff.github.io/notebook/
 # make serve ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
