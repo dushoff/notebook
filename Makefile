@@ -1,6 +1,6 @@
 # notebook (gh-pages branch, which is the only one I use)
 # http://localhost:4111/notebook/17.html
-# http://localhost:4111/notebook/
+# http://localhost:4111/notebook/aberdeen.html
 
 # http://dushoff.github.io/notebook/pt.R
 # make serve ##
@@ -18,6 +18,10 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
+
+## Aberdeen diet
+
+## aberdeen.md
 
 ## Sorting dates and times in a dumb way to explain how David Braley did that
 locker.out: locker.pl
