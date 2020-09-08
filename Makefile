@@ -1,8 +1,11 @@
 # notebook (gh-pages branch, which is the only one I use)
+# http://localhost:4111/notebook/17.html
+# http://localhost:4111/notebook/aberdeen.html
 # http://localhost:4111/notebook/shifts.html
 # http://localhost:4111/notebook/
 
-# http://dushoff.github.io/notebook/shifts.html
+# http://dushoff.github.io/notebook/aberdeen.html
+# http://dushoff.github.io/notebook/
 # make serve ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
@@ -22,6 +25,9 @@ current: target
 ## HW degrees of freedom?
 hwd.Rout: hwd.R
 	$(makeR)
+
+## Aberdeen diet
+## aberdeen.md
 
 ## Exploring deconvolution
 
