@@ -19,6 +19,10 @@ current: target
 
 ######################################################################
 
+## HW degrees of freedom?
+hwd.Rout: hwd.R
+	$(makeR)
+
 ## Exploring deconvolution
 
 backproj.Rout: backproj.R
