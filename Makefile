@@ -2,10 +2,10 @@
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/aberdeen.html
 # http://localhost:4111/notebook/shifts.html
-# http://localhost:4111/notebook/
+# http://localhost:4111/notebook/hwd.R
 
 # http://dushoff.github.io/notebook/aberdeen.html
-# http://dushoff.github.io/notebook/
+# http://dushoff.github.io/notebook/hwd.R
 # make serve ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
