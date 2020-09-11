@@ -3,7 +3,7 @@ layout: page
 title: Colors and hues
 ---
 
-![Large red and green dots differentiated by hue, or not](/notebook/git_push/colors.Rout.png)
+![Large red and green dots differentiated by hue, or not](/notebook/git_push/colors.Rout-0.png)
 
 I made this picture when I was trying to explain to an associate about using hue to make it easier for color-blind people to read colored charts.
 
