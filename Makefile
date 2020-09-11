@@ -201,10 +201,11 @@ correlate.Rout: correlate.R rclean.pl
 ## Developed from Brent D.
 ## Moved here for Mike R.
 
+color_pix: colors.Rout-0.png.gp colors.Rout-0.small.png.gp colors.Rout-1.png.gp
 colors.Rout: colors.R
 colors.Rout.png: colors.R
 Ignore += colors.small.png
-colors.small.png: colors.Rout.png
+%.small.png: %.png
 	convert -scale 10% $< $@
 
 ######################################################################

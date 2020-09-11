@@ -11,6 +11,10 @@ For me, the second row is not only much easier to differentiate, but for some re
 
 I'm curious what people with typical color vision think. If all the colors look super-different to you, try the smaller picture below. It has the same colors (but not necessarily in the same order within each row).
 
-![Small red and green dots differentiated by hue, or not](/notebook/git_push/colors.small.png)
+![Small red and green dots differentiated by hue, or not](/notebook/git_push/colors.Rout-0.small.png)
+
+And now I'm suggesting this palette for color-coding ranks. The idea is that we should get "brighter" as we move from red-yellow-green to create a good quantitative visual effect.
+
+![A red-yellow-green ramp](/notebook/git_push/colors.Rout-1.png)
 
 [The R (and rgb) codes](/notebook/colors.R)
