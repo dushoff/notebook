@@ -22,6 +22,8 @@ current: target
 
 ######################################################################
 
+Sources += $(wildcard *.bc)
+
 ## Long excellent numbers
 
 ## 9999999: 3 3 239 4649
@@ -32,6 +34,8 @@ current: target
 	bc -l < $< > $@
 
 ######################################################################
+
+curve.Rout: curve.R
 
 ## HW degrees of freedom?
 hwd.Rout: hwd.R

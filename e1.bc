@@ -1,12 +1,14 @@
-q = 10^23
-l = 11
-h = 47
+h = 29
+l = 13
+q = 42
+
+x = 10^q
 
 scale=2
-lp = (q-1)/l
+lp = (x-1)/l
 lp
 
-hp = (q+1)/h
+hp = (x+1)/h
 hp
 
 a = (l-h)/2
@@ -20,5 +22,5 @@ if (h>l){
 }
 
 scale=0
-((q*a+b)*ap + offset)/1
+((x*a+b)*ap + offset)/1
 ((ap*b+offset)^2-(ap*a)^2)/1
