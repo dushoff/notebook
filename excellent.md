@@ -19,4 +19,28 @@ This is a one-to-one mapping from positively to negatively excellent numbers for
 
 ## Factorizations
 
-Any pair of excellent numbers (one positively, one negatively excellent) corresponds to a factorization of B²-1. A convenient way to think of this factorization is in terms 
+Any pair of excellent numbers (one positively, one negatively excellent) corresponds to a factorization B²-1 = ff'. It's useful to write this as B²-1 = ℓh·ℓ'h', where ℓℓ' = B-1 and hh' = B+1. Conceptually, the factorization ff' starts from the factorization (B-1)(B+1) and then “switches” ℓ and h (or, equivalently, ℓ' and h').
+
+There is a lot of half-baked algebra I did mostly in my head which I am not going to try to write here, at least for a while. I'll instead skip to some assertions about the results.
+
+Any factorization will give us an algebraic solution, but for this solution to correspond to an excellent number, we need the values of y (which differ by only 1) to be < B. For example 640^2 - 1025^2 = -641025, so 640 and 1025 solve the algebraic equations for B=1000, but we can't concatenate them to get an excellent number because there's an extra digit.
+
+The ratio between ell and h determines the “magnitude” of the excellent number, defined as N/B^2 (I'll use N;P for the negatively and positively excellent members of a pair). It turns out that the tipping point where a solution is no longer excellent is when the magnitude is around 1/σ, where σ is the golden ratio (thus P/B^2 would be around σ): this tipping point occurs when the larger of ell and h is around sig^3 bigger than the smaller. When ell and h are closer together than b-1 and b+1 (approximately) the magnitude becomes smaller than 1/b and we can have negatively excellent numbers which are not strictly excellent.
+
+If one of the factors (conventionally, f) is 1, then we generate the pair 1, B². Otherwise, we assume without loss of generality that ell>h (thus ell'<h').
+
+We define m = (ell-h)/2, n = (ell+h)/2. m' and n' are defined correspondingly (with something switched so that m'>0). 
+
+_Example_: ell=27 and h=11. Thus, m=8, n=19, ell'=37, h'=91 m'=27, n'=64.
+
+We can generate N as (mB+n)·m' or as (m'B+n')·m + 1.
+
+_Example_: N = 8019*27 = 216513 = 27064*8 + 1.
+
+We can obviously generate P as N+B-1, but it also has its own rules. P = (nB+m)·n' = (n'B+m')·n -1
+
+_Example_: P = 19008*64 = 64027*19 - 1.
+
+These products can also be structured in terms of just one set of switches. For example m' = (mB+n)/(hℓ), thus N = (mB+n)^2/(hℓ). Similarly, n' = (nB+m)/(hℓ).
+
+_Example_: 19008/(11*27) = 
