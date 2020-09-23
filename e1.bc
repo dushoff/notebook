@@ -1,14 +1,15 @@
 
 h = 29
-l = 13
-q = 42
+l = 31
+q = 210
 
 x = 10^q
 
-scale=2
+l
 lp = (x-1)/l
 lp
 
+h
 hp = (x+1)/h
 hp
 
@@ -22,6 +23,8 @@ if (h>l){
 	offset = 1
 }
 
-scale=0
+scale=2
 ((x*a+b)*ap + offset)/1
 ((ap*b+offset)^2-(ap*a)^2)/1
+
+(((x*a+b)*ap + offset) + x^2 - 1)/1

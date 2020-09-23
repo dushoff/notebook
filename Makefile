@@ -30,6 +30,7 @@ Sources += $(wildcard *.bc)
 ## 10000001: 11 909091
 ## (158730)[k]16(126984)[k]128
 ## e1.out: e1.bc
+## e2.out: e2.bc
 %.out: %.bc
 	bc -l < $< > $@
 
