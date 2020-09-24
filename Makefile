@@ -4,7 +4,7 @@
 # http://localhost:4111/notebook/shifts.html
 # http://localhost:4111/notebook/hwd.R
 
-# http://dushoff.github.io/notebook/shifts.html
+# http://dushoff.github.io/notebook/17.html
 # http://dushoff.github.io/notebook/hwd.R
 # make serve ##
 
