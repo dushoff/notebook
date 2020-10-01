@@ -1,12 +1,13 @@
 # notebook (gh-pages branch, which is the only one I use)
 # http://localhost:4111/notebook/17.html
-# http://localhost:4111/notebook/aberdeen.html
+# http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
 # http://localhost:4111/notebook/hwd.R
 
-# http://dushoff.github.io/notebook/shifts.html
+# http://dushoff.github.io/notebook/pronouns.html
+# http://tinyurl.com/they-them-he-him
 # http://dushoff.github.io/notebook/hwd.R
-# make serve ##
+# make serve ## jekyll.log
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
 
@@ -35,6 +36,8 @@ Sources += $(wildcard *.bc)
 	bc -l < $< > $@
 
 ######################################################################
+
+## pronouns.md
 
 curve.Rout: curve.R
 
