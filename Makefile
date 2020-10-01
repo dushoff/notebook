@@ -6,6 +6,7 @@
 
 # http://dushoff.github.io/notebook/pronouns.html
 # http://tinyurl.com/they-them-he-him
+# http://dushoff.github.io/notebook/17.html
 # http://dushoff.github.io/notebook/hwd.R
 # make serve ## jekyll.log
 
