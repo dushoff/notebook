@@ -3,7 +3,9 @@ layout: page
 title: R(t)
 ---
 
-We attempt to infer reproductive numbers by referring to time series of observed cases. Our observations may represent the actual time of infection, the onset of symptoms, time of seeking medical Care, test confirmation date, …
+Thoughts on [Gostic et al.](https://www.medrxiv.org/content/10.1101/2020.06.18.20134858v3) and other investigations of R(t) for COVID-19.
+
+We attempt to infer reproductive numbers by referring to time series of observed cases. Our observations may represent the actual time of infection, the onset of symptoms, time of seeking medical care, test confirmation date, …
 
 To infer reproductive number, we need to know something about the amount of time it takes a case to produce another case. We use “serial interval” generally, to describe interval between the standardized observation time of an infectee and the observation time of their infector. This can be calibrated to correspond to the time series as above. Interestingly, calibration is necessary – if we define observation time differently, we get different distributions of serial intervals, even though all these distributions describe generations of the same underlying process. A vivid example of this is the fact that a serial interval based on medical reports can be negative (the infectee might be reported before the infector) whereas a serial interval based on actual time of infection (typically known as a generation interval) cannot be. 
 
