@@ -42,6 +42,10 @@ Sources += $(wildcard *.bc)
 
 curve.Rout: curve.R
 
+## Treasure problem from stack overflow
+stack.Rout: stack.R
+	$(makeR)
+
 ## HW degrees of freedom?
 hwd.Rout: hwd.R
 	$(makeR)
