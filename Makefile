@@ -43,9 +43,21 @@ spline_knots.Rout: spline_knots.R
 
 ######################################################################
 
+## Confused about polynomial regression from Rethinking
+
+kung.scsv:
+	curl -o $@ "https://raw.githubusercontent.com/rmcelreath/rethinking/master/data/Howell1.csv"
+
+kung.Rout: kung.R kung.scsv
+	$(makeR)
+
 ## pronouns.md
 
 curve.Rout: curve.R
+
+## Treasure problem from stack overflow
+stack.Rout: stack.R
+	$(makeR)
 
 ## HW degrees of freedom?
 hwd.Rout: hwd.R
