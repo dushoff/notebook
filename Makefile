@@ -38,6 +38,9 @@ Sources += $(wildcard *.bc)
 
 ######################################################################
 
+slow.Rout: slow.R
+	$(run-R)
+
 spline_knots.Rout: spline_knots.R
 	$(makeR)
 
