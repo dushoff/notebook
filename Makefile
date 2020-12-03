@@ -49,6 +49,7 @@ spline_knots.Rout: spline_knots.R
 
 ## Confused about polynomial regression from Rethinking
 
+Ignore += kung.scsv
 kung.scsv:
 	curl -o $@ "https://raw.githubusercontent.com/rmcelreath/rethinking/master/data/Howell1.csv"
 
