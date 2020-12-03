@@ -38,6 +38,15 @@ Sources += $(wildcard *.bc)
 
 ######################################################################
 
+## log-log accumulation (slow divergent series)
+slow.Rout: slow.R
+	$(run-R)
+
+spline_knots.Rout: spline_knots.R
+	$(makeR)
+
+######################################################################
+
 ## Confused about polynomial regression from Rethinking
 
 kung.scsv:
