@@ -7,7 +7,7 @@
 # http://dushoff.github.io/notebook/pronouns.html
 # http://tinyurl.com/they-them-he-him
 # http://dushoff.github.io/notebook/shifts.html
-# http://dushoff.github.io/notebook/hwd.R
+# http://dushoff.github.io/notebook/average.Rout
 # make serve ## jekyll.log
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
