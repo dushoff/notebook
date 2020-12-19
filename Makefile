@@ -528,6 +528,10 @@ Ignore += $(pardirs)
 
 # Scripts
 
+## AoC Monster messages.
+monster.out: monster.in monster.pl
+	$(PUSH)
+
 Sources += $(wildcard *.R *.pl)
 
 filledCircle.Rout: filledCircle.R

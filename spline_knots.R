@@ -2,6 +2,10 @@ library(splines)
 source("makestuff/makeRfuns.R")
 makeGraphics()
 
+爸 <- 3
+print(爸^2)
+☺ <- 7
+
 ## To save as .rds
 ## rdsSave(x)
 x <- 1:30
