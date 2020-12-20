@@ -529,7 +529,7 @@ Ignore += $(pardirs)
 # Scripts
 
 ## AoC Monster messages.
-Sources += monster.in
+Sources += *monster.in
 monster.out: monster.in monster.pl
 	$(PUSH)
 
