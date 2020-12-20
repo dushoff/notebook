@@ -533,6 +533,9 @@ Sources += monster.in
 monster.out: monster.in monster.pl
 	$(PUSH)
 
+waltmonster.out: waltmonster.in monster.pl
+	$(PUSH)
+
 Sources += $(wildcard *.R *.pl)
 
 filledCircle.Rout: filledCircle.R
