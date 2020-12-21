@@ -528,7 +528,7 @@ Ignore += $(pardirs)
 
 # Scripts
 
-## AoC Monster messages.
+## AoC Monster messages. DEAD END? Cut it out
 Sources += monster.in
 monster.out: monster.in monster.pl
 	$(PUSH)

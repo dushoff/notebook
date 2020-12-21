@@ -2,26 +2,40 @@ use strict;
 use 5.10.0;
 
 my %rule;
-while (<>){
-	my ($n, $r) = split /:\s*/;
-	$rule{$n} = $r;
-}
 
-sub numstring{
-	my ($n) = @_;
+sub matchstring{
+	my ($n, $s) = @_;
 	die ("No rule for $n") unless defined (my $r = ${rule}{$n});
-	return 1 if $r =~ /".*"/;
+	return "no" unless $s;
+
+	if ($r =~ /[a-z]/){
+		return "no" unless $s =~ s/^$r//;
+		return $s
+	}
 
 	my $sum=0;
 	foreach my $branch (split /[|]/, $r){
 		$branch =~ s/\s*//;
-		my $prod=1;
 		foreach my $step (split /\s+/, $branch){
-			$prod *= numstring($step);
+			say "matchstring $step, $s";
+			$s = matchstring($step, $s) unless $s eq "no"; 
+			say $s;
+			return "" if $s eq "";
 		}
-		$sum += $prod;
+		return "no"
 	}
-	return $sum;
 }
 
-say numstring(0);
+while (<>){
+	chomp;
+	last if /^$/;
+	my ($n, $r) = split /:\s*/;
+	$r =~ s/"//g;
+	$rule{$n} = $r;
+}
+
+while(<>){
+	chomp;
+	say "Read $_";
+	say "Output: " . matchstring(0, $_)
+}
