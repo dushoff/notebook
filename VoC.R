@@ -1,4 +1,3 @@
-## source("makestuff/makeRfuns.R") 
 
 library(rRlinks)
 library(dplyr)
@@ -6,6 +5,7 @@ library(tidyr)
 library(ggplot2)
 
 day <- 2.37
+day <- 0.37
 rmin <- -0.1/day
 rmax <- 0.1/day
 rsteps <- 100
@@ -14,27 +14,10 @@ Dmax <- 500/day
 dr <- 0.057/day ## r_new-r_orig (PHE via Day)
 Rscale <- 1.47 ## R_new/R_orig
 
-g <- 6*day
-kappa <- 0.5
+g <- 6.6*day
+kappa <- 0
 
 week <- 7*day
-
-######################################################################
-
-## Infer r_phe by assuming dr, Rscale and OUR interval parameters are correct.
-## This is hard, since we have only a ratio for R
-
-Rratio <- function(r, dr, g, kappa, target=0){
-	R_orig <- genExp(r*g, kappa)
-	R_new <- genExp((r+dr)*g, kappa)
-	return(R_new/R_orig - target)
-}
-
-r_phe <- uniroot(
-	Rratio, c(-rmax, rmax), dr=dr, g=g, kappa=kappa, target=Rscale
-)$root
-print(r_phe)
-print(R_phe <- genExp(r_phe*g, kappa))
 
 ######################################################################
 
@@ -75,7 +58,7 @@ print(
 	+ geom_line()
 )
 
-print(
+silent <- (
 	ggplot(Df)
 	+ aes(x=D_orig, y=D_new, color=method)
 	+ geom_point()

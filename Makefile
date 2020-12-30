@@ -41,6 +41,14 @@ Sources += $(wildcard *.bc)
 VoC.Rout: VoC.R
 	$(makeR)
 
+VoC.pdf: VoC.R
+	$(rmdpdfBang)
+
+VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
+
+## 2020 Dec 30 (Wed) In flux: try to DRY 
+VoCcomp.Rout: VoCcomp.R
+
 ######################################################################
 
 ## log-log accumulation (slow divergent series)
