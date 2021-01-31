@@ -48,6 +48,7 @@ VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
 
 ## 2020 Dec 30 (Wed) In flux: try to DRY 
 VoCcomp.Rout: VoCcomp.R
+VoCcomp.Rout-1.pdf:
 
 ######################################################################
 

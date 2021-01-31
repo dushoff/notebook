@@ -60,9 +60,11 @@ print(
 
 print(
 	ggplot(rf)
+	+ ggtitle(expression(paste(beta[new]/beta[orig], "= 1.47")))
 	+ aes(x=r_orig*day, y=δr*day, color=distribution)
 	+ geom_line()
 	+ xlab("r_orig (/day)")
-	+ ylab("δr (/day)")
+	+ ylab(expression(paste(delta*r, "(/day)")))
 	+ scale_color_manual(values = c("#E7B800", "#2E9FDF", "#FC4E07"))
+	+ ylim(c(0, NA))
 )
