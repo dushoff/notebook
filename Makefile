@@ -50,6 +50,11 @@ VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
 VoCcomp.Rout: VoCcomp.R
 VoCcomp.Rout-1.pdf:
 
+matthew.Rout: matthew.R doodle.csv
+	$(pipeR)
+
+## matthew.Rout.csv:
+
 ######################################################################
 
 ## log-log accumulation (slow divergent series)
@@ -721,7 +726,6 @@ makestuff/Makefile:
 -include makestuff/git.mk
 -include makestuff/visual.mk
 -include makestuff/projdir.mk
-# -include makestuff/wrapR.mk
--include makestuff/makeR.mk
+-include makestuff/pipeR.mk
 -include makestuff/pandoc.mk
 -include makestuff/forms.mk
