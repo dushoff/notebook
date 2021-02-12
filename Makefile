@@ -138,6 +138,7 @@ logcurve.mac.out: logcurve.mac
 
 ## B117 exploration
 
+Sources += DenmarkB.tsv
 DenmarkB.Rout: DenmarkB.R DenmarkB.tsv
 	$(pipeR)
 
