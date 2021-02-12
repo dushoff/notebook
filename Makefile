@@ -44,6 +44,11 @@ VoC.Rout: VoC.R
 VoC.pdf: VoC.R
 	$(rmdpdfBang)
 
+VoCsimple.Rout: vOcsimple.R
+	$(pipeR)
+VoCsimple.pdf: VoCsimple.R
+	$(rmdpdfBang)
+
 VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
 
 ## 2020 Dec 30 (Wed) In flux: try to DRY 
@@ -129,6 +134,21 @@ logcurve.mac.out: logcurve.mac
 
 ######################################################################
 
+## B117 exploration
+
+DenmarkB.Rout: DenmarkB.R DenmarkB.tsv
+	$(pipeR)
+
+DenmarkBpix.Rout: Bpix.R DenmarkB.rda
+	$(pipeR)
+
+DenmarkBfit.Rout: Bfit.R DenmarkB.rda
+	$(pipeR)
+
+
+
+######################################################################
+
 ## P values of t tests from an exponential distribution
 
 pt.Rout: pt.R
@@ -138,7 +158,7 @@ ptt.Rout: ptt.R
 	$(makeR)
 
 sandbox.Rout: sandbox.R
-	$(makeR)
+	$(pipeR)
 
 ## Heterogeneous susceptibility notes
 
