@@ -1,11 +1,14 @@
 library(ggplot2); theme_set(theme_bw(base_size=18))
+library(dplyr)
 library(shellpipes)
 
 commandEnvironments()
 
-print(ggplot(l)
-	+ aes(week20, cases, color=strain)
+startGraphics()
+
+print(ggplot(gammA)
+	+ aes(obsWeek, cases, color=strain)
 	+ geom_point()
-	+ geom_line()
+	+ geom_line(aes(y=exp(.fitted)))
 	+ scale_y_log10()
 )

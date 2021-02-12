@@ -12,7 +12,10 @@ v <- (tsvRead(comment="#")
 l <- (v
 	%>% select(week20, variant, wildtype)
 	%>% pivot_longer(!week20, names_to="strain", values_to="cases")
-	%>% mutate(obsWeek = week20 - min(week20))
+	%>% mutate(
+		obsWeek = week20 - min(week20)
+		, strain = factor(strain, levels=c("wildtype", "variant"))
+	)
 )
 
 saveVars(l)

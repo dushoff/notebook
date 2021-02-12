@@ -1,13 +1,27 @@
 library(lme4)
 library(shellpipes)
+library(broom.mixed)
 
 commandEnvironments()
 
 summary(l)
 
-m <- glmer(cases ~ 0 + strain + strain*obsWeek + (1 | obsWeek)
+gamm <- glmer(cases ~ 0 + strain*obsWeek + (1 | obsWeek)
 	, data=l
 	, family = Gamma(link = "log")
 )
 
-summary(m)
+summary(gamm)
+
+## poly rescales confusingly – in fact the result is nearly identical
+## no evidence (or even trend ☺) for increasing difference
+qgamm <- glmer(cases ~ 0 + strain*poly(obsWeek, 2) + (1 | obsWeek)
+	, data=l
+	, family = Gamma(link = "log")
+)
+
+summary(qgamm)
+
+gammA <- augment(gamm)
+names(gammA)
+saveVars(gammA)

@@ -142,10 +142,10 @@ Sources += DenmarkB.tsv
 DenmarkB.Rout: DenmarkB.R DenmarkB.tsv
 	$(pipeR)
 
-DenmarkBpix.Rout: Bpix.R DenmarkB.rda
+DenmarkBfit.Rout: Bfit.R DenmarkB.rda
 	$(pipeR)
 
-DenmarkBfit.Rout: Bfit.R DenmarkB.rda
+DenmarkBpix.Rout: Bpix.R DenmarkBfit.rda
 	$(pipeR)
 
 ######################################################################
