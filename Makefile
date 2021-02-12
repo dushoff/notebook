@@ -8,6 +8,7 @@
 # http://tinyurl.com/they-them-he-him
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/average.Rout
+# http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # make serve ## jekyll.log ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
@@ -44,6 +45,7 @@ VoC.Rout: VoC.R
 VoC.pdf: VoC.R
 	$(rmdpdfBang)
 
+Ignore += VoCsimple.pdf
 VoCsimple.Rout: vOcsimple.R
 	$(pipeR)
 VoCsimple.pdf: VoCsimple.R
@@ -144,8 +146,6 @@ DenmarkBpix.Rout: Bpix.R DenmarkB.rda
 
 DenmarkBfit.Rout: Bfit.R DenmarkB.rda
 	$(pipeR)
-
-
 
 ######################################################################
 
