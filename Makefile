@@ -54,7 +54,9 @@ VoCsimple.pdf: VoCsimple.R
 VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
 
 ## 2020 Dec 30 (Wed) In flux: try to DRY 
+## FIXME: this behaves suspiciously when r is very small
 VoCcomp.Rout: VoCcomp.R
+	$(pipeR)
 VoCcomp.Rout-1.pdf:
 
 matthew.Rout: matthew.R doodle.csv
