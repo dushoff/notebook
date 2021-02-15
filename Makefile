@@ -9,6 +9,7 @@
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
+# http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # make serve ## jekyll.log ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
