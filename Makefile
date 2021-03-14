@@ -8,7 +8,9 @@
 # http://tinyurl.com/they-them-he-him
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/average.Rout
-# make serve ## jekyll.log
+# http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
+# http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
+# make serve ## jekyll.log ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
 
@@ -38,8 +40,36 @@ Sources += $(wildcard *.bc)
 
 ######################################################################
 
+
 gdc.Rout: gdc.R
 	$(run-R)
+
+VoC.Rout: VoC.R
+	$(makeR)
+
+VoC.pdf: VoC.R
+	$(rmdpdfBang)
+
+Ignore += VoCsimple.pdf
+VoCsimple.Rout: vOcsimple.R
+	$(pipeR)
+VoCsimple.pdf: VoCsimple.R
+	$(rmdpdfBang)
+
+VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
+
+## 2020 Dec 30 (Wed) In flux: try to DRY 
+## FIXME: this behaves suspiciously when r is very small
+VoCcomp.Rout: VoCcomp.R
+	$(pipeR)
+VoCcomp.Rout-1.pdf:
+
+matthew.Rout: matthew.R doodle.csv
+	$(pipeR)
+
+## matthew.Rout.csv:
+
+######################################################################
 
 ## log-log accumulation (slow divergent series)
 slow.Rout: slow.R
@@ -113,6 +143,20 @@ logcurve.mac.out: logcurve.mac
 
 ######################################################################
 
+## B117 exploration
+
+Sources += DenmarkB.tsv
+DenmarkB.Rout: DenmarkB.R DenmarkB.tsv
+	$(pipeR)
+
+DenmarkBfit.Rout: Bfit.R DenmarkB.rda
+	$(pipeR)
+
+DenmarkBpix.Rout: Bpix.R DenmarkBfit.rda
+	$(pipeR)
+
+######################################################################
+
 ## P values of t tests from an exponential distribution
 
 pt.Rout: pt.R
@@ -122,7 +166,7 @@ ptt.Rout: ptt.R
 	$(makeR)
 
 sandbox.Rout: sandbox.R
-	$(makeR)
+	$(pipeR)
 
 ## Heterogeneous susceptibility notes
 
@@ -316,7 +360,6 @@ Ignore += maya
 ## https://docs.google.com/spreadsheets/d/1qTYPV7PXb_5EVyG2SoxuAdlzXRfvJxgRUOwAgbYwS7s/edit#gid=581089094
 ## downcall maya/blood.xlsx ##
 blood.Rout: maya/blood.xlsx blood.R
-## maya/notes.txt
 
 ## BAILED on googlesheets package because it requires "publishing"
 maya.Rout: maya.R
@@ -711,7 +754,6 @@ makestuff/Makefile:
 -include makestuff/git.mk
 -include makestuff/visual.mk
 -include makestuff/projdir.mk
-# -include makestuff/wrapR.mk
--include makestuff/makeR.mk
+-include makestuff/pipeR.mk
 -include makestuff/pandoc.mk
 -include makestuff/forms.mk

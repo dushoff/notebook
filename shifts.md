@@ -31,5 +31,5 @@ But we already know that case reproductive numbers tend to attribute effects _ea
 
 ## Conclusion
 
-In an _ideal_ world, we would estimate the generation-interval distribution, infer infection time series, and use the method of Cori to estimate the instantaneous reproduction number. For real-world Covid-19 applications, directly using symptom onset and estimates of the serial interval, and estimating the case reproductive number based on symptoms with the method of Wallinga might be the most practical alternative.
+In an _ideal_ world, we would estimate the generation-interval distribution, infer infection time series, and use the method of Cori to estimate the instantaneous reproduction number. For real-world Covid-19 applications, directly using symptom onset and estimates of the serial interval, and estimating the case reproductive number based on symptoms with the method of Wallinga might be a simple, practical alternative.
 
