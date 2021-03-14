@@ -38,6 +38,9 @@ Sources += $(wildcard *.bc)
 
 ######################################################################
 
+gdc.Rout: gdc.R
+	$(run-R)
+
 ## log-log accumulation (slow divergent series)
 slow.Rout: slow.R
 	$(run-R)
