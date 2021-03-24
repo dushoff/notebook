@@ -292,6 +292,7 @@ correlate.Rout: correlate.R rclean.pl
 
 color_pix: colors.Rout-0.png.gp colors.Rout-0.small.png.gp colors.Rout-1.png.gp
 colors.Rout: colors.R
+	$(wrapR)
 colors.Rout.png: colors.R
 Ignore += colors.small.png
 %.small.png: %.png
