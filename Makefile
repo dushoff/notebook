@@ -300,6 +300,10 @@ Ignore += colors.small.png
 
 ######################################################################
 
+mattPredict.Rout: mattPredict.R
+
+######################################################################
+
 Sources += serosurvey.md covid.md
 
 ## Elisha and tsetse
