@@ -5,11 +5,14 @@
 # http://localhost:4111/notebook/hwd.R
 
 # http://dushoff.github.io/notebook/pronouns.html
-# http://tinyurl.com/they-them-he-him
 # http://dushoff.github.io/notebook/shifts.html
+# http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
+
+# https://github.com/dushoff/notebook/blob/gh-pages/acf.R
+
 # make serve ## jekyll.log ##
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
@@ -41,6 +44,8 @@ Sources += $(wildcard *.bc)
 ######################################################################
 
 autopipeR = defined
+
+statstrength.md: 
 
 acf.Rout: acf.R
 

@@ -12,5 +12,6 @@ cor.test(y, z)
 print(sum((y-mean(y))*(z-mean(z)))/((n-2)*sd(y)*sd(z)))
 
 ## auto-correlation recognizes them as the same series
+## So we use the grand mean and variance (and have more degrees of freedom)
 print(acf(x))
 print(sum((y-mean(x))*(z-mean(x)))/((n-1)*sd(x)*sd(x)))
