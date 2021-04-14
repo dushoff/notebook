@@ -40,6 +40,9 @@ Sources += $(wildcard *.bc)
 
 ######################################################################
 
+autopipeR = defined
+
+acf.Rout: acf.R
 
 gdc.Rout: gdc.R
 	$(run-R)
