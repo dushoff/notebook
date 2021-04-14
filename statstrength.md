@@ -11,21 +11,32 @@ A. The effect is clearly large and positive.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained above the positive cutoff](statstrength_figs/case-0.png)
 
+
+----------------------------------------------------------------------
+
 B. The effect is clearly small and positive.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained between zero and the positive cutoff](statstrength_figs/case-1.png)
+
+---------------------------------------------------------------------
 
 C. The effect is clearly positive; it is not clear whether it is large
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning the positive cutoff](statstrength_figs/case-2.png)
 
+---------------------------------------------------------------------
+
 D. The effect is clearly small; it is not clear whether it is positive
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning zero](statstrength_figs/case-3.png)
 
+---------------------------------------------------------------------
+
 E. The effect is uncertain but it is not both large and negative.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both zero and the positive cutoff](statstrength_figs/case-4.png)
+
+---------------------------------------------------------------------
 
 F. Next time, we will definitely do a power analysis before conducting a study ☺
 
