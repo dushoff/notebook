@@ -9,7 +9,6 @@
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
-# http://dushoff.github.io/notebook/statstrength.html
 
 # https://github.com/dushoff/notebook/blob/gh-pages/acf.R
 # https://github.com/dushoff/notebook/blob/gh-pages/hwd.R
@@ -47,6 +46,7 @@ Sources += $(wildcard *.bc)
 autopipeR = defined
 
 # http://localhost:4111/notebook/statstrength.html
+# http://dushoff.github.io/notebook/statstrength.html
 statstrength.md:  statstrength_figs
 Sources += statstrength_figs/*.png
 Sources += statstrength_cases.pdf

@@ -7,39 +7,39 @@ T use statistics to infer whether an effect is large, we need a _prior_ specific
 
 Here are some suggestions. I am interested in comments and other suggestions.
 
-A. The effect is clearly large and positive.
+## A
+
+The effect is clearly large and positive.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained above the positive cutoff](statstrength_figs/case-0.png)
 
+## B
 
-----------------------------------------------------------------------
-
-B. The effect is clearly small and positive.
+The effect is clearly small and positive.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained between zero and the positive cutoff](statstrength_figs/case-1.png)
 
----------------------------------------------------------------------
+## C
 
-C. The effect is clearly positive; it is not clear whether it is large
+The effect is clearly positive; it is not clear whether it is large
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning the positive cutoff](statstrength_figs/case-2.png)
 
----------------------------------------------------------------------
+## D
 
-D. The effect is clearly small; it is not clear whether it is positive
+The effect is clearly small; it is not clear whether it is positive
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning zero](statstrength_figs/case-3.png)
 
----------------------------------------------------------------------
+## E
 
-E. The effect is uncertain but it is not both large and negative.
+The effect is uncertain but it is not both large and negative.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both zero and the positive cutoff](statstrength_figs/case-4.png)
 
----------------------------------------------------------------------
+## F
 
-F. Next time, we will definitely do a power analysis before conducting a study ☺
+Next time, we will do a power analysis before conducting a study ☺
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both the negative and the positive cutoff](statstrength_figs/case-5.png)
 
-If you include the location of a point estimate, I think there are 13 different cases to consider good language for.
