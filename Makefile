@@ -45,7 +45,14 @@ Sources += $(wildcard *.bc)
 
 autopipeR = defined
 
-statstrength.md: 
+# http://localhost:4111/notebook/statstrength.html
+statstrength.md:  statstrength_figs
+Sources += statstrength_figs/*.png
+Sources += statstrength_cases.pdf
+statstrength_figs: %: %/case-0.png %/case-1.png %/case-2.png %/case-3.png %/case-4.png %/case-5.png
+## statstrength_figs/case-0.png: statstrength_cases-0.pdf
+statstrength_figs/case-%.png: statstrength_cases-%.pdf 
+	convert -density 400 -crop 3200x1000+400+300 -trim $< -quality 100 -sharpen 0x1.0 $@
 
 acf.Rout: acf.R
 
@@ -769,4 +776,5 @@ makestuff/Makefile:
 -include makestuff/projdir.mk
 -include makestuff/pipeR.mk
 -include makestuff/pandoc.mk
+-include makestuff/pdfpages.mk
 -include makestuff/forms.mk
