@@ -2,7 +2,6 @@
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
-# http://localhost:4111/notebook/hwd.R
 
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/shifts.html
@@ -10,8 +9,10 @@
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
+# http://dushoff.github.io/notebook/statstrength.html
 
 # https://github.com/dushoff/notebook/blob/gh-pages/acf.R
+# https://github.com/dushoff/notebook/blob/gh-pages/hwd.R
 
 # make serve ## jekyll.log ##
 

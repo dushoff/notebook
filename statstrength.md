@@ -3,7 +3,7 @@ layout: page
 title: Statistical strength language
 ---
 
-If we use statistics to infer whether an effect is large, we need a _prior_ specification of what we mean by large. There are then 6 possible ways the CIs can play out for a single estimand (after collapsing symmetries). What are good ways to describe them?
+T use statistics to infer whether an effect is large, we need a _prior_ specification of what is meant by large. There are then 6 possible ways the CIs can play out for a single estimand (after collapsing symmetries). What are good ways to describe them?
 
 Here are some suggestions. I am interested in comments and other suggestions.
 
@@ -23,7 +23,7 @@ D. The effect is clearly small; it is not clear whether it is positive
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning zero](statstrength_figs/case-3.png)
 
-E. We can only rule out a large, negative effect.
+E. The effect is uncertain but it is not both large and negative.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both zero and the positive cutoff](statstrength_figs/case-4.png)
 
@@ -31,4 +31,4 @@ F. Next time, we will definitely do a power analysis before conducting a study â
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both the negative and the positive cutoff](statstrength_figs/case-5.png)
 
-
+If you include the location of a point estimate, I think there are 13 different cases to consider good language for.
