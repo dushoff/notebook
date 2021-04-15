@@ -13,35 +13,35 @@ Here are some suggestions. I am interested in comments and other suggestions. I 
 
 The effect is clearly large and positive.
 
-![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained above the positive cutoff](statstrength_figs/case-0.png) (2/7)
+![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained above the positive cutoff](statstrength_figs/case-0.png)
 
 ## B
 
-The effect is clearly positive; it is not clear whether it is large (3/7)
+The effect is clearly positive; it is not clear whether it is large.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning the positive cutoff](statstrength_figs/case-2.png)
 
 ## C
 
-The effect is clearly small and positive. (3/7)
+The effect is clearly small and positive.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval contained between zero and the positive cutoff](statstrength_figs/case-1.png)
 
 ## D
 
-The effect is clearly small; it is not clear whether it is positive (4/7)
+The effect is clearly small; it is not clear whether it is positive.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning zero](statstrength_figs/case-3.png)
 
 ## E
 
-The effect is uncertain but it is not both large and negative. (5/7)
+The effect is uncertain but it is not both large and negative.
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both zero and the positive cutoff](statstrength_figs/case-4.png)
 
 ## F
 
-Next time, we will do a power analysis before conducting a study ☺ (6/7)
+Next time, we will do a power analysis before conducting a study ☺
 
 ![A sketched graph showing negative/zero/positive, two "strength cutoffs", and a confidence interval spanning both the negative and the positive cutoff](statstrength_figs/case-5.png)
 
