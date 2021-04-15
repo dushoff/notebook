@@ -6,6 +6,8 @@
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/acf.html
+# http://dushoff.github.io/notebook/statstrength.html
+
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
@@ -404,7 +406,8 @@ Sources += $(wildcard _posts/*.*)
 Sources += post.pl
 
 Ignore += *.post
-## covid.post: 
+## Linking stuff is broken!
+## statstrength.post: 
 %.post: %.post.md post.pl
 	$(PUSH)
 	$(shell_execute)
