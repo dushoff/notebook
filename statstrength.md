@@ -3,7 +3,7 @@ layout: page
 title: Statistical strength language
 ---
 
-T use statistics to infer whether an effect is large, we need a _prior_ specification of what is meant by large. There are then 6 possible ways the CIs can play out for a single estimand (after collapsing symmetries). What are good ways to describe them?
+To use statistics to infer whether an effect is large, we need a _prior_ specification of what is meant by large. There are then 6 possible ways the CIs can play out for a single estimand (after collapsing symmetries). What are good ways to describe them?
 
 Here are some suggestions. I am interested in comments and other suggestions.
 
