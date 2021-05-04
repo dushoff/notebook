@@ -70,8 +70,9 @@ VoC.pdf: VoC.R
 	$(rmdpdfBang)
 
 Ignore += VoCsimple.pdf
-VoCsimple.Rout: vOcsimple.R
+VoCsimple.Rout: VoCsimple.R
 	$(pipeR)
+
 VoCsimple.pdf: VoCsimple.R
 	$(rmdpdfBang)
 
