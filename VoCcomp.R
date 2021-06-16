@@ -5,8 +5,8 @@ library(ggplot2); theme_set(theme_bw(base_size=16))
 library(shellpipes); startGraphics()
 
 ## day is a dummy; we change the value to make sure we haven't screwed up units
-day <- 0.37
 day <- 2.37
+day <- 0.37
 week <- 7*day
 
 ## Assumptions
