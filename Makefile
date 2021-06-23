@@ -32,6 +32,13 @@ current: target
 ######################################################################
 
 ## confusing.md:
+## 
+bbias.Rout: bbias.R
+
+## lognormal rarity identity from Roswell
+ln_ident.Rout: ln_ident.R
+
+######################################################################
 
 Sources += $(wildcard *.bc)
 
@@ -84,7 +91,7 @@ VoCinfer.Rout: VoCinfer.R orphan code to solve implied PHE rR
 ## FIXME: this behaves suspiciously when r is very small
 VoCcomp.Rout: VoCcomp.R
 	$(pipeR)
-VoCcomp.Rout-1.pdf:
+## VoCcomp.Rout-1.pdf: VoCcomp.R
 
 matthew.Rout: matthew.R doodle.csv
 	$(pipeR)
