@@ -12,7 +12,7 @@
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 
-# https://github.com/dushoff/notebook/blob/gh-pages/acf.R
+# https://github.com/dushoff/notebook/blob/gh-pages/confusing.md
 # https://github.com/dushoff/notebook/blob/gh-pages/hwd.R
 
 # make serve ## jekyll.log ##
