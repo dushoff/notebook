@@ -34,6 +34,8 @@ current: target
 ## Practicing for MMED
 partic.Rout: partic.R
 
+hetGen.Rout: hetGen.R
+
 ######################################################################
 
 ## confusing.md:
