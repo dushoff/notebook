@@ -34,6 +34,7 @@ current: target
 ## Practicing for MMED
 partic.Rout: partic.R
 
+## stochInv project MOVED!!!
 hetGen.Rout: hetGen.R
 
 ######################################################################

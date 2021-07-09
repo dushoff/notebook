@@ -1,5 +1,5 @@
-
-reps <- 1e5
+library(tidyr)
+library(dplyr)
 
 # generalized random gamma (understands kappa=0, underlying mean is always 1)
 grgam <- function(num, kappa){
@@ -9,7 +9,7 @@ grgam <- function(num, kappa){
 
 generation <- function(num, meanR, kappa_t, kappa_c){
 	trans <- grgam(num, kappa_t)
-	mix <- grgam(num, kappa_c)*(1+kappa_c^2)
+	mix <- grgam(num, kappa_c)*(1+kappa_c)
 	inf <- rpois(num, meanR*trans*mix)
 	return(sum(inf))
 }
@@ -39,23 +39,17 @@ estProb <- function(reps, meanR, kappa_t, kappa_c, start=1, maxGens=20, maxPop=1
 estProbMean <- Vectorize(estProb, "meanR")
 estProbKappa <- Vectorize(estProb, c("kappa_c", "kappa_t"))
 
-means <- seq(1, 4, length.out=11)
-kappas <- seq(0, 3, length.out=16)
+pars <- crossing(NULL
+	, meanR = c(1.1, 1.6)
+	, reps = 1e2
+	, kappa_t = 0
+	, kappa_c = seq(0, 3, length.out=4)
+)
 
-c_probs <- estProbKappa(reps=1e5, meanR=2, kappa_t=0, kappa_c=kappas)
-plot(kappas, c_probs, type="b")
+sims <- (pars
+	%>% rowwise
+	%>% mutate(prob = estProb(reps, meanR, kappa_t, kappa_c))
+	%>% ungroup
+)
 
-quit()
-
-c_probs <- estProbKappa(reps=1e4, meanR=1, kappa_t=0, kappa_c=kappas)
-plot(kappas, c_probs, type="b")
-
-c_probs <- estProbKappa(reps=1e4, meanR=1.5, kappa_t=0, kappa_c=kappas)
-plot(kappas, c_probs, type="b")
-
-c_probs <- estProbKappa(reps=1e4, meanR=2, kappa_t=0, kappa_c=kappas)
-plot(kappas, c_probs, type="b")
-
-t_probs <- estProbKappa(reps=1e4, meanR=2, kappa_c=0, kappa_t=kappas)
-plot(kappas, t_probs, type="b")
-
+print(sims)
