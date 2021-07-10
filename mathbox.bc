@@ -1,0 +1,4 @@
+gam = (1+sqrt(13))/2
+
+(gam^9-651)/gam
+(gam^3-3)/gam

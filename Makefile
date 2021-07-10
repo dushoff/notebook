@@ -50,6 +50,8 @@ ln_ident.Rout: ln_ident.R
 
 Sources += $(wildcard *.bc)
 
+mathbox.out: mathbox.bc
+
 ## Long excellent numbers
 
 ## 9999999: 3 3 239 4649
