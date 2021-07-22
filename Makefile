@@ -31,6 +31,8 @@ current: target
 
 ######################################################################
 
+nowords.Rout: nowords.R
+
 ## Practicing for MMED
 partic.Rout: partic.R
 
