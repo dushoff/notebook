@@ -496,11 +496,13 @@ walt.out: walt.in walt.pl
 Sources += checkplots.Rmd
 
 ####### Modularized diagnostic plots
-## checkFuns.R ##
+checkFuns.Rout: checkFuns.R
+	$(wrapR)
 
 ### Sets of fake data
 
 lndata.Rout: lndata.R
+	$(wrapR)
 gamdata.Rout: gamdata.R
 tdata.Rout: tdata.R
 cauchy.Rout: cauchy.R
@@ -508,9 +510,9 @@ cauchy.Rout: cauchy.R
 ## Stats on a list of lists of fake data (or something)
 
 ## GrandMean is here, and is bad.
-lndata.liststats.Rout:
-%.liststats.Rout: %.Rout liststats.R
-	$(run-R)
+## lndata.liststats.Rout:
+%.liststats.Rout: %.rda liststats.R
+	$(pipeR)
 
 ## checkplot
 ## http://dushoff.github.io/notebook/git_push/lndata.listplots.Rout.pdf
@@ -518,7 +520,7 @@ lndata.liststats.Rout:
 ## gamdata.listplots.Rout: listplots.R
 ## tdata.listplots.Rout: listplots.R
 ## cauchy.listplots.Rout: listplots.R
-%.listplots.Rout: %.liststats.Rout checkFuns.Rout listplots.R
+%.listplots.Rout: %.liststats.rda checkFuns.rda listplots.R
 	$(run-R)
 
 ## lndata.pianoPlots.Rout: pianoPlots.R

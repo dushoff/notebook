@@ -1,3 +1,7 @@
+library(shellpipes)
+
+commandEnvironments()
+
 ## Maybe replace this upstream (calculate means?) some time when I have internet access
 ## This is a source of instability for unstable distributions; better to use the theoretical mean
 grandMean <- function(datList){
@@ -26,4 +30,4 @@ for (tag in names(dat)){
 	stats[[tag]] <- multT(dat[[tag]], m=grandMean(dat[[tag]]))
 }
 
-# rdsave(stats)
+saveEnvironment()
