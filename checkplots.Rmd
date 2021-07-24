@@ -29,7 +29,6 @@ My current method of visualizing a distribution of simulated P values is with â€
 
 ### A frequentist example
 
-
 ## To do
 
 Make things purrier
