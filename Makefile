@@ -9,6 +9,7 @@
 # http://dushoff.github.io/notebook/statstrength.html
 
 # http://dushoff.github.io/notebook/average.Rout
+# http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 

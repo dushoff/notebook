@@ -7,7 +7,7 @@ title: Colors and hues
 
 I made this picture when I was trying to explain to an associate about using hue to make it easier for color-blind people to read colored charts.
 
-For me, the second row is not only much easier to differentiate, but for some reason also much easier to tell which one is red and which one is green.
+For me, the second row is _much_ easier to differentiate. I also kind of feel like it's easier to tell which is red, but I'm not confident.
 
 I'm curious what people with typical color vision think. If all the colors look super-different to you, try the smaller picture below. It has the same colors (but not necessarily in the same order within each row).
 
