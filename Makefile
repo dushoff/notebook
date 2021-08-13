@@ -10,7 +10,7 @@
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
-# http://dushoff.github.io/notebook/outputs/DenmarkBpix.Rout.pdf
+# http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 
 # https://github.com/dushoff/notebook/blob/gh-pages/confusing.md
@@ -157,7 +157,6 @@ backproj.Rout: backproj.R
 
 ## Urns problem
 
-## urns.comb.md: urns.md texcomb.pl
 %.comb.md: %.md texcomb.pl
 	$(PUSHRO)
 
