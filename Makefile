@@ -154,6 +154,23 @@ backproj.Rout: backproj.R
 
 ######################################################################
 
+## Urns problem
+
+## urns.comb.md: urns.md texcomb.pl
+%.comb.md: %.md texcomb.pl
+	$(PUSHRO)
+
+urns.check.tex: urns.comb.md
+	$(pandocs)
+
+urns.pdf: urns.comb.md
+	$(pandocs)
+
+urns.html: urns.check.tex Makefile
+	pandoc $< --mathjax -s -o $@
+
+######################################################################
+
 ## Sorting dates and times in a dumb way to explain how David Braley did that
 locker.out: locker.pl
 	$(PUSH)
