@@ -157,6 +157,7 @@ backproj.Rout: backproj.R
 
 ## Urns problem
 
+## urns.comb.md: urns.md texcomb.pl
 %.comb.md: %.md texcomb.pl
 	$(PUSHRO)
 

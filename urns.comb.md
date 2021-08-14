@@ -19,23 +19,23 @@ Let T=1000 be the number of balls in each bag, t=19 be the number of balls you s
 
 If B is the number of black balls in the back you select, then the number of ways to select b black balls and t-b white balls is:
 
-$$ {B \choose b} {T-B \choose t-b} $$
+$$ { B \choose b } { T-B \choose t-b } $$
 
 and the associated probability is 
 
-$$ \frac{{B \choose b} {T-B \choose t-b} }{ {T \choose t} } $$
+$$ \frac{ { B \choose b } { T-B \choose t-b }  }{  { T \choose t }  } $$
 
 The answer if we pick a bag at random is just the average over the $T+1$ possible values of $B$:
 
-$$ \frac{ 1 }{ T+1 } \sum_{B=0}^T { \frac{ {B \choose b} {T-B \choose t-b} }{ {T \choose t} } }$$
+$$ \frac{  1  }{  T+1  } \sum_{B=0}^T { \frac{  { B \choose b } { T-B \choose t-b }  }{  { T \choose t }  } }$$
 
 We can separate out the parts that don't contain $B$:
 
-$$ \frac{ 1 }{ (T+1) {T \choose t} } \sum_{B=0}^T {B \choose b} {T-B \choose t-b} $$
+$$ \frac{  1  }{  (T+1) { T \choose t }  } \sum_{B=0}^T { B \choose b } { T-B \choose t-b } $$
 
 It's simple enough to do the sum by pattern-finding and prove it by induction. 
 
-$$ \sum_{B=0}^T {B \choose b} {T-B \choose t-b}  = {T+1 \choose t+1} $$
+$$ \sum_{B=0}^T { B \choose b } { T-B \choose t-b }  = { T+1 \choose t+1 } $$
 
 But that's no fun! If there's a simple pattern (as here), then there should be a cool combinatoric explanation, and we should pretend we found it directly.
 
@@ -43,7 +43,7 @@ The first factor in the summand describes ways of choosing $b$ balls from a set 
 
 Now, substitute for the sum and expand factorials:
 
-$$ \frac{ {T+1 \choose t+1} }{ (T+1) {T \choose t} }  = \frac{ 1 }{ t+1 } .$$
+$$ \frac{  { T+1 \choose t+1 }  }{  (T+1) { T \choose t }  }  = \frac{  1  }{  t+1  } .$$
 
 In other words, all of the $t+1$ outcomes of drawing $t$ balls are equally likely, and thus _independent of both $T$ and $b$_. This means there must be an even cooler explanation, and we should ignore everything above and pretend we found _that_ directly.
 
