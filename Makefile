@@ -32,9 +32,10 @@ current: target
 
 ######################################################################
 
+# http://dushoff.github.io/notebook/outputs/table.png
 Sources += outputs/table.png
 outputs/table.png:
-	$(LN) ~/Downloads/table.png outputs
+	/bin/ln -f ~/Downloads/table.png outputs
 
 ######################################################################
 
