@@ -32,6 +32,12 @@ current: target
 
 ######################################################################
 
+Sources += outputs/table.png
+outputs/table.png:
+	$(LN) ~/Downloads/table.png outputs
+
+######################################################################
+
 nowords.Rout: nowords.R
 
 ## Practicing for MMED
