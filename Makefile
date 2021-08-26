@@ -14,7 +14,7 @@
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 
 # https://github.com/dushoff/notebook/blob/gh-pages/confusing.md
-# https://github.com/dushoff/notebook/blob/gh-pages/hwd.R
+# https://github.com/dushoff/notebook/blob/gh-pages/outputs/
 
 # make serve ## jekyll.log ##
 
