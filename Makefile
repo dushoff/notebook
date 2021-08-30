@@ -33,13 +33,17 @@ current: target
 
 ######################################################################
 
+## EPL service (quick and dirty)
+
 # http://dushoff.github.io/notebook/outputs/table.png
 Sources += outputs/table.png
-outputs/table.png:
-	/bin/ln -f ~/Downloads/table.png outputs
+outputs/table.png: ~/Downloads/table.png
+	$(copy)
 
 ######################################################################
 
+## Prints numbers and the sum of their proper divisors (perfect number style)
+## Also has an issquare function which is not used. Origin seems mysterious.
 nowords.Rout: nowords.R
 
 ## Practicing for MMED
@@ -50,6 +54,7 @@ hetGen.Rout: hetGen.R
 
 ######################################################################
 
+## Avoid confusing people!
 ## confusing.md:
 ## 
 bbias.Rout: bbias.R
@@ -162,6 +167,10 @@ backproj.Rout: backproj.R
 ## shifts.md.voice: shifts.md voice.pl
 
 ######################################################################
+
+## Facebook birthday
+
+Sources += facebook.md
 
 ## Urns problem
 
