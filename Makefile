@@ -174,16 +174,20 @@ Sources += facebook.md
 
 ## Urns problem
 
+Ignore += urns.comb.md
 ## urns.comb.md: urns.md texcomb.pl
 %.comb.md: %.md texcomb.pl
 	$(PUSHRO)
 
+Ignore += urns.check.tex
 urns.check.tex: urns.comb.md
 	$(pandocs)
 
+Ignore += urns.pdf
 urns.pdf: urns.comb.md
 	$(pandocs)
 
+Ignore += urns.html
 urns.html: urns.check.tex Makefile
 	pandoc $< --mathjax -s -o $@
 
