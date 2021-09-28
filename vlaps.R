@@ -1,7 +1,7 @@
 library(shellpipes)
 library(dplyr)
 
-(csvRead("drivers")
+vlap <- (csvRead("drivers")
 	%>% filter(surname=="Verstappen")
 	%>% left_join(csvRead("times"))
 	%>% left_join(csvRead("races"), by="raceId")
@@ -11,4 +11,6 @@ library(dplyr)
 		, race=name.x, circuit=name.y
 		, year, lap, position, time=milliseconds/1000
 	)
-) %>% csvSave()
+)
+csvSave(vlap)
+rdsSave(vlap)
