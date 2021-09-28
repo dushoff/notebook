@@ -34,6 +34,22 @@ points(
 	)
 )
 
+## Brighter
+plot(NULL, NULL
+	, axes=FALSE, xlab="", ylab=""
+	, xlim=c(0,1), ylim=c(0,1)
+)
+points(
+	x = (1:3)/4
+	, y = rep(1/2, 3)
+	, pch=20, cex=8
+	, col = c(
+		rgb(1.0, 0.5, 0.5)
+		, rgb(0.9, 0.9, 0.5)
+		, rgb(0.7, 1.0, 0.7)
+	)
+)
+
 
 ## A more neutral color ramp (for Michelle)
 ## This worked way less well than I was expecting
