@@ -80,6 +80,14 @@ mathbox.out: mathbox.bc
 
 ######################################################################
 
+f1data:
+	ln -s ~/Dropbox/$@ .
+
+vlaps.Rout: vlaps.R $(wildcard f1data/*.csv)
+## vlaps.Rout.csv: vlaps.R
+
+######################################################################
+
 autopipeR = defined
 
 # http://localhost:4111/notebook/statstrength.html
