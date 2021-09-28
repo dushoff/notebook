@@ -13,6 +13,7 @@
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
+# http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 
 # https://github.com/dushoff/notebook/blob/gh-pages/confusing.md
 # https://github.com/dushoff/notebook/blob/gh-pages/outputs/
@@ -77,6 +78,15 @@ mathbox.out: mathbox.bc
 ## e2.out: e2.bc
 %.out: %.bc
 	bc -l < $< > $@
+
+######################################################################
+
+Ignore += f1data
+f1data:
+	ln -s ~/Dropbox/$@ .
+
+vlaps.Rout: vlaps.R $(wildcard f1data/*.csv)
+## vlaps.Rout.csv: vlaps.R
 
 ######################################################################
 
