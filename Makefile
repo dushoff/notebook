@@ -85,8 +85,13 @@ Ignore += f1data
 f1data:
 	ln -s ~/Dropbox/$@ .
 
-vlaps.Rout: vlaps.R $(wildcard f1data/*.csv)
+## See also dataviz!
+## Data from https://www.kaggle.com/miguelluna93/formula-1-1950-2020
+vlaps.Rout: vlaps.R $(wildcard f1data/*.csv) f1data
 ## vlaps.Rout.csv: vlaps.R
+
+vlap_plots.Rout: lap_plots.R vlaps.rds
+	$(pipeR)
 
 ######################################################################
 

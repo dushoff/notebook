@@ -1,5 +1,6 @@
 library(shellpipes)
 library(dplyr)
+library(forcats)
 
 vlap <- (csvRead("drivers")
 	%>% filter(surname=="Verstappen")
@@ -11,6 +12,8 @@ vlap <- (csvRead("drivers")
 		, race=name.x, circuit=name.y
 		, year, lap, position, time=milliseconds/1000
 	)
+	%>% mutate(across(where(is.character), ~fct_rev(fct_infreq(.))))
+	%>% filter(time<300)
 )
 csvSave(vlap)
 rdsSave(vlap)
