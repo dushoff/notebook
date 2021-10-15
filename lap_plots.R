@@ -9,7 +9,7 @@ summary(laptime)
 
 ## Overview
 alpha <- 0.1
-print(ggplot(laptime)
+extra <- (ggplot(laptime)
 	+ aes(x=lap, y=time, color=circuit)
 	+ geom_point(alpha=alpha)
 	+ geom_smooth()
@@ -23,7 +23,7 @@ racePlot <- function(d){
 		+ aes(x=lap, y=time)
 		+ geom_point()
 		+ geom_line()
-		+ ggtitle(paste(.data$race, .data$year))
+		+ ggtitle(paste(d$race, d$year))
 		+ geom_point(color="lightsalmon2", data=pit)
 	)
 }
