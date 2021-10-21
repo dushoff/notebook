@@ -9,7 +9,7 @@ summary(laptime)
 
 ## Overview
 alpha <- 0.1
-print(ggplot(laptime)
+extra <- (ggplot(laptime)
 	+ aes(x=lap, y=time, color=circuit)
 	+ geom_point(alpha=alpha)
 	+ geom_smooth()
@@ -18,13 +18,17 @@ print(ggplot(laptime)
 
 ## One race at a time
 racePlot <- function(d){
+	pit <- d %>% filter(!is.na(pit_time))
 	print(ggplot(d)
 		+ aes(x=lap, y=time)
 		+ geom_point()
 		+ geom_line()
-		+ ggtitle("Marquis")
+		+ ggtitle(paste(d$race, d$year))
+		+ geom_point(color="lightsalmon2", data=pit)
 	)
 }
 
 laptime %>% group_split(year, race) %>% walk(racePlot)
+
+## split(laptime, ~year+race) should also work!
 

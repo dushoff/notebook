@@ -2,12 +2,17 @@ library(shellpipes)
 library(dplyr)
 library(forcats)
 
-vlap <- (csvRead("drivers")
-	%>% filter(surname=="Verstappen")
+lap <- (csvRead("drivers")
 	%>% left_join(csvRead("times"))
 	%>% left_join(csvRead("races"), by="raceId")
 	%>% left_join(csvRead("circuits"), by="circuitId")
 	%>% left_join(csvRead("pit"), by=c("raceId", "driverId", "lap"))
+)
+
+summary(lap)
+
+vlap <- (lap
+	%>% filter(surname=="Verstappen")
 	%>% filter(year >= 2018)
 	%>% transmute(NULL
 		, race=name.x, circuit=name.y
