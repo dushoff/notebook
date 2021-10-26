@@ -35,6 +35,7 @@ current: target
 ######################################################################
 
 ## EPL service (quick and dirty)
+## https://www.espn.com/soccer/standings/_/league/eng.1
 
 # http://dushoff.github.io/notebook/outputs/table.png
 Sources += outputs/table.png
