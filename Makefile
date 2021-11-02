@@ -118,6 +118,7 @@ gdc.Rout: gdc.R
 VoC.Rout: VoC.R
 	$(makeR)
 
+Ignore += VoC.pdf
 VoC.pdf: VoC.R
 	$(rmdpdfBang)
 
@@ -396,6 +397,7 @@ Ignore += colors.small.png
 	convert -scale 10% $< $@
 
 ## Red-yellow-green recommendation
+Ignore += ## ryg.Rout.html
 ## ryg.Rout.html: ryg.R
 ryg.Rout: ryg.R
 	$(pipeR)
