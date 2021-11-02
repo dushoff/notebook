@@ -1,4 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
+
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
@@ -15,7 +16,7 @@
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 
-# https://github.com/dushoff/notebook/blob/gh-pages/confusing.md
+# https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
 # https://github.com/dushoff/notebook/blob/gh-pages/outputs/
 
 # make serve ## jekyll.log ##
@@ -395,6 +396,7 @@ Ignore += colors.small.png
 	convert -scale 10% $< $@
 
 ## Red-yellow-green recommendation
+## ryg.Rout.html: ryg.R
 ryg.Rout: ryg.R
 	$(pipeR)
 
@@ -844,6 +846,11 @@ Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
 Gemfile:
 	/bin/ln -s Gemfile_sb $@
+
+######################################################################
+
+%.Rout.html: %.R
+	$(rmdhtml)
 
 ######################################################################
 
