@@ -18,7 +18,7 @@ points(
 	)
 )
 
-## A red-green ramp
+## A red-green ramp (made for Brent)
 plot(NULL, NULL
 	, axes=FALSE, xlab="", ylab=""
 	, xlim=c(0,1), ylim=c(0,1)
@@ -34,7 +34,7 @@ points(
 	)
 )
 
-## Brighter
+## Brighter, for fill (this seems stupid, use transparency instead)
 plot(NULL, NULL
 	, axes=FALSE, xlab="", ylab=""
 	, xlim=c(0,1), ylim=c(0,1)

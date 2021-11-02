@@ -394,6 +394,10 @@ Ignore += colors.small.png
 %.small.png: %.png
 	convert -scale 10% $< $@
 
+## Red-yellow-green recommendation
+ryg.Rout: ryg.R
+	$(pipeR)
+
 ######################################################################
 
 mattPredict.Rout: mattPredict.R
