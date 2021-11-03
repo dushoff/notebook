@@ -15,6 +15,7 @@
 # http://dushoff.github.io/notebook/outputs/urns.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
+# http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
 # https://github.com/dushoff/notebook/blob/gh-pages/outputs/
