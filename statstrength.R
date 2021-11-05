@@ -15,15 +15,16 @@ dat <- (tsvRead("statstrength")
 
 summary(dat)
 
-sig = "threshold"
+sig = "importance\nthreshold"
 right = 5
+errheight = 0.25
 tstart = 2
 tkern = 0.2
 tpos = max(max(dat$high)+tkern, tstart)
 
-print(ggplot(dat)
+(ggplot(dat)
 	+ aes(x=x, y=y, xmin=low, xmax=high)
-	+ geom_errorbarh()
+	+ geom_errorbarh(aes(height=errheight))
 	+ geom_vline(xintercept=c(-1, 1), lty=3)
 	+ geom_vline(xintercept=0, lty=2)
 	+ geom_text(aes(x=tpos, label=description, hjust="left"))
@@ -33,4 +34,5 @@ print(ggplot(dat)
 		, limits = c(NA, right)
 	)
 	+ xlab("") + ylab("")
-)
+	+ theme(axis.line.y = element_blank())
+) %>% teeGG(ext="png", print_title="")
