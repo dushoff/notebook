@@ -500,7 +500,7 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
-Sources += statstrength.tsv
+Sources += statstrength.tsv *.desc.tsv
 ## statclar.stat.Rout: statstrength.R statstrength.tsv statclar.desc.tsv
 %.stat.Rout: statstrength.R statstrength.tsv %.desc.tsv
 	$(pipeRcall)
