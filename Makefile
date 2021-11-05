@@ -98,6 +98,10 @@ vlap_plots.Rout: lap_plots.R vlaps.rds
 
 ######################################################################
 
+## stupid-simple jags model
+
+######################################################################
+
 autopipeR = defined
 
 # http://localhost:4111/notebook/statstrength.html
