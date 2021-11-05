@@ -500,12 +500,16 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
+Sources += statstrength.tsv
+## statclar.stat.Rout: statstrength.R statstrength.tsv statclar.desc.tsv
+%.stat.Rout: statstrength.R statstrength.tsv %.desc.tsv
+	$(pipeRcall)
+
 ## sucker bet
 
 alice.Rout: alice.R
 
 ##################################################################
-
 
 ## Early Trapman-interval math. Should be subsumed by Park et al. MS
 # http://localhost:4111/notebook/conditional_kernel.html
