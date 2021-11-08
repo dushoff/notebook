@@ -3,5 +3,5 @@ large	The effect is clearly large and positive.
 pos	The effect is clearly positive;|it is not clear whether it is large.
 smallpos	The effect is clearly small and positive.
 small	The effect is clearly small;|it is not clear whether it is positive.
-notbad	The effect is not both large and negative.
+notbad	May be large and positive;|clearly not both large and negative
 uncertain	Next time we will do a power analysis|before conducting a study

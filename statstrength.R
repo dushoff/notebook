@@ -3,6 +3,7 @@ library(ggplot2); theme_set(theme_classic())
 
 library(shellpipes)
 rpcall("statclar.stat.Rout statstrength.R statstrength.tsv statclar.desc.tsv")
+rpcall("statstrength.clarity.Rout statstrength.R statstrength.tsv clarity.desc.tsv")
 
 dat <- (tsvRead("statstrength")
 	%>% full_join(tsvRead("desc"))
@@ -15,16 +16,19 @@ dat <- (tsvRead("statstrength")
 
 summary(dat)
 
-sig = "threshold"
+sig = "importance\nthreshold"
 right = 5
+errheight = 0.25
 tstart = 2
 tkern = 0.2
 tpos = max(max(dat$high)+tkern, tstart)
+rcolor = "black"
+ralpha = 0.1
+rkern = 0.1
 
-print(ggplot(dat)
+(ggplot(dat)
 	+ aes(x=x, y=y, xmin=low, xmax=high)
-	+ geom_errorbarh()
-	+ geom_vline(xintercept=c(-1, 1), lty=3)
+	+ geom_errorbarh(aes(height=errheight))
 	+ geom_vline(xintercept=0, lty=2)
 	+ geom_text(aes(x=tpos, label=description, hjust="left"))
 	+ scale_y_continuous(breaks=NULL)
@@ -33,4 +37,11 @@ print(ggplot(dat)
 		, limits = c(NA, right)
 	)
 	+ xlab("") + ylab("")
-)
+	+ theme(axis.line.y = element_blank())
+	+ annotate("rect", xmin=-Inf, xmax =-1
+		, fill=rcolor, alpha=ralpha, ymin=-Inf, ymax=Inf
+	)
+	+ annotate("rect", xmin=1, xmax = tstart-rkern
+		, fill=rcolor, alpha=ralpha, ymin=-Inf, ymax=Inf
+	)
+) %>% teeGG(ext="png", print_title="")

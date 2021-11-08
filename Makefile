@@ -504,9 +504,13 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
-Sources += statstrength.tsv *.desc.tsv
-## statclar.stat.Rout: statstrength.R statstrength.tsv statclar.desc.tsv
-%.stat.Rout: statstrength.R statstrength.tsv %.desc.tsv
+## Statistical clarity
+Sources += statstrength.tsv $(wildcard *.desc.tsv)
+
+## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
+## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
+.PRECIOUS: statstrength.%.Rout
+statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
 	$(pipeRcall)
 
 ## sucker bet
