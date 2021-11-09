@@ -64,6 +64,12 @@ bbias.Rout: bbias.R
 ## lognormal rarity identity from Roswell
 ln_ident.Rout: ln_ident.R
 
+## Adler weird problem
+4loop.Rout: 4loop.R
+
+4loop.out: 4loop.pl
+	$(PUSH)
+
 ######################################################################
 
 Sources += $(wildcard *.bc)
