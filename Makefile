@@ -1,4 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
+
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
@@ -14,8 +15,9 @@
 # http://dushoff.github.io/notebook/outputs/urns.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
+# http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
-# https://github.com/dushoff/notebook/blob/gh-pages/confusing.md
+# https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
 # https://github.com/dushoff/notebook/blob/gh-pages/outputs/
 
 # make serve ## jekyll.log ##
@@ -102,6 +104,10 @@ vlap_plots.Rout: lap_plots.R vlaps.rds
 
 ######################################################################
 
+## stupid-simple jags model
+
+######################################################################
+
 autopipeR = defined
 
 # http://localhost:4111/notebook/statstrength.html
@@ -123,6 +129,7 @@ gdc.Rout: gdc.R
 VoC.Rout: VoC.R
 	$(makeR)
 
+Ignore += VoC.pdf
 VoC.pdf: VoC.R
 	$(rmdpdfBang)
 
@@ -400,6 +407,12 @@ Ignore += colors.small.png
 %.small.png: %.png
 	convert -scale 10% $< $@
 
+## Red-yellow-green recommendation
+Ignore += ## ryg.Rout.html
+## ryg.Rout.html: ryg.R
+ryg.Rout: ryg.R
+	$(pipeR)
+
 ######################################################################
 
 mattPredict.Rout: mattPredict.R
@@ -497,12 +510,20 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
+## Statistical clarity
+Sources += statstrength.tsv $(wildcard *.desc.tsv)
+
+## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
+## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
+.PRECIOUS: statstrength.%.Rout
+statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
+	$(pipeRcall)
+
 ## sucker bet
 
 alice.Rout: alice.R
 
 ##################################################################
-
 
 ## Early Trapman-interval math. Should be subsumed by Park et al. MS
 # http://localhost:4111/notebook/conditional_kernel.html
@@ -846,6 +867,11 @@ Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
 Gemfile:
 	/bin/ln -s Gemfile_sb $@
+
+######################################################################
+
+%.Rout.html: %.R
+	$(rmdhtml)
 
 ######################################################################
 
