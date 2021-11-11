@@ -3,7 +3,12 @@ use 5.10.0;
 
 sub ss{
 	my($x, $b) = (@_);
-	return int($x/$b)**2 + ($x%$b)**2;
+	my $tot = 0;
+	while($x > 0){
+		$tot +=  ($x%$b)**2;
+		$x = int($x/$b);
+	}
+	return $tot;
 }
 
 sub ssloop{
@@ -11,25 +16,19 @@ sub ssloop{
 	my $ct = 0;
 	my($x0, $b) = (@_);
 	my $x = $x0;
+	my $top = $b**4;
 	while (!defined $vals{$x}){
 		## say $x;
 		$vals{$x} = $ct;
 		$x = ss($x, $b);
-		last if $x >= $b**2;
+		last if $x >= $top;
 		$ct++;
 	}
-	return $ct if $x == $x0;
-	return "inf" if $x >= $b**2; 
-	return 0;
+	$ct = -$x unless $x == $x0;
+	return $ct;
 }
 
-for my $i (100..9999){
-	my $s = ssloop($i, 100);
-	say "$i " . $s unless ($s=="inf" || $s==0);
-}
-
-exit(0);
-
-for my $i (10..99){
-	say "$i " . ssloop($i, 10);
+for my $i (1..19999){
+	my $ss = ssloop($i, 100);
+	say "$i $ss" if $ss > 0;
 }
