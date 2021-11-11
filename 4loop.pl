@@ -24,8 +24,11 @@ sub ssloop{
 }
 
 for my $i (100..9999){
-	say "$i " . ssloop($i, 100);
+	my $s = ssloop($i, 100);
+	say "$i " . $s unless ($s=="inf" || $s==0);
 }
+
+exit(0);
 
 for my $i (10..99){
 	say "$i " . ssloop($i, 10);
