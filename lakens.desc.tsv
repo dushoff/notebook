@@ -1,0 +1,7 @@
+fig	description
+large	Statistically positive; not statistically equivalent
+pos	Statistically positive; not statistically equivalent
+smallpos	Statistically positive; statistically equivalent
+small	Not statistically different; statistically equivalent
+notbad	Not statistically different; statistically equivalent
+uncertain	Next time we will do a power analysis|before conducting a study
