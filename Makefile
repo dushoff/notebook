@@ -511,6 +511,7 @@ Ignore += *.post
 ## Statistical clarity
 Sources += statstrength.tsv $(wildcard *.desc.tsv)
 
+statstrength.%.ggp.png: statstrength%.Rout ;
 sspix: statstrength.clarity.ggp.png.op statstrength.classic.ggp.png.op statstrength.lakens.ggp.png.op
 ## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
 ## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
