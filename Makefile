@@ -69,6 +69,10 @@ bbias.Rout: bbias.R
 ## lognormal rarity identity from Roswell
 ln_ident.Rout: ln_ident.R
 
+## Adler weird problem (abandoned R because it doesn't have good hashes)
+4loop.out: 4loop.pl
+	$(PUSH)
+
 ######################################################################
 
 Sources += $(wildcard *.bc)
@@ -510,8 +514,11 @@ Ignore += *.post
 ## Statistical clarity
 Sources += statstrength.tsv $(wildcard *.desc.tsv)
 
+statstrength.%.ggp.png: statstrength%.Rout ;
+sspix: statstrength.clarity.ggp.png.op statstrength.classic.ggp.png.op statstrength.lakens.ggp.png.op
 ## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
 ## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
+## statstrength.lakens.Rout: statstrength.R statstrength.tsv lakens.desc.tsv
 .PRECIOUS: statstrength.%.Rout
 statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
 	$(pipeRcall)
