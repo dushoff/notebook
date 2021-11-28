@@ -16,6 +16,7 @@
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
+# http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
 # https://github.com/dushoff/notebook/blob/gh-pages/outputs/
@@ -45,6 +46,8 @@ outputs/table.png: ~/Downloads/table.png
 	$(copy)
 
 ######################################################################
+
+year.Rout: year.R
 
 ## Prints numbers and the sum of their proper divisors (perfect number style)
 ## Also has an issquare function which is not used. Origin seems mysterious.
