@@ -8,6 +8,7 @@
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
+# http://dushoff.github.io/notebook/ape.png
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
