@@ -3,6 +3,8 @@ library(ggplot2); theme_set(theme_classic())
 
 library(shellpipes)
 rpcall("statclar.stat.Rout statstrength.R statstrength.tsv statclar.desc.tsv")
+rpcall("statstrength.lakens.Rout statstrength.R statstrength.tsv lakens.desc.tsv")
+rpcall("statstrength.classic.Rout statstrength.R statstrength.tsv classic.desc.tsv")
 rpcall("statstrength.clarity.Rout statstrength.R statstrength.tsv clarity.desc.tsv")
 
 dat <- (tsvRead("statstrength")

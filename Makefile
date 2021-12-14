@@ -8,6 +8,7 @@
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
+# http://dushoff.github.io/notebook/ape.png
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
@@ -15,6 +16,7 @@
 # http://dushoff.github.io/notebook/outputs/urns.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
+# http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
@@ -45,6 +47,8 @@ outputs/table.png: ~/Downloads/table.png
 	$(copy)
 
 ######################################################################
+
+year.Rout: year.R
 
 ## Prints numbers and the sum of their proper divisors (perfect number style)
 ## Also has an issquare function which is not used. Origin seems mysterious.
@@ -511,8 +515,11 @@ Ignore += *.post
 ## Statistical clarity
 Sources += statstrength.tsv $(wildcard *.desc.tsv)
 
+statstrength.%.ggp.png: statstrength%.Rout ;
+sspix: statstrength.clarity.ggp.png.op statstrength.classic.ggp.png.op statstrength.lakens.ggp.png.op
 ## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
 ## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
+## statstrength.lakens.Rout: statstrength.R statstrength.tsv lakens.desc.tsv
 .PRECIOUS: statstrength.%.Rout
 statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
 	$(pipeRcall)
