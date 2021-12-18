@@ -50,6 +50,8 @@ outputs/table.png: ~/Downloads/table.png
 
 year.Rout: year.R
 
+omicron.Rout: omicron.R
+
 ## Prints numbers and the sum of their proper divisors (perfect number style)
 ## Also has an issquare function which is not used. Origin seems mysterious.
 nowords.Rout: nowords.R
