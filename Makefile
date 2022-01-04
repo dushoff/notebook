@@ -92,6 +92,9 @@ mathbox.out: mathbox.bc
 %.out: %.bc
 	bc -l < $< > $@
 
+## Sincere numbers
+sincere.out: sincere.bc
+
 ######################################################################
 
 Ignore += f1data
