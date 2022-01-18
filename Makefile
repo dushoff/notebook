@@ -95,7 +95,7 @@ mathbox.out: mathbox.bc
 ## Sincere numbers
 sincere.out: sincere.bc
 
-sincere.check.Rout: sincere.check.R $(wildcard sincere_*.txt)
+sincere.check.Rout: sincere.check.R sincere_fra.txt sincere_jd.txt
 	$(pipeR)
 
 ######################################################################
