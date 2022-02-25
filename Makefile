@@ -56,6 +56,7 @@ Ignore += *.nopower.txt
 
 #### maxima pipeline
 
+Ignore += *.mx
 ## waltcount.abc.mx: mxsimp.pl
 %.mx: %.txt mxsimp.pl
 	$(PUSH)
@@ -64,16 +65,18 @@ Ignore += *.nopower.txt
 %.mx.out: %.mx
 	maxima < $< > $@
 
+Ignore += *.expr
 ## waltcount.abc.mx.expr: mxexpr.pl
 %.mx.expr: %.mx.out mxexpr.pl
 	$(PUSH)
 
+Ignore += *.su *.wc
 %.su: %
 	sort -u $< > $@
 
 ## waltcount.abc.mx.expr.su:
 
-#### bc pipeline (not used
+#### bc pipeline (not used anymore)
 
 Ignore += *.ivals.txt
 ## waltcount.nopower.ivals.txt: waltcount.txt nopower.pl
