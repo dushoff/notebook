@@ -47,7 +47,7 @@ rpn.out: rpn.pl
 
 Sources += waltcount.txt
 
-Ignore += abc.txt
+Ignore += *.abc.txt
 ## waltcount.abc.txt: abc.pl
 %.abc.txt: %.txt abc.pl
 	$(PUSH)
