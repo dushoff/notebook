@@ -37,6 +37,44 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
+
+rpn.out: rpn.pl
+	$(PUSH)
+
+######################################################################
+
+## Counting ways of combining numbers
+
+Sources += waltcount.txt
+
+## waltcount.abc.txt: abc.pl
+%.abc.txt: %.txt abc.pl
+	$(PUSH)
+
+## waltcount.nopower.txt: waltcount.txt nopower.pl
+%.nopower.txt: %.txt nopower.pl
+	$(PUSH)
+
+## waltcount.nopower.ivals.txt: waltcount.txt nopower.pl
+%.ivals.txt: %.txt ivals.pl
+	$(PUSH)
+
+## waltcount.nopower.txt:
+## waltcount.nopower.abc.txt:
+## waltcount.nopower.abc.ivals.txt:
+
+%.bcalc: %.txt sf.pl bscale.txt
+	cat bscale.txt $< | bc -l | perl -wf $(filter %.pl, $^) > $@
+
+## waltcount.nopower.ivals.txt:
+## waltcount.nopower.ivals.bcalc:
+## waltcount.nopower.ivals.bvals:
+## waltcount.nopower.abc.ivals.bvals:
+%.bvals: %.bcalc
+	sort -nu $< > $@
+
+######################################################################
+
 year.Rout: year.R
 
 omicron.Rout: omicron.R
