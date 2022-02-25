@@ -47,19 +47,21 @@ rpn.out: rpn.pl
 
 Sources += waltcount.txt
 
+Ignore += abc.txt
 ## waltcount.abc.txt: abc.pl
 %.abc.txt: %.txt abc.pl
 	$(PUSH)
 
+Ignore += *.nopower.txt
 ## waltcount.nopower.txt: waltcount.txt nopower.pl
 %.nopower.txt: %.txt nopower.pl
 	$(PUSH)
 
+Ignore += *.ivals.txt
 ## waltcount.nopower.ivals.txt: waltcount.txt nopower.pl
 %.ivals.txt: %.txt ivals.pl
 	$(PUSH)
 
-Ignore += *.nopower.txt
 ## waltcount.nopower.txt:
 ## waltcount.nopower.abc.txt:
 ## waltcount.nopower.abc.ivals.txt:
@@ -68,6 +70,7 @@ Sources += bscale.txt
 %.bcalc: %.txt sf.pl bscale.txt
 	cat bscale.txt $< | bc -l | perl -wf $(filter %.pl, $^) > $@
 
+Ignore += *.bcalc *.bvals
 ## waltcount.nopower.ivals.txt:
 ## waltcount.nopower.ivals.bcalc:
 ## waltcount.nopower.ivals.bvals:
