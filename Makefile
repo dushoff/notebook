@@ -38,9 +38,6 @@ current: target
 
 ######################################################################
 
-rpn.out: rpn.pl
-	$(PUSH)
-
 ######################################################################
 
 ## Counting ways of combining numbers
@@ -56,6 +53,27 @@ Ignore += *.nopower.txt
 ## waltcount.nopower.txt: waltcount.txt nopower.pl
 %.nopower.txt: %.txt nopower.pl
 	$(PUSH)
+
+#### maxima pipeline
+
+## waltcount.abc.mx: mxsimp.pl
+%.mx: %.txt mxsimp.pl
+	$(PUSH)
+
+## waltcount.abc.mx.out: mxsimp.pl
+%.mx.out: %.mx
+	maxima < $< > $@
+
+## waltcount.abc.mx.expr: mxexpr.pl
+%.mx.expr: %.mx.out mxexpr.pl
+	$(PUSH)
+
+%.su: %
+	sort -u $< > $@
+
+## waltcount.abc.mx.expr.su:
+
+#### bc pipeline (not used
 
 Ignore += *.ivals.txt
 ## waltcount.nopower.ivals.txt: waltcount.txt nopower.pl
@@ -79,6 +97,12 @@ Ignore += *.bcalc *.bvals
 	sort -nu $< > $@
 
 ######################################################################
+
+## Spinning rpn for non-existent deeper explorations; stopped at random
+## Uses digits, not real numbers (easy to fix)
+
+rpn.out: rpn.pl
+	$(PUSH)
 
 year.Rout: year.R
 
