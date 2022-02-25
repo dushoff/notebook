@@ -59,10 +59,12 @@ Sources += waltcount.txt
 %.ivals.txt: %.txt ivals.pl
 	$(PUSH)
 
+Ignore += *.nopower.txt
 ## waltcount.nopower.txt:
 ## waltcount.nopower.abc.txt:
 ## waltcount.nopower.abc.ivals.txt:
 
+Sources += bscale.txt
 %.bcalc: %.txt sf.pl bscale.txt
 	cat bscale.txt $< | bc -l | perl -wf $(filter %.pl, $^) > $@
 
