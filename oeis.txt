@@ -1,0 +1,7 @@
+
+Number of algebraically inequivalent expressions with n operands and n-1 binary operators +-*/^.
+
+Closely related to https://oeis.org/A140606, which does not allow ^.
+
+The first three terms are 1, 8, 146. It does not currently appear in OEIS.
+

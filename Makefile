@@ -56,14 +56,18 @@ Ignore += *.nopower.txt
 
 #### maxima pipeline
 
+Sources += oeis.txt
+
+Sources += assume.mx
+
 Ignore += *.mx
 ## waltcount.abc.mx: mxsimp.pl
 %.mx: %.txt mxsimp.pl
 	$(PUSH)
 
 ## waltcount.abc.mx.out: mxsimp.pl
-%.mx.out: %.mx
-	maxima < $< > $@
+%.mx.out: %.mx assume.mx
+	cat assume.mx $< | maxima > $@
 
 Ignore += *.expr
 ## waltcount.abc.mx.expr: mxexpr.pl
@@ -477,10 +481,15 @@ Ignore += colors.small.png
 %.small.png: %.png
 	convert -scale 10% $< $@
 
-## Red-yellow-green recommendation
+## Red-yellow-green recommendation? Green-yellow too similar! 
 Ignore += ## ryg.Rout.html
 ## ryg.Rout.html: ryg.R
 ryg.Rout: ryg.R
+	$(pipeR)
+
+## Ramps etc from Roswell
+## color_ramps.Rout.html: color_ramps.R
+color_ramps.Rout: color_ramps.R
 	$(pipeR)
 
 ######################################################################
