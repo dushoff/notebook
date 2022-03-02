@@ -78,7 +78,7 @@ Ignore += *.su *.wc
 %.su: %
 	sort -u $< > $@
 
-## waltcount.abc.mx.expr.su:
+## waltcount.mx.expr.su.wc:
 
 #### bc pipeline (not used anymore)
 
