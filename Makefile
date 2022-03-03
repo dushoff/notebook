@@ -492,6 +492,14 @@ ryg.Rout: ryg.R
 color_ramps.Rout: color_ramps.R
 	$(pipeR)
 
+## https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/
+
+raw_ramps.Rout: raw_ramps.R
+	$(pipeR)
+
+## Restricted color perception
+rcl_colors.Rout: rcl_colors.R
+
 ######################################################################
 
 mattPredict.Rout: mattPredict.R
