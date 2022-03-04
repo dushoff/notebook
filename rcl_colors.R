@@ -3,7 +3,7 @@ library(dplyr)
 library(shellpipes)
 startGraphics()
 
-n <- 3
+n <- 24
 tau <- 2*pi
 taudeg <- 360
 theta0 <- tau/6
@@ -18,8 +18,9 @@ thefun <- Vectorize(function(theta, alpha=0.9, theta0=tau/6){
 }, vectorize.args="theta")
 
 ## Go how far around the circle
-wrap <- 0.5
+wrap <- 1
 prop <- (2*(1:n)-1)/(2*n)
+prop <- ((1:n)-1)/(n)
 phi <- wrap*prop*tau
 the <- thefun(phi)
 
