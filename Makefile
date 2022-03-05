@@ -38,17 +38,19 @@ current: target
 
 ######################################################################
 
-######################################################################
-
 ## Counting ways of combining numbers
 
+## A list of 15000 combinations
 Sources += waltcount.txt
 
+## Drop d and associated operators
 Ignore += *.abc.txt
 ## waltcount.abc.txt: abc.pl
 %.abc.txt: %.txt abc.pl
 	$(PUSH)
 
+## Drop the power operator
+Ignore += *.abc.txt
 Ignore += *.nopower.txt
 ## waltcount.nopower.txt: waltcount.txt nopower.pl
 %.nopower.txt: %.txt nopower.pl
