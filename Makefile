@@ -38,6 +38,16 @@ current: target
 
 ######################################################################
 
+## centinels, divmults and breaks
+
+Ignore += times.states.*.csv
+times.states.%.csv:
+	wget -O $@ "https://github.com/nytimes/covid-19-data/raw/master/rolling-averages/us-states.csv"
+roswell_covid.Rout: roswell_covid.R breaks.rda times.states.01.csv
+
+## breaks.Rout.html:
+breaks.Rout: breaks.R
+
 ######################################################################
 
 ## Counting ways of combining numbers
