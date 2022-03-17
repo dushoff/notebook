@@ -1,18 +1,15 @@
+#' [Plain code version](https://raw.githubusercontent.com/dushoff/notebook/gh-pages/breaks.R)
+
 library(scales)
 
-library(shellpipes)
-rpcall("breaks.Rout breaks.R")
-
-## Source is at 
-
 ## log_breaks  is crazy!
-
 log_breaks(n=3)(c(1, 1.2))
 log_breaks(n=4)(c(1, 1.2))
 
 ## axisTicks is clunky, and gets carried away!
 axisTicks(nint=4, log=TRUE, usr=log(c(1, 20)))
 
+## The best I can do for now.
 divmultbreaks <- function(v, n=6, nmin=3, anchor=TRUE){
 	if (anchor) v <- unique(c(v, 1))
 	v <- log(v)
@@ -39,11 +36,10 @@ divmultbreaks <- function(v, n=6, nmin=3, anchor=TRUE){
 	return(sort(unique(breaks)))
 }
 
-saveEnvironment()
-
 divmultbreaks(c(11))
 divmultbreaks(c(0.04))
 
 divmultbreaks(c(0.04, 11))
 divmultbreaks(c(0.02, 2))
 divmultbreaks(c(0.8, 20))
+
