@@ -15,7 +15,7 @@ limBreaks <- function(v, n=5){
 	b <- axisTicks(nint=n, log=TRUE, usr=range(v))
 	upr <- min(b[log(b)>=max(v)])
 	lwr <- max(b[log(b)<=min(v)])
-	print(c(lwr=lwr, upr=upr))
+	## print(c(lwr=lwr, upr=upr))
 	return(b[(b>=lwr) & (b<=upr)])
 }
 
