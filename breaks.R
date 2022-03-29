@@ -53,6 +53,6 @@ divmultbreaks(c(0.02, 2))
 divmultbreaks(c(0.8, 20))
 
 y <- (exp(seq(-2,5,0.2)))
-print(y)
+range(y)
 divmultbreaks(y)
 
