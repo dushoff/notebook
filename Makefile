@@ -1,5 +1,8 @@
 # notebook (gh-pages branch, which is the only one I use)
 
+
+# https://github.com/dushoff/notebook/tree/gh-pages
+
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html

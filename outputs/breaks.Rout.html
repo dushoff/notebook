@@ -11,7 +11,7 @@
 
 <meta name="author" content="dushoff" />
 
-<meta name="date" content="2022-03-17" />
+<meta name="date" content="2022-03-29" />
 
 <title>breaks.R</title>
 
@@ -348,7 +348,7 @@ pre code {
 
 <h1 class="title toc-ignore">breaks.R</h1>
 <h4 class="author">dushoff</h4>
-<h4 class="date">2022-03-17</h4>
+<h4 class="date">2022-03-29</h4>
 
 </div>
 
@@ -365,13 +365,22 @@ log_breaks(n=3)(c(1, 1.2))</code></pre>
 axisTicks(nint=4, log=TRUE, usr=log(c(1, 20)))</code></pre>
 <pre><code>## [1]   1   2   5  10  20  50 100 200 500</code></pre>
 <pre class="r"><code>## The best I can do for now.
+
+limBreaks &lt;- function(v, n=5){
+    b &lt;- axisTicks(nint=n, log=TRUE, usr=range(v))
+    upr &lt;- min(b[log(b)&gt;=max(v)])
+    lwr &lt;- max(b[log(b)&lt;=min(v)])
+    print(c(lwr=lwr, upr=upr))
+    return(b[(b&gt;=lwr) &amp; (b&lt;=upr)])
+}
+
 divmultbreaks &lt;- function(v, n=6, nmin=3, anchor=TRUE){
     if (anchor) v &lt;- unique(c(v, 1))
     v &lt;- log(v)
     neg &lt;- min(v)
-    if (neg==0) return(axisTicks(nint=n, log=TRUE, usr=range(v)))
+    if (neg==0) return(limBreaks(v, n))
     pos &lt;- max(v)
-    if (pos==0) return(1/axisTicks(nint=n, log=TRUE, usr=-range(v)))
+    if (pos==0) return(1/limBreaks(-v, n))
 
     flip &lt;- -neg
     big &lt;- pmax(pos, flip)
@@ -379,10 +388,10 @@ divmultbreaks &lt;- function(v, n=6, nmin=3, anchor=TRUE){
     bigprop &lt;- big/(pos + flip)
     bigticks &lt;- ceiling(n*bigprop)
 
-    main &lt;- axisTicks(nint=bigticks, log=TRUE, usr=c(0, big))
+    main &lt;- limBreaks(c(0, big), bigticks)
     cut &lt;- pmin(bigticks, 1+sum(main&lt;small))
     if(cut&lt;nmin)
-        other &lt;- axisTicks(nint=nmin, log=TRUE, usr=c(0, small))
+        other &lt;- limBreaks(c(0, small), nmin)
     else
         other &lt;- main[1:cut]
 
@@ -392,17 +401,45 @@ divmultbreaks &lt;- function(v, n=6, nmin=3, anchor=TRUE){
 }
 
 divmultbreaks(c(11))</code></pre>
-<pre><code>## [1]   1   2   5  10  20  50 100 200</code></pre>
+<pre><code>## lwr upr 
+##   1  20</code></pre>
+<pre><code>## [1]  1  2  5 10 20</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.04))</code></pre>
-<pre><code>## [1] 0.001 0.002 0.010 0.020 0.100 0.200 1.000</code></pre>
+<pre><code>## lwr upr 
+##   1  50</code></pre>
+<pre><code>## [1] 1.00 0.20 0.10 0.02</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.04, 11))</code></pre>
-<pre><code>##  [1] 1e-03 2e-03 1e-02 2e-02 1e-01 2e-01 1e+00 2e+00 5e+00 1e+01 2e+01 5e+01
-## [13] 1e+02 2e+02</code></pre>
+<pre><code>## lwr upr 
+##   1  50 
+## lwr upr 
+##   1  20</code></pre>
+<pre><code>## [1]  0.02  0.10  0.20  1.00  2.00  5.00 10.00 20.00</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.02, 2))</code></pre>
-<pre><code>##  [1] 2e-04 1e-03 2e-03 1e-02 2e-02 1e-01 2e-01 1e+00 2e+00 3e+00 4e+00</code></pre>
+<pre><code>## lwr upr 
+##   1  50 
+## lwr upr 
+##   1   2</code></pre>
+<pre><code>## [1] 0.02 0.10 0.20 1.00 2.00</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.8, 20))</code></pre>
-<pre><code>##  [1]   0.6250000   0.7142857   0.8333333   1.0000000   2.0000000   5.0000000
-##  [7]  10.0000000  20.0000000  50.0000000 100.0000000 200.0000000 500.0000000</code></pre>
+<pre><code>## lwr upr 
+##   1  20 
+## lwr upr 
+## 1.0 1.4</code></pre>
+<pre><code>## [1]  0.7142857  0.8333333  1.0000000  2.0000000  5.0000000 10.0000000 20.0000000</code></pre>
+<pre class="r"><code>y &lt;- (exp(seq(-2,5,0.2)))
+print(y)</code></pre>
+<pre><code>##  [1]   0.1353353   0.1652989   0.2018965   0.2465970   0.3011942   0.3678794
+##  [7]   0.4493290   0.5488116   0.6703200   0.8187308   1.0000000   1.2214028
+## [13]   1.4918247   1.8221188   2.2255409   2.7182818   3.3201169   4.0552000
+## [19]   4.9530324   6.0496475   7.3890561   9.0250135  11.0231764  13.4637380
+## [25]  16.4446468  20.0855369  24.5325302  29.9641000  36.5982344  44.7011845
+## [31]  54.5981500  66.6863310  81.4508687  99.4843156 121.5104175 148.4131591</code></pre>
+<pre class="r"><code>divmultbreaks(y)</code></pre>
+<pre><code>##  lwr  upr 
+##    1 1000 
+## lwr upr 
+##   1  10</code></pre>
+<pre><code>## [1] 1e-01 2e-01 5e-01 1e+00 1e+01 1e+02 1e+03</code></pre>
 
 
 
