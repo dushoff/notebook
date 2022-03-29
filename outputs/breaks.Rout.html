@@ -370,7 +370,7 @@ limBreaks &lt;- function(v, n=5){
     b &lt;- axisTicks(nint=n, log=TRUE, usr=range(v))
     upr &lt;- min(b[log(b)&gt;=max(v)])
     lwr &lt;- max(b[log(b)&lt;=min(v)])
-    print(c(lwr=lwr, upr=upr))
+    ## print(c(lwr=lwr, upr=upr))
     return(b[(b&gt;=lwr) &amp; (b&lt;=upr)])
 }
 
@@ -401,39 +401,19 @@ divmultbreaks &lt;- function(v, n=6, nmin=3, anchor=TRUE){
 }
 
 divmultbreaks(c(11))</code></pre>
-<pre><code>## lwr upr 
-##   1  20</code></pre>
 <pre><code>## [1]  1  2  5 10 20</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.04))</code></pre>
-<pre><code>## lwr upr 
-##   1  50</code></pre>
 <pre><code>## [1] 1.00 0.20 0.10 0.02</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.04, 11))</code></pre>
-<pre><code>## lwr upr 
-##   1  50 
-## lwr upr 
-##   1  20</code></pre>
 <pre><code>## [1]  0.02  0.10  0.20  1.00  2.00  5.00 10.00 20.00</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.02, 2))</code></pre>
-<pre><code>## lwr upr 
-##   1  50 
-## lwr upr 
-##   1   2</code></pre>
 <pre><code>## [1] 0.02 0.10 0.20 1.00 2.00</code></pre>
 <pre class="r"><code>divmultbreaks(c(0.8, 20))</code></pre>
-<pre><code>## lwr upr 
-##   1  20 
-## lwr upr 
-## 1.0 1.4</code></pre>
 <pre><code>## [1]  0.7142857  0.8333333  1.0000000  2.0000000  5.0000000 10.0000000 20.0000000</code></pre>
 <pre class="r"><code>y &lt;- (exp(seq(-2,5,0.2)))
 range(y)</code></pre>
 <pre><code>## [1]   0.1353353 148.4131591</code></pre>
 <pre class="r"><code>divmultbreaks(y)</code></pre>
-<pre><code>##  lwr  upr 
-##    1 1000 
-## lwr upr 
-##   1  10</code></pre>
 <pre><code>## [1] 1e-01 2e-01 5e-01 1e+00 1e+01 1e+02 1e+03</code></pre>
 
 
