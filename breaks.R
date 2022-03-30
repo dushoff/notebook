@@ -9,8 +9,7 @@ log_breaks(n=4)(c(1, 1.2))
 ## axisTicks is clunky, and gets carried away!
 axisTicks(nint=4, log=TRUE, usr=log(c(1, 20)))
 
-## The best I can do for now.
-
+## limBreaks wraps axisTicks the way I use it, and drops things outside things that are on or at the boundary of the range
 limBreaks <- function(v, n=5){
 	b <- axisTicks(nint=n, log=TRUE, usr=range(v))
 	upr <- min(b[log(b)>=max(v)])
