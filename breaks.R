@@ -9,22 +9,33 @@ log_breaks(n=4)(c(1, 1.2))
 ## axisTicks is clunky, and gets carried away!
 axisTicks(nint=4, log=TRUE, usr=log(c(1, 20)))
 
+splitDecades <- function(v){
+	l <- length(v)
+	w <- numeric(0)
+	if (l>1) for (i in 1:(l-1)){
+		w <- c(w, v[[i]])
+		if (v[[i+1]]==10*v[[i]]) w <- c(w, 2*v[[i]], 5*v[[i]])
+	}
+	return(c(w, v[[l]]))
+}
+
 ## limBreaks wraps axisTicks the way I use it, and drops things outside things that are on or at the boundary of the range
-limBreaks <- function(v, n=5){
+limBreaks <- function(v, n=5, split=FALSE){
 	b <- axisTicks(nint=n, log=TRUE, usr=range(v))
+	if(split) b <- splitDecades(b)
 	upr <- min(b[log(b)>=max(v)])
 	lwr <- max(b[log(b)<=min(v)])
 	## print(c(lwr=lwr, upr=upr))
 	return(b[(b>=lwr) & (b<=upr)])
 }
 
-divmultbreaks <- function(v, n=6, nmin=3, anchor=TRUE){
+divmultbreaks <- function(v, n=6, nmin=3, anchor=TRUE, split=FALSE){
 	if (anchor) v <- unique(c(v, 1))
 	v <- log(v)
 	neg <- min(v)
-	if (neg==0) return(limBreaks(v, n))
+	if (neg==0) return(limBreaks(v, n, split))
 	pos <- max(v)
-	if (pos==0) return(1/limBreaks(-v, n))
+	if (pos==0) return(1/limBreaks(-v, n, split))
 
 	flip <- -neg
 	big <- pmax(pos, flip)
@@ -32,10 +43,10 @@ divmultbreaks <- function(v, n=6, nmin=3, anchor=TRUE){
 	bigprop <- big/(pos + flip)
 	bigticks <- ceiling(n*bigprop)
 
-	main <- limBreaks(c(0, big), bigticks)
+	main <- limBreaks(c(0, big), bigticks, split)
 	cut <- pmin(bigticks, 1+sum(main<small))
 	if(cut<nmin)
-		other <- limBreaks(c(0, small), nmin)
+		other <- limBreaks(c(0, small), nmin, split)
 	else
 		other <- main[1:cut]
 
@@ -54,4 +65,6 @@ divmultbreaks(c(0.8, 20))
 y <- (exp(seq(-2,5,0.2)))
 range(y)
 divmultbreaks(y)
+divmultbreaks(y, split=TRUE)
 
+exp(splitDecades(log(y)))
