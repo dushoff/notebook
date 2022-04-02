@@ -1,5 +1,8 @@
 # notebook (gh-pages branch, which is the only one I use)
 
+
+# https://github.com/dushoff/notebook/tree/gh-pages
+
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
@@ -9,6 +12,7 @@
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
 # http://dushoff.github.io/notebook/ape.png
+# http://dushoff.github.io/notebook/outputs/breaks.Rout.html
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
@@ -38,15 +42,94 @@ current: target
 
 ######################################################################
 
-## EPL service (quick and dirty)
-## https://www.espn.com/soccer/standings/_/league/eng.1
+## centinels, divmults and breaks
 
-# http://dushoff.github.io/notebook/outputs/table.png
-Sources += outputs/table.png
-outputs/table.png: ~/Downloads/table.png
-	$(copy)
+Ignore += times.states.*.csv
+times.states.%.csv:
+	wget -O $@ "https://github.com/nytimes/covid-19-data/raw/master/rolling-averages/us-states.csv"
+roswell_covid.Rout: roswell_covid.R breaks.rda times.states.01.csv
+
+## breaks.Rout.html: breaks.R
+## breaks.Rout: breaks.R
+
+## ggratios.Rout: ggratios.R
 
 ######################################################################
+
+## Counting ways of combining numbers
+
+## A list of 15000 combinations
+Sources += waltcount.txt
+
+## Drop d and associated operators
+Ignore += *.abc.txt
+## waltcount.abc.txt: abc.pl
+%.abc.txt: %.txt abc.pl
+	$(PUSH)
+
+## Drop the power operator
+Ignore += *.abc.txt
+Ignore += *.nopower.txt
+## waltcount.nopower.txt: waltcount.txt nopower.pl
+%.nopower.txt: %.txt nopower.pl
+	$(PUSH)
+
+#### maxima pipeline
+
+Sources += oeis.txt
+
+Sources += assume.mx
+
+Ignore += *.mx
+## waltcount.abc.mx: mxsimp.pl
+%.mx: %.txt mxsimp.pl
+	$(PUSH)
+
+## waltcount.abc.mx.out: mxsimp.pl
+%.mx.out: %.mx assume.mx
+	cat assume.mx $< | maxima > $@
+
+Ignore += *.expr
+## waltcount.abc.mx.expr: mxexpr.pl
+%.mx.expr: %.mx.out mxexpr.pl
+	$(PUSH)
+
+Ignore += *.su *.wc
+%.su: %
+	sort -u $< > $@
+
+## waltcount.mx.expr.su.wc:
+
+#### bc pipeline (not used anymore)
+
+Ignore += *.ivals.txt
+## waltcount.nopower.ivals.txt: waltcount.txt nopower.pl
+%.ivals.txt: %.txt ivals.pl
+	$(PUSH)
+
+## waltcount.nopower.txt:
+## waltcount.nopower.abc.txt:
+## waltcount.nopower.abc.ivals.txt:
+
+Sources += bscale.txt
+%.bcalc: %.txt sf.pl bscale.txt
+	cat bscale.txt $< | bc -l | perl -wf $(filter %.pl, $^) > $@
+
+Ignore += *.bcalc *.bvals
+## waltcount.nopower.ivals.txt:
+## waltcount.nopower.ivals.bcalc:
+## waltcount.nopower.ivals.bvals:
+## waltcount.nopower.abc.ivals.bvals:
+%.bvals: %.bcalc
+	sort -nu $< > $@
+
+######################################################################
+
+## Spinning rpn for non-existent deeper explorations; stopped at random
+## Uses digits, not real numbers (easy to fix)
+
+rpn.out: rpn.pl
+	$(PUSH)
 
 year.Rout: year.R
 
@@ -91,6 +174,13 @@ mathbox.out: mathbox.bc
 ## e2.out: e2.bc
 %.out: %.bc
 	bc -l < $< > $@
+
+## Sincere numbers
+sincere.out: sincere.bc
+
+Sources += sincere_fra.txt sincere_jd.txt
+sincere.check.Rout: sincere.check.R sincere_fra.txt sincere_jd.txt
+	$(pipeR)
 
 ######################################################################
 
@@ -411,11 +501,24 @@ Ignore += colors.small.png
 %.small.png: %.png
 	convert -scale 10% $< $@
 
-## Red-yellow-green recommendation
+## Red-yellow-green recommendation? Green-yellow too similar! 
 Ignore += ## ryg.Rout.html
 ## ryg.Rout.html: ryg.R
 ryg.Rout: ryg.R
 	$(pipeR)
+
+## Ramps etc from Roswell
+## color_ramps.Rout.html: color_ramps.R
+color_ramps.Rout: color_ramps.R
+	$(pipeR)
+
+## https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/
+
+raw_ramps.Rout: raw_ramps.R
+	$(pipeR)
+
+## Restricted color perception
+rcl_colors.Rout: rcl_colors.R
 
 ######################################################################
 

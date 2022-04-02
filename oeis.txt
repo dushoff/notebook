@@ -1,0 +1,23 @@
+
+Number of algebraically inequivalent expressions with n operands and n-1 binary operators +-*/^.
+
+Closely related to https://oeis.org/A140606, which does not allow ^.
+
+The first three terms are 1, 8, 146. It does not currently appear in OEIS.
+
+The fourth term is 4294.
+
+The associativity/commutativity combinations are 4444. We do these by counting recursively across ways of partitioning the top
+
+There are 150 extra repetitions:
+
+18 pairs of the form (a-b)∘(c-d); ∘ refers to multiplicative combination – x∘y expands to x*y,x/y,y/x
+
+72 excess terms of the form a-(b∘(c-d)); these can be expressed using "a+".
+
+12 pairs of the form (a/b)^(c-d)
+
+24 excess terms of the form a/(b^(c-d)); can be expressed using "a*".
+
+24 excess terms of the form a/((b/c)^d)
+
