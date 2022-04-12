@@ -1,6 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
 
-
 # https://github.com/dushoff/notebook/tree/gh-pages
 
 # http://localhost:4111/notebook/17.html
@@ -41,6 +40,8 @@ current: target
 -include makestuff/perl.def
 
 ######################################################################
+
+## posfun.Rout.html: posfun.R
 
 ## centinels, divmults and breaks
 
