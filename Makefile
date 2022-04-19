@@ -99,6 +99,8 @@ Ignore += *.expr
 %.mx.expr: %.mx.out mxexpr.pl
 	$(PUSH)
 
+## waltcount.mx.expr.su:
+## waltcount.abc.mx.expr.su:
 Ignore += *.su *.wc
 %.su: %
 	sort -u $< > $@

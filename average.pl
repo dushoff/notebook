@@ -1,7 +1,7 @@
 use strict;
 use 5.10.0;
 
-my $base=1000;
+my $base=100;
 my @first;
 
 sub tree{
