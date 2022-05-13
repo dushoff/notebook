@@ -1,5 +1,7 @@
-par(cex=1.6)
-ave <- read.table(input_files[[1]])
+library(shellpipes)
+startGraphics(); par(cex=1.6)
+
+ave <- read.table(matchFile(exts="out"))
 
 with(ave, plot(V1, V2
 	, xlab = "Batting average"

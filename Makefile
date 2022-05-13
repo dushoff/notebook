@@ -904,7 +904,7 @@ average.md:
 Ignore += average.out
 average.out: average.pl
 	$(PUSH)
-average.Rout: average.out average.R
+average.Rout: average.R average.out
 
 ### Hmm. this all seems a bunch of nonsense. Understand (document?) before trying to hack.
 Ignore += era.out

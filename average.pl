@@ -1,4 +1,4 @@
-my $base=100;
+my $base=1000;
 my @N;
 
 sub tree{
