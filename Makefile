@@ -7,7 +7,7 @@
 # http://localhost:4111/notebook/shifts.html
 
 # http://dushoff.github.io/notebook/pronouns.html
-# http://dushoff.github.io/notebook/shifts.html
+# http://dushoff.github.io/notebook/pythagoras.html
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
 # http://dushoff.github.io/notebook/ape.png
