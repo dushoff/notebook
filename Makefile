@@ -835,6 +835,7 @@ Sources += $(wildcard *.R *.pl)
 filledCircle.Rout: filledCircle.R
 
 pythagoras.Rout: pythagoras.R
+newpyth.Rout: newpyth.R
 
 cards.Rout: cards.R
 
