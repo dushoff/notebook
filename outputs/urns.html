@@ -6,13 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Jonathan Dushoff" />
   <title>Bags and balls: problem of the month</title>
-  <style type="text/css">
+  <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -20,7 +23,6 @@
 <p class="author">Jonathan Dushoff</p>
 <p class="date">2021 February</p>
 </header>
-<p><a href="urns.pdf">pdf version of this page</a></p>
 <div id="question">
 <h3 id="question">Question</h3>
 </div>
@@ -31,19 +33,19 @@
 </div>
 <p>Let T=1000 be the number of balls in each bag, t=19 be the number of balls you select, and b=7 be the target number of black balls.</p>
 <p>If B is the number of black balls in the back you select, then the number of ways to select b black balls and t-b white balls is:</p>
-<p><span class="math display">\[{ B \choose b } { T-B \choose t-b }\]</span></p>
+<p><span class="math display">\[{B \choose b} {T-B \choose t-b}\]</span></p>
 <p>and the associated probability is</p>
-<p><span class="math display">\[\frac{ { B \choose b } { T-B \choose t-b }  }{  { T \choose t }  }\]</span></p>
+<p><span class="math display">\[\frac{{B \choose b} {T-B \choose t-b} }{ {T \choose t} }\]</span></p>
 <p>The answer if we pick a bag at random is just the average over the <span class="math inline">\(T+1\)</span> possible values of <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[\frac{  1  }{  T+1  } \sum_{B=0}^T { \frac{  { B \choose b } { T-B \choose t-b }  }{  { T \choose t }  } }\]</span></p>
+<p><span class="math display">\[\frac{ 1 }{ T+1 } \sum_{B=0}^T { \frac{ {B \choose b} {T-B \choose t-b} }{ {T \choose t} } }\]</span></p>
 <p>We can separate out the parts that don’t contain <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[\frac{  1  }{  (T+1) { T \choose t }  } \sum_{B=0}^T { B \choose b } { T-B \choose t-b }\]</span></p>
+<p><span class="math display">\[\frac{ 1 }{ (T+1) {T \choose t} } \sum_{B=0}^T {B \choose b} {T-B \choose t-b}\]</span></p>
 <p>It’s simple enough to do the sum by pattern-finding and prove it by induction.</p>
-<p><span class="math display">\[\sum_{B=0}^T { B \choose b } { T-B \choose t-b }  = { T+1 \choose t+1 }\]</span></p>
+<p><span class="math display">\[\sum_{B=0}^T {B \choose b} {T-B \choose t-b}  = {T+1 \choose t+1}\]</span></p>
 <p>But that’s no fun! If there’s a simple pattern (as here), then there should be a cool combinatoric explanation, and we should pretend we found it directly.</p>
 <p>The first factor in the summand describes ways of choosing <span class="math inline">\(b\)</span> balls from a set of <span class="math inline">\(B\)</span>, and the second ways of choosing <span class="math inline">\(t-b\)</span> from a set of <span class="math inline">\(T-B\)</span>. How would that map to a set of <span class="math inline">\(T+1\)</span> balls? Well, we imagine that we have an extra ball to divide the two sets. Now each term in the sum counts the ways to choose <span class="math inline">\(t+1\)</span> from <span class="math inline">\(T+1\)</span> with <span class="math inline">\(b\)</span> to the left of our divider, 1 at the divider, and the remainder to the right. The divider thus determines the position of ball <span class="math inline">\(b+1\)</span>. The sum adds up over all of the places where ball <span class="math inline">\(b+1\)</span> can be (and some places where it can’t, but that doesn’t hurt us, we get zeroes there). So the sum counts all of the ways to choose <span class="math inline">\(t+1\)</span> from <span class="math inline">\(T+1\)</span> (as we already knew, but this is the fun way to think about it).</p>
 <p>Now, substitute for the sum and expand factorials:</p>
-<p><span class="math display">\[\frac{  { T+1 \choose t+1 }  }{  (T+1) { T \choose t }  }  = \frac{  1  }{  t+1  } .\]</span></p>
+<p><span class="math display">\[\frac{ {T+1 \choose t+1} }{ (T+1) {T \choose t} }  = \frac{ 1 }{ t+1 } .\]</span></p>
 <p>In other words, all of the <span class="math inline">\(t+1\)</span> outcomes of drawing <span class="math inline">\(t\)</span> balls are equally likely, and thus <em>independent of both <span class="math inline">\(T\)</span> and <span class="math inline">\(b\)</span></em>. This means there must be an even cooler explanation, and we should ignore everything above and pretend we found <em>that</em> directly.</p>
 <p>Here it is. I did not find it directly, but instead by looking for it for a long time after finding the formula above and knowing it must be there.</p>
 <p><strong>The slick answer:</strong> Choosing a random bag from our set is equivalent to having a single bag and uniformly choosing how many of them will be black. This is in turn equivalent to putting <span class="math inline">\(T+1\)</span> balls in order, and then picking one of them to be the divider between black (on the left, say) and white. We then pick <span class="math inline">\(t\)</span> more at random from the bag and see how many of those are black (i.e., how many are to the left of the divider). We could generate an identical random process by first picking <span class="math inline">\(t+1\)</span> balls from the <span class="math inline">\(T+1\)</span> in the augmented bag and <em>then</em> randomly deciding which was the divider. In other words, the divider is equally likely to be any of the <span class="math inline">\(t+1\)</span> chosen balls, and therefore each of the <span class="math inline">\(t+1\)</span> possible outcomes is equally likely.</p>
