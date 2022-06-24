@@ -836,6 +836,10 @@ filledCircle.Rout: filledCircle.R
 
 pythagoras.Rout: pythagoras.R
 newpyth.Rout: newpyth.R
+	$(wrapR)
+
+rp.newpyth.Rout: rp.R newpyth.rda
+	$(wrapR)
 
 cards.Rout: cards.R
 
