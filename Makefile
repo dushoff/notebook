@@ -1,4 +1,5 @@
 # notebook (gh-pages branch, which is the only one I use)
+## What's going on? I seem to be on master now??
 
 # https://github.com/dushoff/notebook/tree/gh-pages
 
@@ -23,7 +24,8 @@
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
-# https://github.com/dushoff/notebook/blob/gh-pages/outputs/
+# https://github.com/dushoff/notebook/blob/gh-pages/outputs/rp.newpyth.Rout.pdf
+# https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
 
 # make serve ## jekyll.log ##
 
