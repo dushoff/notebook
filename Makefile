@@ -12,7 +12,7 @@
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
 # http://dushoff.github.io/notebook/ape.png
-# http://dushoff.github.io/notebook/outputs/breaks.Rout.html
+# http://dushoff.github.io/notebook/outputs/rp.newpyth.Rout.pdf
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
@@ -26,6 +26,7 @@
 # https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
 # https://github.com/dushoff/notebook/blob/gh-pages/outputs/rp.newpyth.Rout.pdf
 # https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
+# https://github.com/dushoff/notebook/raw/master/outputs/rp.newpyth.Rout.pdf
 
 # make serve ## jekyll.log ##
 
