@@ -1,6 +1,7 @@
 # notebook (gh-pages branch, which is the only one I use)
+# actually, things are now hosted on master and pages should maybe be nuked
 
-# https://github.com/dushoff/notebook/tree/gh-pages
+# https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
@@ -22,8 +23,8 @@
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
-# https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
-# https://github.com/dushoff/notebook/blob/gh-pages/outputs/
+# https://github.com/dushoff/notebook/blob/master/ryg.R
+# https://github.com/dushoff/notebook/blob/master/outputs/
 
 # make serve ## jekyll.log ##
 
