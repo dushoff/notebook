@@ -8,11 +8,11 @@
 # http://localhost:4111/notebook/shifts.html
 
 # http://dushoff.github.io/notebook/pronouns.html
-# http://dushoff.github.io/notebook/shifts.html
+# http://dushoff.github.io/notebook/pythagoras.html
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
 # http://dushoff.github.io/notebook/ape.png
-# http://dushoff.github.io/notebook/outputs/breaks.Rout.html
+# http://dushoff.github.io/notebook/outputs/rp.newpyth.Rout.pdf
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
@@ -25,6 +25,8 @@
 
 # https://github.com/dushoff/notebook/blob/master/ryg.R
 # https://github.com/dushoff/notebook/blob/master/outputs/
+# https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
+# https://github.com/dushoff/notebook/raw/master/outputs/rp.newpyth.Rout.pdf
 
 # make serve ## jekyll.log ##
 
@@ -836,6 +838,11 @@ Sources += $(wildcard *.R *.pl)
 filledCircle.Rout: filledCircle.R
 
 pythagoras.Rout: pythagoras.R
+newpyth.Rout: newpyth.R
+	$(wrapR)
+
+rp.newpyth.Rout: rp.R newpyth.rda
+	$(wrapR)
 
 cards.Rout: cards.R
 

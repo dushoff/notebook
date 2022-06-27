@@ -5,6 +5,8 @@ fontsize: 12pt
 date: 2021 February
 ---
 
+[pdf version of this page](urns.pdf)
+
 ### Question
 
 You have 1001 bags. Each bag has 1000 balls in it. Each ball is either
