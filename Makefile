@@ -1,7 +1,7 @@
 # notebook (gh-pages branch, which is the only one I use)
-## What's going on? I seem to be on master now??
+# actually, things are now hosted on master and pages should maybe be nuked
 
-# https://github.com/dushoff/notebook/tree/gh-pages
+# https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
@@ -23,8 +23,8 @@
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
-# https://github.com/dushoff/notebook/blob/gh-pages/ryg.R
-# https://github.com/dushoff/notebook/blob/gh-pages/outputs/rp.newpyth.Rout.pdf
+# https://github.com/dushoff/notebook/blob/master/ryg.R
+# https://github.com/dushoff/notebook/blob/master/outputs/
 # https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
 # https://github.com/dushoff/notebook/raw/master/outputs/rp.newpyth.Rout.pdf
 
