@@ -55,6 +55,5 @@ we subtract to get $$2+32i$$. Factoring out 2 again, we notice we have a
 prime product again: $$1+16i$$ times its complex conjugate is 257. So we
 conclude that 9509=37\*257.
 
-I find it pretty cool that this works
+I find it pretty cool that this works.
 
-[Category:Blog posts](Category:Blog_posts "wikilink")
