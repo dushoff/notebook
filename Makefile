@@ -386,9 +386,11 @@ sandbox.Rout: sandbox.R
 Sources += hetSusc.wikitext
 ## This is bad because it escapes all the math
 %.md: %.wikitext
-	pandoc -f mediawiki -t ghm -o $@ $< 
+	pandoc -f mediawiki -t gfm -o $@ $< 
 
+Sources += ComplexFactoring.wikitext
 ComplexFactoring.md: ComplexFactoring.wikitext
+	pandoc -f mediawiki -t gfm -o $@ $< 
 
 ######################################################################
 
