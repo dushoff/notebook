@@ -388,6 +388,8 @@ Sources += hetSusc.wikitext
 %.md: %.wikitext
 	pandoc -f mediawiki -t ghm -o $@ $< 
 
+ComplexFactoring.md: ComplexFactoring.wikitext
+
 ######################################################################
 
 ## Adjust mixing matrices using the balance trick of Busenberg and CCC
