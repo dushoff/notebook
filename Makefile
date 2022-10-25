@@ -49,6 +49,7 @@ current: target
 
 ## skewnormal.rmd: skewnormal.wikitext
 ## skewnormal.rmd.md: skewnormal.rmd
+Ignore += *.rmd.html
 skewnormal.rmd.html: skewnormal.rmd
 	$(knithtml)
 
@@ -627,6 +628,7 @@ balls.Rout: balls.R
 
 ## Knitting (hybrid ideas brought together 2019 Jun 25 (Tue))
 
+Ignore += mre.html
 mre.html: mre.rmd
 	$(knithtml)
 
