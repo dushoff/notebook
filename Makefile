@@ -52,9 +52,11 @@ order.Rout: order.R
 ## order.exp.png: order.R
 
 ## Not working well (needs to pass shellpipes stuff, for example)
-order.md: order.R
+Ignore += *.MD
+order.MD: order.R
 	Rscript -e "knitr::spin('$<')"
-order.pdf: order.md
+Ignore += order.pdf
+order.pdf: order.MD
 	$(pandocs)
 
 ######################################################################
