@@ -49,6 +49,31 @@ current: target
 
 ## skewnormal.rmd: skewnormal.wikitext
 ## skewnormal.rmd.md: skewnormal.rmd
+skewnormal.rmd.html: skewnormal.rmd
+	$(knithtml)
+
+## Working surprisingly well (see pipeline stuff below)
+## Still struggling with getting knit/render to produce md of the quality of their html or pdf
+## Here it is refusing to not escape the tex
+skewnormal.gh.md: skewnormal.rmd Makefile
+	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
+
+######################################################################
+
+## order statistics experiments
+
+pngDesc += order
+order.Rout: order.R
+## order.uniform.png: order.R
+## order.exp.png: order.R
+
+## Not working well (needs to pass shellpipes stuff, for example)
+Ignore += *.MD
+order.MD: order.R
+	Rscript -e "knitr::spin('$<')"
+Ignore += order.pdf order.html
+order.pdf: order.MD
+	$(pandocs)
 
 ######################################################################
 
@@ -400,6 +425,9 @@ Sources += $(wildcard *.wikitext)
 %.rmd: %.wikitext wtrmd.pl
 	$(PUSH)
 
+%.rmd.html: %.rmd.md
+	pandoc $< --mathjax -s -o $@
+
 ## rmd ⇒ md pipeline
 
 ## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
@@ -409,6 +437,8 @@ Sources += $(wildcard *.wikitext)
 
 Ignore += *rmd_files
 
+Ignore += $(wildcard rmd.md)
+.PRECIOUS: %.rmd.md
 %.rmd.md: %.rmd
 	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
 

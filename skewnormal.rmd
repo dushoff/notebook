@@ -1,5 +1,4 @@
 
-
 ## Introduction 
 
 We want to do a sensitivity analysis for parameters where we have estimates and CIs, but no other information (for example, from someone else's paper (or from one of our own papers before we got into reproducible research)).
@@ -90,14 +89,15 @@ Another example, in haste. Calculate a probability density for a specific value,
 
 Briefly, the skew normal is not as flexible as I hoped, and in particular cannot accomodate as much skewness as I wanted in my first IQR example. The biggest possible IQR "weight" seems to be $\sqrt{3}/3$ – which is cool from a math perspective, but distressing from a practical perspective. Need to think of other distributions.
 
-
 ```{r}
 library(sn)
 est <- c(lwr=20, med=50, upr=200)
 obs <- 144
-print(
-	with(as.list(log(est)), range2dens(lwr=log(20), med=log(50), upr=log(200)
+den <- try(range2dens(lwr=log(20), med=log(50), upr=log(200)
 		, q=log(obs), P=0.5, alphaRange=10
-	))
+))
+
+if(!inherits(den, "try-error")) print(
+	with(as.list(log(est)), den)
 )
 ```
