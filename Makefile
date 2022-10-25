@@ -44,6 +44,21 @@ current: target
 
 ######################################################################
 
+## order statistics experiments
+
+pngDesc += order
+order.Rout: order.R
+## order.uniform.png: order.R
+## order.exp.png: order.R
+
+## Not working well (needs to pass shellpipes stuff, for example)
+order.md: order.R
+	Rscript -e "knitr::spin('$<')"
+order.pdf: order.md
+	$(pandocs)
+
+######################################################################
+
 ## posfun.Rout.html: posfun.R
 
 ## centinels, divmults and breaks
