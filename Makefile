@@ -55,7 +55,7 @@ order.Rout: order.R
 Ignore += *.MD
 order.MD: order.R
 	Rscript -e "knitr::spin('$<')"
-Ignore += order.pdf
+Ignore += order.pdf order.html
 order.pdf: order.MD
 	$(pandocs)
 
