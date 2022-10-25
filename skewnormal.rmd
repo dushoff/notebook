@@ -1,9 +1,9 @@
 
 ## Introduction 
 
-We want to do a sensitivity analysis for parameters where we have estimates and CIs, but no other information (for example, from someone else's paper (or from one of our own papers before we got into reproducible research)).
+This is one of the things I tried for [quantile-based distributions](../qbd.html)
 
-I claim a good way to do this would be to fit the parameters for a skew-normal distribution, and then sample from them. This should be done on a natural, unrestricted scale for the parameter in question (e.g., on the log scale for "physical" parameters that are constrained to be positive, or on the log odds scale for probabilities). There are some functions below, meant to be more or less self-explanatory, and then an example.
+The idea is to fit a skew-normal distribution to three provided quantiles. This should be done on a natural, unrestricted scale for the parameter in question (e.g., on the log scale for "physical" parameters that are constrained to be positive, or on the log odds scale for probabilities). There are some functions below, meant to be more or less self-explanatory, and then an example.
 
 ## Functions for fitting and resampling 
 

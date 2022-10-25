@@ -21,11 +21,11 @@ There are then two steps:
 
 I've been trying two different approaches to this:
 
-* skew normal (there's a wiki page about this, and [I tweeted about it](https://twitter.com/jd_mathbio/status/591371109045534720)). There is working code to parametrize and sample, but I suddenly gave up on the density part because I was frustrated that the skew normal couldn't match things with very high skew. This can match exactly three quantiles (when it can).
+* [skew normal](outputs/skewnormal.rmd.html). There is working code to parametrize and sample, but I suddenly gave up on the density part because I was frustrated that the skew normal couldn't match things with very high skew. This can match exactly three quantiles (when it can).
 
 * Johnson-SU distributions. These involve sinh transformations of the normal distribution. This can match four quantiles, which will rarely be wanted, so we need some sort of constraint to restrict the parameter space and get a canonical distribution for three quantiles.
 
-Bolker also has code which works using monotonic splines, which seems less elegant (and therefore possibly less defensible, especially for _post hoc_ application), but definitely more flexible (in particular, can be used for either 3 or 5 parameters).
+Ben Bolker also has code which works using monotonic splines, which seems less elegant (and therefore possibly less defensible, especially for _post hoc_ application), but definitely more flexible (in particular, can be used for either 3 or 5 parameters).
 
 The method should be:
 

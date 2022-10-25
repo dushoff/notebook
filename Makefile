@@ -14,6 +14,8 @@
 # http://dushoff.github.io/notebook/statstrength.html
 # http://dushoff.github.io/notebook/ape.png
 # http://dushoff.github.io/notebook/outputs/rp.newpyth.Rout.pdf
+# http://dushoff.github.io/notebook/outputs/skewnormal.rmd.html
+# http://dushoff.github.io/notebook/qbd.html
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
