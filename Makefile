@@ -44,6 +44,14 @@ current: target
 
 ######################################################################
 
+## Quantile-based distributions
+# Johnson code is in https://github.com/dushoff/scratch
+
+## skewnormal.rmd: skewnormal.wikitext
+## skewnormal.rmd.md: skewnormal.rmd
+
+######################################################################
+
 ## posfun.Rout.html: posfun.R
 
 ## centinels, divmults and breaks
@@ -383,14 +391,38 @@ sandbox.Rout: sandbox.R
 
 ## Heterogeneous susceptibility notes
 
-Sources += hetSusc.wikitext
+######################################################################
+
+Sources += $(wildcard *.wikitext)
+
+## Wiki import dev
+
+%.rmd: %.wikitext wtrmd.pl
+	$(PUSH)
+
+## rmd ⇒ md pipeline
+
+## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
+## nomogram.md: nomogram.rmd
+## permBinom.md: permBinom.rmd
+## permTables.md: permTables.wikitext; pandoc -f mediawiki -o $@ $<
+
+Ignore += *rmd_files
+
+%.rmd.md: %.rmd
+	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
+
+%.yaml.md: %.rmd
+	perl -nE "last if /^$$/; print; END{say}" $< > $@
+
+%.md: %.yaml.md %.rmd.md
+	$(cat)
+
 ## This is bad because it escapes all the math
-%.md: %.wikitext
+hetSusc%.md: hetSusc%.wikitext
 	pandoc -f mediawiki -t gfm -o $@ $< 
 
-Sources += ComplexFactoring.wikitext
 ComplexFactoring.md: ComplexFactoring.wikitext
-	pandoc -f mediawiki -t gfm -o $@ $< 
 
 ######################################################################
 
@@ -565,34 +597,14 @@ balls.Rout: balls.R
 
 ## Knitting (hybrid ideas brought together 2019 Jun 25 (Tue))
 
+mre.html: mre.rmd
+	$(knithtml)
+
 mre.md: mre.rmd
 	Rscript -e "knitr::knit('$<')"
 
 mre.rmd.md: mre.md
 	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
-
-## Wiki import dev
-
-%.rmd: %.wikitext wtrmd.pl
-	$(PUSH)
-
-## rmd ⇒ md pipeline
-
-## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
-## nomogram.md: nomogram.rmd
-## permBinom.md: permBinom.rmd
-## permTables.md: permTables.wikitext; pandoc -f mediawiki -o $@ $<
-
-Ignore += *rmd_files
-
-%.rmd.md: %.rmd
-	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
-
-%.yaml.md: %.rmd
-	perl -nE "last if /^$$/; print; END{say}" $< > $@
-
-%.md: %.yaml.md %.rmd.md
-	$(cat)
 
 ######################################################################
 

@@ -1,0 +1,103 @@
+
+
+## Introduction 
+
+We want to do a sensitivity analysis for parameters where we have estimates and CIs, but no other information (for example, from someone else's paper (or from one of our own papers before we got into reproducible research)).
+
+I claim a good way to do this would be to fit the parameters for a skew-normal distribution, and then sample from them. This should be done on a natural, unrestricted scale for the parameter in question (e.g., on the log scale for "physical" parameters that are constrained to be positive, or on the log odds scale for probabilities). There are some functions below, meant to be more or less self-explanatory, and then an example.
+
+## Functions for fitting and resampling 
+
+```{r}
+# A service function: a vector of quantiles from a standard skew-normal with parameter alpha
+qsnVec <- function(alpha, P=0.05){
+	v <- c(lwr=P/2, med=1/2, upr=1-P/2)
+	return(qsn(v, alpha=alpha))
+}
+
+# Calculate a skewness statistic for a given set of quantiles and given skew-normal parameter alpha
+alpha2weight <- function(alpha, P=0.05, offset=0){
+	v <- c(lwr=P/2, med=1/2, upr=1-P/2)
+	q <- as.list(qsnVec(alpha, P))
+	return(with(q, {
+		(upr-med)/(upr-lwr) - offset
+	}))
+}
+
+# Use alpha2weight to find the value of alpha that matches the provided skewness statistic
+weight2alpha <- function(weight, P=0.05, alphaRange=10){
+	ur <- uniroot(alpha2weight, interval=c(-alphaRange, alphaRange), 
+		P=P, offset=weight)
+	return(ur$root)
+}
+
+# Use weight2alpha to find a skew-normal distribution matching the given quantiles
+range2params <- function(lwr, med, upr, P=0.05, alphaRange=10){
+	weight <- (upr-med)/(upr-lwr)
+	alpha <- weight2alpha(weight, P, alphaRange)
+	q <- as.list(qsnVec(alpha, P))
+	omega <- (upr-lwr)/(q$upr-q$lwr)
+	xi <- med-omega*q$med
+	return(list(
+		xi=xi, omega=omega, alpha=alpha
+	))
+}
+
+range2sample <- function(lwr, med, upr, N, P=0.05, alphaRange=10){
+	par <- range2params(lwr, med, upr, P, alphaRange)
+	return(with(par, {
+		rsn(N, xi=xi, omega=omega, alpha=alpha)
+	}))
+}
+
+range2dens <- function(lwr, med, upr, q, P=0.05, alphaRange=10){
+	par <- range2params(lwr, med, upr, P, alphaRange)
+	return(with(par, {
+		dsn(xi=xi, omega=omega, alpha=alpha)
+	}))
+}
+```
+
+## A concrete example 
+
+We imagine that we're using a source that claims to have estimated a probability of 0.74 with CIs of (0.64, 0.84). This seems rather unlikely,
+<ref>
+because we expect the CI to be wider on the side that's further from the boundary (the lower side in this case).
+</ref>
+but we need to make use of it (or maybe we have a reason to believe it). 
+
+## Code for the example 
+
+
+```{r}
+library(sn)
+
+v <- c(lwr=0.64, med=0.74, upr=0.84)
+q <- as.list(qlogis(v))
+qsamp <- with(q, range2sample(lwr, med, upr, 1000))
+samp <- plogis(qsamp)
+print(summary(samp))
+donotprint <- hist(samp)
+```
+
+[probs.Rout](probs.Rout)
+
+[probs.Rout.png](probs.Rout.png)
+
+## Density example 
+
+Another example, in haste. Calculate a probability density for a specific value, given estimated quantiles. Seems to be causing trouble ...
+
+Briefly, the skew normal is not as flexible as I hoped, and in particular cannot accomodate as much skewness as I wanted in my first IQR example. The biggest possible IQR "weight" seems to be $\sqrt{3}/3$ – which is cool from a math perspective, but distressing from a practical perspective. Need to think of other distributions.
+
+
+```{r}
+library(sn)
+est <- c(lwr=20, med=50, upr=200)
+obs <- 144
+print(
+	with(as.list(log(est)), range2dens(lwr=log(20), med=log(50), upr=log(200)
+		, q=log(obs), P=0.5, alphaRange=10
+	))
+)
+```
