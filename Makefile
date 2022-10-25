@@ -401,7 +401,11 @@ sandbox.Rout: sandbox.R
 Sources += hetSusc.wikitext
 ## This is bad because it escapes all the math
 %.md: %.wikitext
-	pandoc -f mediawiki -t ghm -o $@ $< 
+	pandoc -f mediawiki -t gfm -o $@ $< 
+
+Sources += ComplexFactoring.wikitext
+ComplexFactoring.md: ComplexFactoring.wikitext
+	pandoc -f mediawiki -t gfm -o $@ $< 
 
 ######################################################################
 
@@ -662,6 +666,7 @@ alice.Rout: alice.R
 
 ## Early Trapman-interval math. Should be subsumed by Park et al. MS
 # http://localhost:4111/notebook/conditional_kernel.html
+Ignore += conditional_kernel.html
 conditional_kernel.html: conditional_kernel.md
 
 combinations.Rout: combinations.R
