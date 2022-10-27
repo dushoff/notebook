@@ -760,13 +760,18 @@ checkFuns.Rout: checkFuns.R
 lndata.Rout: lndata.R
 	$(wrapR)
 gamdata.Rout: gamdata.R
+	$(wrapR)
 tdata.Rout: tdata.R
+	$(wrapR)
 cauchy.Rout: cauchy.R
+	$(wrapR)
 
 ## Stats on a list of lists of fake data (or something)
 
 ## GrandMean is here, and is bad.
 ## lndata.liststats.Rout:
+## tdata.liststats.Rout:
+impmakeR += liststats
 %.liststats.Rout: %.rda liststats.R
 	$(pipeR)
 
@@ -776,6 +781,7 @@ cauchy.Rout: cauchy.R
 ## gamdata.listplots.Rout: listplots.R
 ## tdata.listplots.Rout: listplots.R
 ## cauchy.listplots.Rout: listplots.R
+impmakeR += listplots
 %.listplots.Rout: %.liststats.rda checkFuns.rda listplots.R
 	$(run-R)
 
@@ -783,18 +789,20 @@ cauchy.Rout: cauchy.R
 ## gamdata.pianoPlots.Rout: pianoPlots.R
 ## tdata.pianoPlots.Rout: pianoPlots.R
 ## cauchy.pianoPlots.Rout: pianoPlots.R
-%.pianoPlots.Rout: %.liststats.Rout checkFuns.Rout pianoPlots.R
+%.pianoPlots.Rout: %.liststats.rda checkFuns.rda pianoPlots.R
 	$(run-R)
 
+## lndata.rangePlots.Rout: rangePlots.R
 ## tdata.rangePlots.Rout: rangePlots.R
-%.rangePlots.Rout: checkFuns.Rout %.liststats.Rout rangePlots.R
+%.rangePlots.Rout: checkFuns.rda %.liststats.rda rangePlots.R
 	$(run-R)
 
+## Slug plots are currently one type of range plot?
 ## lndata.slugPlots.Rout: slugPlots.R
 ## gamdata.slugPlots.Rout: slugPlots.R
 ## tdata.slugPlots.Rout: slugPlots.R
 ## cauchy.slugPlots.Rout: slugPlots.R
-%.slugPlots.Rout: checkFuns.Rout %.liststats.Rout slugPlots.R
+%.slugPlots.Rout: checkFuns.rda %.liststats.rda slugPlots.R
 	$(run-R)
 
 ## tdata.rangePlots.Rout: rangePlots.R
