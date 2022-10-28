@@ -135,7 +135,7 @@ Ignore += *.bcalc *.bvals
 
 ######################################################################
 
-## Spinning rpn for non-existent deeper explorations; stopped at random
+## Spinning a reverse-Polish engine for non-existent deeper explorations; stopped at random
 ## Uses digits, not real numbers (easy to fix)
 
 rpn.out: rpn.pl
