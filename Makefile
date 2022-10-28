@@ -71,6 +71,8 @@ order.Rout: order.R
 ## order.uniform.png: order.R
 ## order.exp.png: order.R
 
+orderStats.Rout: orderStats.R
+
 ## Not working well (needs to pass shellpipes stuff, for example)
 Ignore += *.MD
 order.MD: order.R
