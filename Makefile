@@ -7,12 +7,15 @@
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
 
+# http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/pythagoras.html
 # http://dushoff.github.io/notebook/acf.html
 # http://dushoff.github.io/notebook/statstrength.html
 # http://dushoff.github.io/notebook/ape.png
 # http://dushoff.github.io/notebook/outputs/rp.newpyth.Rout.pdf
+# http://dushoff.github.io/notebook/outputs/skewnormal.rmd.html
+# http://dushoff.github.io/notebook/qbd.html
 
 # http://dushoff.github.io/notebook/average.Rout
 # http://dushoff.github.io/notebook/colors.html
@@ -41,6 +44,40 @@ current: target
 -include target.mk
 
 -include makestuff/perl.def
+
+######################################################################
+
+## Quantile-based distributions
+# Johnson code is in https://github.com/dushoff/scratch
+
+## skewnormal.rmd: skewnormal.wikitext
+## skewnormal.rmd.md: skewnormal.rmd
+Ignore += *.rmd.html
+skewnormal.rmd.html: skewnormal.rmd
+	$(knithtml)
+
+## Working surprisingly well (see pipeline stuff below)
+## Still struggling with getting knit/render to produce md of the quality of their html or pdf
+## Here it is refusing to not escape the tex
+skewnormal.gh.md: skewnormal.rmd Makefile
+	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
+
+######################################################################
+
+## order statistics experiments
+
+pngDesc += order
+order.Rout: order.R
+## order.uniform.png: order.R
+## order.exp.png: order.R
+
+## Not working well (needs to pass shellpipes stuff, for example)
+Ignore += *.MD
+order.MD: order.R
+	Rscript -e "knitr::spin('$<')"
+Ignore += order.pdf order.html
+order.pdf: order.MD
+	$(pandocs)
 
 ######################################################################
 
@@ -383,14 +420,43 @@ sandbox.Rout: sandbox.R
 
 ## Heterogeneous susceptibility notes
 
-Sources += hetSusc.wikitext
+######################################################################
+
+Sources += $(wildcard *.wikitext)
+
+## Wiki import dev
+
+%.rmd: %.wikitext wtrmd.pl
+	$(PUSH)
+
+%.rmd.html: %.rmd.md
+	pandoc $< --mathjax -s -o $@
+
+## rmd ⇒ md pipeline
+
+## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
+## nomogram.md: nomogram.rmd
+## permBinom.md: permBinom.rmd
+## permTables.md: permTables.wikitext; pandoc -f mediawiki -o $@ $<
+
+Ignore += *rmd_files
+
+Ignore += $(wildcard rmd.md)
+.PRECIOUS: %.rmd.md
+%.rmd.md: %.rmd
+	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
+
+%.yaml.md: %.rmd
+	perl -nE "last if /^$$/; print; END{say}" $< > $@
+
+%.md: %.yaml.md %.rmd.md
+	$(cat)
+
 ## This is bad because it escapes all the math
-%.md: %.wikitext
+hetSusc%.md: hetSusc%.wikitext
 	pandoc -f mediawiki -t gfm -o $@ $< 
 
-Sources += ComplexFactoring.wikitext
 ComplexFactoring.md: ComplexFactoring.wikitext
-	pandoc -f mediawiki -t gfm -o $@ $< 
 
 ######################################################################
 
@@ -565,34 +631,15 @@ balls.Rout: balls.R
 
 ## Knitting (hybrid ideas brought together 2019 Jun 25 (Tue))
 
+Ignore += mre.html
+mre.html: mre.rmd
+	$(knithtml)
+
 mre.md: mre.rmd
 	Rscript -e "knitr::knit('$<')"
 
 mre.rmd.md: mre.md
 	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
-
-## Wiki import dev
-
-%.rmd: %.wikitext wtrmd.pl
-	$(PUSH)
-
-## rmd ⇒ md pipeline
-
-## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
-## nomogram.md: nomogram.rmd
-## permBinom.md: permBinom.rmd
-## permTables.md: permTables.wikitext; pandoc -f mediawiki -o $@ $<
-
-Ignore += *rmd_files
-
-%.rmd.md: %.rmd
-	Rscript -e 'library("rmarkdown"); render("$<", output_format="md_document", output_file="$@")'
-
-%.yaml.md: %.rmd
-	perl -nE "last if /^$$/; print; END{say}" $< > $@
-
-%.md: %.yaml.md %.rmd.md
-	$(cat)
 
 ######################################################################
 
@@ -713,13 +760,18 @@ checkFuns.Rout: checkFuns.R
 lndata.Rout: lndata.R
 	$(wrapR)
 gamdata.Rout: gamdata.R
+	$(wrapR)
 tdata.Rout: tdata.R
+	$(wrapR)
 cauchy.Rout: cauchy.R
+	$(wrapR)
 
 ## Stats on a list of lists of fake data (or something)
 
 ## GrandMean is here, and is bad.
 ## lndata.liststats.Rout:
+## tdata.liststats.Rout:
+impmakeR += liststats
 %.liststats.Rout: %.rda liststats.R
 	$(pipeR)
 
@@ -729,6 +781,7 @@ cauchy.Rout: cauchy.R
 ## gamdata.listplots.Rout: listplots.R
 ## tdata.listplots.Rout: listplots.R
 ## cauchy.listplots.Rout: listplots.R
+impmakeR += listplots
 %.listplots.Rout: %.liststats.rda checkFuns.rda listplots.R
 	$(run-R)
 
@@ -736,18 +789,20 @@ cauchy.Rout: cauchy.R
 ## gamdata.pianoPlots.Rout: pianoPlots.R
 ## tdata.pianoPlots.Rout: pianoPlots.R
 ## cauchy.pianoPlots.Rout: pianoPlots.R
-%.pianoPlots.Rout: %.liststats.Rout checkFuns.Rout pianoPlots.R
+%.pianoPlots.Rout: %.liststats.rda checkFuns.rda pianoPlots.R
 	$(run-R)
 
+## lndata.rangePlots.Rout: rangePlots.R
 ## tdata.rangePlots.Rout: rangePlots.R
-%.rangePlots.Rout: checkFuns.Rout %.liststats.Rout rangePlots.R
+%.rangePlots.Rout: checkFuns.rda %.liststats.rda rangePlots.R
 	$(run-R)
 
+## Slug plots are currently one type of range plot?
 ## lndata.slugPlots.Rout: slugPlots.R
 ## gamdata.slugPlots.Rout: slugPlots.R
 ## tdata.slugPlots.Rout: slugPlots.R
 ## cauchy.slugPlots.Rout: slugPlots.R
-%.slugPlots.Rout: checkFuns.Rout %.liststats.Rout slugPlots.R
+%.slugPlots.Rout: checkFuns.rda %.liststats.rda slugPlots.R
 	$(run-R)
 
 ## tdata.rangePlots.Rout: rangePlots.R

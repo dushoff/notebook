@@ -1,6 +1,6 @@
 library(shellpipes)
 
-commandEnvironments()
+loadEnvironments()
 
 ## Maybe replace this upstream (calculate means?) some time when I have internet access
 ## This is a source of instability for unstable distributions; better to use the theoretical mean
