@@ -73,7 +73,7 @@ order.Rout: order.R
 
 orderStats.Rout: orderStats.R
 
-## Not working well (needs to pass shellpipes stuff, for example)
+## spin Not working well (needs to pass shellpipes stuff, for example)
 Ignore += *.MD
 order.MD: order.R
 	Rscript -e "knitr::spin('$<')"

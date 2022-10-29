@@ -26,18 +26,18 @@ dorder <- function(x, s, o, rname, dfun=NULL, pfun=NULL, ...){
 	return(g*bet)
 }
 
-testPlot <- function(s, o, dname="lnorm", n=1e4, bins=40, ...){
+testPlot <- function(s, o, rname="lnorm", n=1e4, bins=40, ...){
 	k <- tibble(NULL
-		, x=rorder(n, s, o, dname, ...)
-		, den = dorder(x, s, o, dname, ...)
+		, x=rorder(n, s, o, rname, ...)
+		, den = dorder(x, s, o, rname, ...)
 	)
 
 	return(ggplot(k)
 		+ aes(x, after_stat(density))
-		+ geom_histogram(binwidth=1/bins, boundary=0)
+		+ geom_histogram(binwidth=diff(range(k$x))/bins, boundary=0)
 		+ geom_line(aes(y=den))
 	)
 }
 
-print(testPlot(8, 1, n=4e4))
-print(testPlot(8, 4, n=4e4, sdlog=2))
+print(testPlot(4, 4, n=4e4, sdlog=0.7, bins=100))
+print(testPlot(7, 4, n=4e4, rname="gamma", shape=2))
