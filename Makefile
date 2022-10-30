@@ -386,7 +386,8 @@ close.pdf: close.txt
 
 test_curve.Rout: test_curve.R
 
-Sources += curve.mac
+Sources += $(wildcard *.mac)
+Ignore += *.mac.out
 curve.mac.out: curve.mac
 	maxima -b $< > $@
 
