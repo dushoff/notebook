@@ -24,8 +24,8 @@
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
-# http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
+# https://github.com/dushoff/notebook/blob/master/orderStats.R
 # https://github.com/dushoff/notebook/blob/master/ryg.R
 # https://github.com/dushoff/notebook/blob/master/outputs/
 # https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
