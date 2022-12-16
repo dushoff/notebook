@@ -174,7 +174,8 @@ Ignore += *.bcalc *.bvals
 
 ######################################################################
 
-## Spinning rpn for non-existent deeper explorations; stopped at random
+## Spinning reverse polish notation framework
+## for non-existent deeper explorations; stopped at random
 ## Uses digits, not real numbers (easy to fix)
 
 rpn.out: rpn.pl
@@ -360,7 +361,27 @@ urns.pdf: urns.comb.md
 	$(pandocs)
 
 Ignore += urns.html
-urns.html: urns.check.tex Makefile
+urns.html: urns.check.tex
+	pandoc $< --mathjax -s -o $@
+
+######################################################################
+
+## Incidence function notes from DAIDD 2022
+
+## Sources += incFun.md
+
+Ignore += incfuns.check.tex
+incfuns.check.tex: incfuns.comb.md
+	$(pandocs)
+
+Ignore += incfuns.pdf
+## incfuns.pdf: incfuns.md
+incfuns.pdf: incfuns.comb.md
+	$(pandocs)
+
+Ignore += incfuns.html
+## incfuns.html: incfuns.md
+incfuns.html: incfuns.check.tex
 	pandoc $< --mathjax -s -o $@
 
 ######################################################################
