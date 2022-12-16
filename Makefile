@@ -7,6 +7,7 @@
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
 
+# http://dushoff.github.io/notebook/incFun
 # http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/pythagoras.html
@@ -366,8 +367,6 @@ urns.html: urns.check.tex
 ######################################################################
 
 ## Incidence function notes from DAIDD 2022
-
-## Sources += incFun.md
 
 Ignore += incfuns.check.tex
 incfuns.check.tex: incfuns.comb.md
