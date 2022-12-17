@@ -7,7 +7,7 @@
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
 
-# http://dushoff.github.io/notebook/incFun
+# http://dushoff.github.io/notebook/outputs/incfuns.html
 # http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/pythagoras.html
@@ -381,6 +381,8 @@ Ignore += incfuns.html
 ## incfuns.html: incfuns.md
 incfuns.html: incfuns.check.tex
 	pandoc $< --mathjax -s -o $@
+
+incfuns.Rout: incfuns.R
 
 ######################################################################
 
