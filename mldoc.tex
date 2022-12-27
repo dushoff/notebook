@@ -1,0 +1,87 @@
+\section {Introduction}
+
+In ecological studies, the large number of uncontrolled variables involved
+often leads to levels of uncertainty that seem high compared to those in
+less interesting fields, such as physics.  In some cases, this results in
+ecologists looking bad, which is not acceptable \cite{EManifesto}.
+
+For example, in pursuit of strict academic honesty, ecologists are
+frequently reduced to saying things like ``the measured density of spruce
+seedlings in the forest plots ($237/m^2$) and in the cornfield plots
+($2/m^2$) were different at the 10\% level \cite{Eco1}.''  Meanwhile,
+physicists are always saying things like ``the measured value of $2.2310403
+\times 10^{-9}$ differs from the non-linearized quantum gauge approximation
+$(2.2310166 \times 10^{-9})$ conclusively\footnote{We would print our
+margin of error, but even if rendered in scientific notation, it would
+occupy several journal pages {\em (note in original)}.} proving the
+existence of the Hale-Gaborone effect \cite{Phy1}.  They do this purely to
+annoy us \cite{PManifesto}.
+
+The solution to this problem is the technique of multi-log transforms.
+Multi-log transforms open up an exciting new world of precision to
+ecologists.  
+
+\section {The Fisher Transformation}
+
+An example of a multi-log transformation is the Fisher transformation,
+named to honor R. A. Fisher for his contributions to mathematical biology,
+but primarily in order to attach a much-needed aura of legitimacy to this
+approach.  The Fisher transformation is defined by:
+$$
+	F(x) = 1 + \log(\log(\log(\log(10^{100}x)))).
+$$
+
+The virtue of this transformation is that it takes values ranging from 1 to
+$10^{12}$ and transforms them to a range from 0.4786 to 0.4936, greatly
+improving precision.  For example, the sentence ``The difference between
+the average wing lengths of crows (35 cm) and sparrows (12 cm) in our
+sample was not statistically significant'' can now be written  ``The
+difference between the transformed average wing lengths of crows (0.48068)
+and sparrows (0.48007) in our sample was not statistically significant.''
+The sentence, ``We feel the difference in average body mass between males
+(250 kg) and females (95 kg) is biologically as well as statistically
+significant" becomes ``We feel the difference in transformed average body
+mass between males (0.48181) and females (0.48126) is biologically as well
+as statistically significant."
+
+The advantages are obvious.  Our level of precision has jumped from no
+significant figures to three or four.
+
+\section {Other transformations}
+
+There are two problems with the Fisher transformation.  The first is that
+it is not appropriate for data that may have zeroes.  The second, more
+serious, problem, is that it could look suspicious if all of our numbers
+started with 0.48.
+
+For this reason, we need more multi-log transformations.  For the
+transformations to achieve widespread use, it will also be necessary for
+people to state in print that they are useful for particular purposes, so
+that others can cite these assertions.  For example, I hereby suggest that
+the Fisher transformation is appropriate for rationalizing morphological
+measurements, such as lengths and masses.  I will also suggest that the
+unnamed transformation below is an appropriate smoothing transformation for
+`count' data.
+
+The transformation 
+$$ 
+	D(x) = \log(1+\log(1+\log(1+\log(1+x)))))
+$$
+takes numbers ranging from 0 to $10^9$ into a range from 0 to 0.1143.  I
+have been unable to think of a name for this transformation; maybe someone
+else would like to suggest one in print.  Ideally, the transform should be
+named after a pioneer in the field of multi-log transforms.
+
+\section {Conclusions}
+
+Multi-log transformations open up exciting new possibilities for precision
+in ecology to rival that in annoying fields like physics.  For all we know,
+physicists have used similar techniques in making their field look so
+precise.  Why would they go around dragging `imaginary' numbers into all of
+their papers if they weren't trying to hide something?  
+
+We need people to develop more precision-enhancing transformations, and we
+also need people who are willing to apply these transformations to their
+data.  Techniques like this, combined with the current increasing trend in
+obfuscatory language, promise to elevate ecology to the plane of the `hard'
+sciences within the next few years.
