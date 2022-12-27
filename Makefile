@@ -8,6 +8,7 @@
 # http://localhost:4111/notebook/shifts.html
 
 # http://dushoff.github.io/notebook/outputs/incfuns.html
+# http://dushoff.github.io/notebook/outputs/multilog.pdf
 # http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/pythagoras.html
