@@ -48,6 +48,10 @@ current: target
 
 ######################################################################
 
+multilog.pdf: multilog.tex
+
+######################################################################
+
 ## Quantile-based distributions
 # Johnson code is in https://github.com/dushoff/scratch
 
@@ -1093,8 +1097,8 @@ makestuff/Makefile:
 -include makestuff/os.mk
 -include makestuff/git.mk
 -include makestuff/visual.mk
--include makestuff/projdir.mk
 -include makestuff/pipeR.mk
+-include makestuff/texi.mk
 -include makestuff/pandoc.mk
 -include makestuff/pdfpages.mk
 -include makestuff/forms.mk
