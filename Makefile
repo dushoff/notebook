@@ -48,6 +48,8 @@ current: target
 
 ######################################################################
 
+Sources += mldoc.tex multilog.bib multilog.tex
+
 multilog.pdf: multilog.tex
 
 ######################################################################
