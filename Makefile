@@ -367,8 +367,12 @@ Ignore += urns.pdf
 urns.pdf: urns.comb.md
 	$(pandocs)
 
+## outputs/ version renders, but not this version
 Ignore += urns.html
 urns.html: urns.check.tex
+	pandoc $< --mathjax -s -o $@
+
+newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
 
 ######################################################################
