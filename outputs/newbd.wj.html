@@ -1,0 +1,54 @@
+<p>There are various applications where you might want to go from a set of quantiles (and associated probabilities) to an actual approximate distribution.</p>
+<p>In particular:</p>
+<ul>
+<li><p>to propagate error in a meta-analysis or synthesis when you have confidence intervals from a published paper (example, the rabies burden paper)</p></li>
+<li><p>to systematically evaluate predictions that are expressed in terms of quantiles (see Johansson’s dengue contest stuff, which I cannot find)</p></li>
+</ul>
+<p>There are then two steps:</p>
+<ul>
+<li><p>parameterizing a distribution that matches (or approximates) the given quantiles</p></li>
+<li><p>doing something else, either:</p>
+<ul>
+<li>calculating a density to attach likelihood to particular values</li>
+<li>resampling from the distribution</li>
+</ul></li>
+</ul>
+<p>I’ve been trying two different approaches to this:</p>
+<ul>
+<li><p><a href="outputs/skewnormal.rmd.html">skew normal</a>. There is working code to parametrize and sample, but I suddenly gave up on the density part because I was frustrated that the skew normal couldn’t match things with very high skew. This can match exactly three quantiles (when it can).</p></li>
+<li><p>Johnson-SU distributions. These involve sinh transformations of the normal distribution. This can match four quantiles, which will rarely be wanted, so we need some sort of constraint to restrict the parameter space and get a canonical distribution for three quantiles.</p></li>
+</ul>
+<p>Ben Bolker also has code which works using monotonic splines, which seems less elegant (and therefore possibly less defensible, especially for <em>post hoc</em> application), but definitely more flexible (in particular, can be used for either 3 or 5 parameters).</p>
+<p>The method should be:</p>
+<ul>
+<li><p>designed to work on an unbounded scale; thus to match probabilities you should first transform to a log odds scale, and to match positive quantities you should first take the log</p></li>
+<li><p>based on the normal distribution (on the transformed scale); in particular, if both the probabilities and quantile values are symmetric on that scale, we should match the normal</p></li>
+<li><p>affine; meaning that if two sets of quantiles differ only by location and scale (on the transformed scale), the method should map them to two distributions which also differ only by location and scale.</p></li>
+</ul>
+<h2 id="johnson-distributions">Johnson distributions</h2>
+<p>A deviate <span class="math display">\[x\]</span> from a <a href="https://en.wikipedia.org/wiki/Johnson%27s_SU-distribution">Johnson distribution</a> is obtained by transforming a deviate <span class="math display">\[z\]</span> from a normal distribution.</p>
+<p>I changed the parameterization somewhat, partly because I want to put the non-trivial scaling step inside the sinh transformation for numerical stability.</p>
+<p>I am using:</p>
+<ul>
+<li><span class="math display">\[z = z_0+\mu\]</span></li>
+<li><span class="math display">\[j_0 = \sinh(s z)/s\]</span></li>
+<li><span class="math display">\[j = \lambda j_0 + \varepsilon\]</span></li>
+</ul>
+<p>The starting point <span class="math display">\[z_0\]</span> is a standard normal, and the ending point <span class="math display">\[j\]</span> is the desired Johnson distribution.</p>
+<p><span class="math display">\[\lambda\]</span> and <span class="math display">\[\varepsilon\]</span> determine the location and scale of the resulting Johnson distribution. We therefore need to use <span class="math display">\[\mu\]</span> and <span class="math display">\[s\]</span> to determine the shape.</p>
+<p>The most appealling idea is to fix <span class="math display">\[s=1\]</span>. This works well, but limits the amount of skew that can be achieved, so we can’t fit every case. The other idea that <em>seems</em> appealling is to fix <span class="math display">\[\mu=0\]</span>; in this case, the resulting Johnson distribution is symmetric, which is not at all what we want.</p>
+<p>The next simplest constraint, in my opinion, is <span class="math display">\[\mu = s\equiv\phi\]</span>. This has the advantage of being symmetric and normal when <span class="math display">\[\phi=0\]</span>. I wrote <a href="https://raw.githubusercontent.com/dushoff/scratch/master/johnson.R">some code to find to find and calculate densities from these constrained Johnson distributions</a>.</p>
+<h3 id="density-calculation">Density calculation</h3>
+<p>This calculation is boring, especially if it’s right, but I may as well write it down:</p>
+<ul>
+<li><p><span class="math display">\[ j = λ τ(z; s)\]</span>, where τ is the scaled sinh transformation.</p></li>
+<li><p><span class="math display">\[ dj = λ τ&#39;(z; s) dz \]</span>.</p></li>
+<li><p><span class="math display">\[\frac{f(z)}{ λ τ&#39;(z; s)} dj = f(z) dz \]</span>.</p></li>
+<li><p><span class="math display">\[ g(j) = \frac{f(z)}{ λ τ&#39;(z; s)}\]</span>, where <span class="math display">\[g\]</span> is the density over <span class="math display">\[j\]</span>.</p></li>
+</ul>
+<p>We also have:</p>
+<ul>
+<li><span class="math display">\[τ = \sinh(sx)/s\]</span>.</li>
+<li><span class="math display">\[τ&#39; = \cosh(sx)\]</span>. Simpler than expected!</li>
+</ul>
+<p>This is in fact boring: I have validated that it can be used to produce correct densities when implemented in R.</p>

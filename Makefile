@@ -23,6 +23,7 @@
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
+# http://dushoff.github.io/notebook/outputs/newurns.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
@@ -367,13 +368,23 @@ Ignore += urns.pdf
 urns.pdf: urns.comb.md
 	$(pandocs)
 
-## outputs/ version renders, but not this version
+## outputs/ version renders, but not when remade
+## It is not clear what happened 2023 Feb 28 (Tue)
 Ignore += urns.html
 urns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
 
+Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
+
+######################################################################
+
+## What's going on with mathjax
+
+newbd.emb.html: newbd.md
+newbd.jax.html: newbd.md
+newbd.wj.html: newbd.md
 
 ######################################################################
 
