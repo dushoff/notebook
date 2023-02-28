@@ -23,7 +23,7 @@
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
-# http://dushoff.github.io/notebook/outputs/newurns.html
+# http://dushoff.github.io/notebook/outputs/newbd.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
@@ -377,6 +377,10 @@ urns.html: urns.check.tex
 Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
+
+######################################################################
+
+pantest.jax.html: pantest.md
 
 ######################################################################
 
@@ -760,9 +764,6 @@ fourunits.Rout: unitary.Rout fourunits.R
 ## A numeric check about volumes in a martini glass (a problem which confused me)
 martini.Rout: martini.R
 
-## It seems impossible that this was ever useful
-quiz.Rout: quiz.R
-
 ## Test a method for solving an Euler problem (didn't look at answer, just confirmed to make sure I was giving Walt good advice)
 ## pandigital fibs
 pf.out: pf.pl
@@ -774,13 +775,6 @@ alldirs += answer_match
 Ignore += answer_match
 
 ######################################################################
-
-## Testing the RData pipeline??
-## Answer: you need better documentation
-## Also: RData is generally hidden in wrapR, since it's meant to be called indirectly
-runmake = TRUE
-wrap.Rout: wrap.R
-unwrap.Rout: wrap.Rout unwrap.R
 
 gamma_shape.Rout: gamma_shape.R
 
