@@ -356,9 +356,9 @@ Sources += facebook.md
 ## Urns problem
 
 Ignore += urns.comb.md
-## urns.comb.md: urns.md texcomb.pl
-%.comb.md: %.md texcomb.pl
-	$(PUSHRO)
+## urns.comb.md: urns.md
+## %.comb.md: %.md texcomb.pl
+## $(PUSHRO)
 
 Ignore += urns.check.tex
 urns.check.tex: urns.comb.md
@@ -368,27 +368,25 @@ Ignore += urns.pdf
 urns.pdf: urns.comb.md
 	$(pandocs)
 
-## outputs/ version renders, but not when remade
 ## It is not clear what happened 2023 Feb 28 (Tue)
+## Now working with explicit URL AND passing through tex
 Ignore += urns.html
 urns.html: urns.check.tex
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
 
 Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
 
+## Still NOT working with direct path; use a .tex intermediary
+
+## pantest.jax.html: pantest.md
+
 ######################################################################
 
-pantest.jax.html: pantest.md
+## Scaling notes 2023 Mar 01 (Wed) #orthogonality
 
-######################################################################
-
-## What's going on with mathjax
-
-newbd.emb.html: newbd.md
-newbd.jax.html: newbd.md
-newbd.wj.html: newbd.md
+scaling.jax.html: scaling.md
 
 ######################################################################
 
@@ -402,6 +400,8 @@ Ignore += incfuns.pdf
 ## incfuns.pdf: incfuns.md
 incfuns.pdf: incfuns.comb.md
 	$(pandocs)
+
+## incfuns.comb.jax.html: incfuns.md
 
 Ignore += incfuns.html
 ## incfuns.html: incfuns.md

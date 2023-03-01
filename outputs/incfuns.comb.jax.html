@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jonathan Dushoff" />
+  <title>Incidence functions</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Incidence functions</h1>
+<p class="author">Jonathan Dushoff</p>
+<p class="date">2022 Dec</p>
+</header>
+<p>The key to getting nice functional forms <em>with nice parameters</em> for disease-incidence functions is to have both a standard population <span class="math inline">\(K\)</span> and an actual population size <span class="math inline">\(N\)</span>. <span class="math inline">\(K\)</span> is comparable to <span class="math inline">\(N\)</span> (same units) but <em>does not change</em> in the course of a realization of the model. For many models a good choice for <span class="math inline">\(K\)</span> will be the disease-free equilibrium value of <span class="math inline">\(N\)</span>.</p>
+<p>Then we can write the “standard” incidence function (corresponding to frequency-dependent transmission) as:</p>
+<p><span class="math display">\[\Lambda = \beta \frac{  I }{ N  }\]</span></p>
+<p>… and the “mass-action” incidence function (corresponding to density-dependent transmission) as:</p>
+<p><span class="math display">\[\Lambda = \beta \frac{  I }{ K  }\]</span></p>
+<p>In both cases <span class="math inline">\(\Lambda\)</span> and <span class="math inline">\(\beta\)</span> are pure rates, and <span class="math inline">\(I\)</span> has the same units as its denominator.</p>
+<p>From here, we can build friendly versions of generalized incidence, following either the “power” approach</p>
+<p><span class="math display">\[\Lambda = \beta \frac{  I }{ N^\theta K^{1-\theta}  }\]</span></p>
+<p>… or the “saturating” approach</p>
+<p><span class="math display">\[\Lambda = \beta \frac{  I }{ N\theta+K(1-\theta)  }\]</span></p>
+</body>
+</html>

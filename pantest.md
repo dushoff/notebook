@@ -2,4 +2,6 @@
 title: A Test.
 ---
 
-A document with math! $$\alpha^2$$
+A document with math!
+
+$$\alpha^2$$
