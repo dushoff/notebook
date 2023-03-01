@@ -386,7 +386,7 @@ newurns.html: urns.check.tex
 
 ## Scaling notes 2023 Mar 01 (Wed) #orthogonality
 
-scaling.jax.html: scaling.md
+scaling.comb.jax.html: scaling.md makestuff/texcomb.pl 
 
 ######################################################################
 

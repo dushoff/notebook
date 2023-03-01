@@ -11,21 +11,21 @@ If we have a linear model given by $\hat Y = Xβ$, a good way to think about res
 
 It's easy to see that we could unscale a scaled model matrix by right-multiplying by 
 
-$$ S = [[
-[1	μ_1	μ_2	…]
-[0	σ1	0]
-[0	0	σ2]
-[\vdots			\ddots]
-]] $$
+$$ S = \begin{pmatrix}
+1 & μ_1 & μ_2 & …\cr
+0 & σ1 & 0\cr
+0 & 0 & σ2\cr
+\vdots &  &  & \ddots\cr
+\end{pmatrix} $$
 
 The inverse is 
 
-$$ T = [[
-[1	-κ_1	-κ_2	\ldots]
-[0	1/σ_1	0]
-[0	0	1/σ_2]
-[\vdots			\ddots]
-]] $$
+$$ T = \begin{pmatrix}
+1 & -κ_1 & -κ_2 & \ldots\cr
+0 & 1/σ_1 & 0\cr
+0 & 0 & 1/σ_2\cr
+\vdots &  &  & \ddots\cr
+\end{pmatrix} $$
 
 where $κ = σ/μ$ is the CV.
 
