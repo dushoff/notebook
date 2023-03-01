@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jonathan Dushoff" />
+  <title>Scaling a linear model</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Scaling a linear model</h1>
+<p class="author">Jonathan Dushoff</p>
+<p class="date">2023 March</p>
+</header>
+<p>If we have a linear model given by <span class="math inline">\(\hat Y = Xβ\)</span>, a good way to think about rescaling the fit is by writing it as $Y = (XT)(Sβ), where <span class="math inline">\(T\)</span> is a transformation of model matrix, and <span class="math inline">\(S\)</span> is its inverse. Thus, if we fit an lm with model matrix <span class="math inline">\(XT\)</span> the coefficients will be <span class="math inline">\(Sβ\)</span>. Thus we can “undo” the scaling and get the original <span class="math inline">\(β\)</span> back by left-multiplying the new <span class="math inline">\(β\)</span> by the same <span class="math inline">\(T\)</span> that we used on <span class="math inline">\(X\)</span>!</p>
+<h2 id="standard-scaling-like-scale">Standard scaling (like <code>scale()</code>)</h2>
+<p>It’s easy to see that we could unscale a scaled model matrix by right-multiplying by</p>
+<p><span class="math display">\[S = \begin{pmatrix}
+1 &amp; μ_1 &amp; μ_2 &amp; …\cr
+0 &amp; σ1 &amp; 0\cr
+0 &amp; 0 &amp; σ2\cr
+\vdots &amp;  &amp;  &amp; \ddots\cr
+\end{pmatrix}\]</span></p>
+<p>The inverse is</p>
+<p><span class="math display">\[T = \begin{pmatrix}
+1 &amp; -κ_1 &amp; -κ_2 &amp; \ldots\cr
+0 &amp; 1/σ_1 &amp; 0\cr
+0 &amp; 0 &amp; 1/σ_2\cr
+\vdots &amp;  &amp;  &amp; \ddots\cr
+\end{pmatrix}\]</span></p>
+<p>where <span class="math inline">\(κ = σ/μ\)</span> is the CV.</p>
+<p>So <code>scale()</code> is equivalent to right-multiplying <span class="math inline">\(X\)</span> by <span class="math inline">\(T\)</span>. We can transform the coefficients of a scaled fit back to the original coefficients by left-multiplying by the fitted <span class="math inline">\(β\)</span> by <span class="math inline">\(T\)</span>.</p>
+</body>
+</html>
