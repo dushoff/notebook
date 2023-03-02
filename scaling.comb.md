@@ -29,4 +29,4 @@ $$ T = \begin{pmatrix}
 
 where $κ = σ/μ$ is the CV.
 
-So `scale()` is equivalent to right-multiplying $X$ by $T$. We can transform the coefficients of a scaled fit back to the original coefficients by left-multiplying by the fitted $β$ by $T$.
+So `scale()` is equivalent to right-multiplying $X$ by $T$. We can transform the coefficients of a scaled fit back to the original coefficients by left-multiplying the fitted $β$ by $T$.

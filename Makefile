@@ -6,6 +6,7 @@
 # http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
+# http://localhost:4111/notebook/incfuns.comb.html
 
 # http://dushoff.github.io/notebook/outputs/incfuns.comb.jax.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -34,7 +35,7 @@
 # https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
 # https://github.com/dushoff/notebook/raw/master/outputs/rp.newpyth.Rout.pdf
 
-# make serve ## jekyll.log ##
+# serve: jekyll.log
 
 ## Suppress pandoc (don't want to pandoc here, we want to make serve instead)
 
@@ -72,6 +73,8 @@ skewnormal.gh.md: skewnormal.rmd Makefile
 	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
 
 ######################################################################
+
+autopipeR = defined
 
 ## order statistics experiments
 
@@ -260,8 +263,6 @@ vlap_plots.Rout: lap_plots.R vlaps.rds
 
 ######################################################################
 
-autopipeR = defined
-
 # http://localhost:4111/notebook/statstrength.html
 # http://dushoff.github.io/notebook/statstrength.html
 statstrength.md:  statstrength_figs
@@ -272,6 +273,10 @@ Ignore += statstrength_cases-*.pdf
 ## statstrength_figs/case-0.png: statstrength_cases-0.pdf
 statstrength_figs/case-%.png: statstrength_cases-%.pdf 
 	convert -density 400 -crop 3200x1000+400+300 -trim $< -quality 100 -sharpen 0x1.0 $@
+
+clarStrength.Rout: clarStrength.R
+
+######################################################################
 
 acf.Rout: acf.R
 
@@ -348,6 +353,8 @@ backproj.Rout: backproj.R
 ## shifts.md.voice: shifts.md voice.pl
 
 ######################################################################
+
+## jax.md Notes about rendering
 
 ## Facebook birthday
 

@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Incidence functions
 author: Jonathan Dushoff
 fontsize: 12pt
