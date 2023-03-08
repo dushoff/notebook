@@ -630,9 +630,10 @@ correlate.Rout: correlate.R rclean.pl
 ## Developed from Brent D.
 ## Moved here for Mike R.
 
+## Not tested for pipeR
 color_pix: colors.Rout-0.png.gp colors.Rout-0.small.png.gp colors.Rout-1.png.gp
 colors.Rout: colors.R
-	$(wrapR)
+	$(pipeR)
 colors.Rout.png: colors.R
 Ignore += colors.small.png
 %.small.png: %.png
@@ -800,26 +801,20 @@ Sources += checkplots.Rmd
 
 ####### Modularized diagnostic plots
 checkFuns.Rout: checkFuns.R
-	$(wrapR)
+	$(pipeR)
 
 ### Sets of fake data
 
 lndata.Rout: lndata.R
-	$(wrapR)
 gamdata.Rout: gamdata.R
-	$(wrapR)
 tdata.Rout: tdata.R
-	$(wrapR)
 cauchy.Rout: cauchy.R
-	$(wrapR)
 
 ## Stats on a list of lists of fake data (or something)
 
-## GrandMean is here, and is bad.
-## lndata.liststats.Rout:
-## tdata.liststats.Rout:
+## gamdata.liststats.Rout: liststats.R
 impmakeR += liststats
-%.liststats.Rout: %.rda liststats.R
+%.liststats.Rout: %.rds liststats.R
 	$(pipeR)
 
 ## checkplot
@@ -852,21 +847,17 @@ impmakeR += listplots
 %.slugPlots.Rout: checkFuns.rda %.liststats.rda slugPlots.R
 	$(run-R)
 
-## tdata.rangePlots.Rout: rangePlots.R
-%.rangePlots.Rout: %.liststats.Rout checkFuns.Rout rangePlots.R
-	$(run-R)
-
 ## What is this??
 roswellCheck.Rout: roswellCheck.R
 
 ### How to do the binomial?
 
-binom.Rout: checkFuns.Rout binom.R
+binom.Rout: checkFuns.rda binom.R
 
 blaker.Rout: blaker.R
 
 ### The simplest example
-freqPiano.Rout: checkFuns.Rout freqPiano.R
+freqPiano.Rout: freqPiano.R checkFuns.rda
 
 ######################################################################
 
@@ -914,22 +905,6 @@ sublime.out: sublime.in sublime.pl
 
 ######################################################################
 
-## Boot camp
-
-## mkdir boot ##
-## downcall boot/ ##
-Ignore += $(wildcard boot/*)
-
-############## simple incidence -- bailed for time (and dis-modularity of old work flow)
-incidence.Rout: boot/inc01.xls fitting_code/routines.Rout incidence.R
-	$(run-R)
-
-pardirs += fitting_code
-
-Ignore += $(pardirs)
-
-######################################################################
-
 # Scripts
 
 ## AoC Monster messages.
@@ -946,10 +921,10 @@ filledCircle.Rout: filledCircle.R
 
 pythagoras.Rout: pythagoras.R
 newpyth.Rout: newpyth.R
-	$(wrapR)
+	$(pipeR)
 
 rp.newpyth.Rout: rp.R newpyth.rda
-	$(wrapR)
+	$(pipeR)
 
 cards.Rout: cards.R
 

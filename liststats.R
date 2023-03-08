@@ -1,9 +1,9 @@
 library(shellpipes)
 
-loadEnvironments()
+dat <- rdsRead()
 
-## Maybe replace this upstream (calculate means?) some time when I have internet access
-## This is a source of instability for unstable distributions; better to use the theoretical mean
+## This function is not currently used, but could be called when no mean is available in future
+## It will be a source of instability for unstable distributions; better to use the theoretical mean in general
 grandMean <- function(datList){
 	mv <- sapply(datList, mean)
 	return(mean(mv))
@@ -27,7 +27,7 @@ multT <- function(datList, m=0){
 stats <- list()
 
 for (tag in names(dat)){
-	stats[[tag]] <- multT(dat[[tag]], m=grandMean(dat[[tag]]))
+	stats[[tag]] <- multT(dat[[tag]]$sims, m=dat[[tag]]$mean)
 }
 
 saveEnvironment()

@@ -1,4 +1,6 @@
 
+library(shellpipes)
+
 ######################################################################
 
 ## Number theory: these functions are fun, but inefficient
@@ -56,3 +58,5 @@ pythPoints <- function(picSize, pointSize, axes=FALSE){
 		}
 	}
 }
+
+saveEnvironment()

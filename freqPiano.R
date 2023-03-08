@@ -1,5 +1,8 @@
 library(ggplot2); theme_set(theme_bw())
 
+library(shellpipes)
+loadEnvironments()
+
 set.seed(1256)
 
 ## Return a one-sided P value from a t-test

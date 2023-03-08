@@ -1,3 +1,4 @@
+library(shellpipes)
 
 ## In the middle of modularizing: checkplot should be wpPlot and should call pianoplot
 checkplot <- function(stats, breaks=seq(0,1,0.05), tag="", Wmin=0){
@@ -79,3 +80,5 @@ slug <- function(tf){
 		)
 	)
 }
+
+saveEnvironment()

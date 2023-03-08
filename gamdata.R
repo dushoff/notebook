@@ -1,6 +1,8 @@
-library(tidyverse)
+library(purrr)
 
-numSims <- 2e3
+library(shellpipes)
+
+numSims <- 1e4
 kRange <- seq(0.01, 0.51, length.out=11)
 
 points <- 8
@@ -10,5 +12,12 @@ dat <- list()
 
 for (k in kRange){
 	tag <- paste0("k_", k)
-	dat[[tag]] <- rerun(numSims, rgamma(points, shape=1/k))
+	dat[[tag]] <- list(
+		mean = 1/k
+		, sims=map(1:numSims, ~rgamma(points, shape=1/k))
+	)
+	print(tag)
+	print(sapply(dat[[tag]], mean))
 }
+
+rdsSave(dat)

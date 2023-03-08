@@ -1,4 +1,6 @@
-library(tidyverse)
+library(purrr)
+
+library(shellpipes)
 
 numSims <- 1e4
 tRange <- seq(6, 1)
@@ -10,5 +12,10 @@ dat <- list()
 
 for (df in tRange){
 	tag <- paste0("t_", df)
-	dat[[tag]] <- rerun(numSims, rt(points, df=df))
+	dat[[tag]] <- list(
+		mean = 0
+		, sims=map(1:numSims, ~rt(points, df=df))
+	)
 }
+
+rdsSave(dat)
