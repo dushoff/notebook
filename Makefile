@@ -839,7 +839,7 @@ impmakeR += listplots
 %.rangePlots.Rout: checkFuns.rda %.liststats.rda rangePlots.R
 	$(run-R)
 
-## Slug plots are currently one type of range plot?
+## Slug plots are one type of range plot?
 ## lndata.slugPlots.Rout: slugPlots.R
 ## gamdata.slugPlots.Rout: slugPlots.R
 ## tdata.slugPlots.Rout: slugPlots.R
