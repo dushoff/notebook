@@ -1,9 +1,9 @@
-# notebook (gh-pages branch, which is the only one I use)
-# actually, things are now hosted on master and pages should maybe be nuked
+# notebook (hosted on master now)
+
+# http://localhost:4111/notebook/expCensoring
 
 # https://github.com/dushoff/notebook/tree/master
 
-# http://localhost:4111/notebook/17.html
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
 # http://localhost:4111/notebook/incfuns.comb.html
@@ -205,6 +205,13 @@ partic.Rout: partic.R
 
 ## stochInv project MOVED!!!
 hetGen.Rout: hetGen.R
+
+######################################################################
+
+## Linton et al. correction notes
+
+# http://dushoff.github.io/notebook/outputs/incfuns.comb.jax.html
+## expCensoring.comb.md: expCensoring.md
 
 ######################################################################
 
