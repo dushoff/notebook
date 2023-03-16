@@ -25,4 +25,4 @@ L = \frac
 {\int_{e_L}^{e_R} \int_{e_L}^{T} g(e) f(s-e) ds\,de}
 $$
 
-We can correct for dynamical effects on the scale of the _censoring_ window) by using $$g(e) = \exp(re)$$, instead of $$g(e)=1$$. We expect this correction to have small effect as long the unitless quantity $$r(e_R-e_L)$$ is almost always small (in other words, as long as the censoring interval is almost always substantially less than the time scale of exponential change $$1/\vert r\vert $$.
+We can correct for dynamical effects on the scale of the _censoring_ window by using $$g(e) = \exp(re)$$, instead of $$g(e)=1$$. We expect this correction to have small effect as long the unitless quantity $$r(e_R-e_L)$$ is almost always small (in other words, as long as the censoring interval is almost always substantially less than the time scale of exponential change $$1/\vert r\vert $$.
