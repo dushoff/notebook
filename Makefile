@@ -9,6 +9,7 @@
 # http://localhost:4111/notebook/incfuns.comb.html
 
 # http://dushoff.github.io/notebook/expCensoring
+# http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
 # http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html

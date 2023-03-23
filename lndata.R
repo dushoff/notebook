@@ -5,7 +5,7 @@ library(shellpipes)
 numSims <- 1e4
 sdlogRange <- seq(0.01, 0.51, length.out=11)
 
-points <- 20
+points <- 2000
 set.seed(7084)
 
 dat <- list()
