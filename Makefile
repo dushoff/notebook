@@ -112,10 +112,6 @@ roswell_covid.Rout: roswell_covid.R breaks.rda times.states.01.csv
 
 ######################################################################
 
-## perl.def is not robust (makes successful-looking target while failing)
-sand.out: sand.pl
-	$(PUSH)
-
 ## Counting ways of combining numbers
 
 ## A list of 15000 combinations
