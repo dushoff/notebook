@@ -1,4 +1,9 @@
 
+## Using base units and writing explicit conversions
+#### Is fun
+#### incentivizes being clear about units (e.g., the definitions under Examples)
+#### Allows some checking (change the "Base units" and confirm that answers don't change)
+
 ## Base units
 day = 41
 m = 2
