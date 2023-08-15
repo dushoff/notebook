@@ -1,10 +1,11 @@
-
 ## Using base units and writing explicit conversions
 #### Is fun
 #### incentivizes being clear about units (e.g., the definitions under Examples)
+#### reminds you to add units to axes
 #### Allows some checking (change the "Base units" and confirm that answers don't change)
 
-## Base units
+## Base units (these numbers are arbitrary)
+## change them from time to time; if outputs change you likely have a units error
 day = 41
 m = 2
 
