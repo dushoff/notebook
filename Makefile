@@ -6,7 +6,6 @@
 
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
-# http://localhost:4111/notebook/incfuns.comb.html
 
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
@@ -403,6 +402,7 @@ scaling.comb.jax.html: scaling.md makestuff/texcomb.pl
 
 ## Incidence function notes from DAIDD 2022
 
+# http://dushoff.github.io/notebook/outputs/incfuns.comb.jax.html
 Ignore += incfuns.check.tex
 incfuns.check.tex: incfuns.comb.md
 	$(pandocs)
@@ -1076,7 +1076,7 @@ Sources += _includes/* _layouts/* css/* _sass/*
 
 Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
-Gemfile:
+Gemfile.sb:
 	/bin/ln -s Gemfile_sb $@
 
 ######################################################################
