@@ -57,6 +57,10 @@ multilog.pdf: multilog.tex
 
 ######################################################################
 
+units_trick.Rout: units_trick.R
+
+######################################################################
+
 ## Quantile-based distributions
 # Johnson code is in https://github.com/dushoff/scratch
 
