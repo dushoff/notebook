@@ -183,6 +183,13 @@ Ignore += *.bcalc *.bvals
 
 ######################################################################
 
+%.bc.out: %.bc
+	bc -l < $< > $@
+
+cryptic_heavy.bc.out: cryptic_heavy.bc
+
+######################################################################
+
 ## Spinning a reverse-Polish engine for non-existent deeper explorations; stopped at random
 ## Uses digits, not real numbers (easy to fix)
 
