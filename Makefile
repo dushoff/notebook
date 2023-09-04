@@ -62,6 +62,15 @@ units_trick.Rout: units_trick.R
 
 ######################################################################
 
+.PHONY: calling.HTML
+Sources += calling.html
+Ignore += calling.HTML
+calling.HTML: calling.html calling.pl
+	$(PUSH)
+
+
+######################################################################
+
 ## Quantile-based distributions
 # Johnson code is in https://github.com/dushoff/scratch
 
