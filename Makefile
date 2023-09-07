@@ -66,7 +66,7 @@ Sources += calling.html
 Ignore += calling.HTML
 calling.HTML: calling.html calling.pl
 	$(PUSH)
-	google-chrome --new-window $@
+	google-chrome --new-window $@ &
 
 ######################################################################
 
