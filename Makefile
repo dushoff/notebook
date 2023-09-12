@@ -61,6 +61,15 @@ units_trick.Rout: units_trick.R
 
 ######################################################################
 
+.PHONY: calling.HTML
+Sources += calling.html
+Ignore += calling.HTML
+calling.HTML: calling.html calling.pl
+	$(PUSH)
+	google-chrome --new-window $@ &
+
+######################################################################
+
 ## Quantile-based distributions
 # Johnson code is in https://github.com/dushoff/scratch
 
@@ -187,6 +196,13 @@ Ignore += *.bcalc *.bvals
 ## waltcount.nopower.abc.ivals.bvals:
 %.bvals: %.bcalc
 	sort -nu $< > $@
+
+######################################################################
+
+%.bc.out: %.bc
+	bc -l < $< > $@
+
+cryptic_heavy.bc.out: cryptic_heavy.bc
 
 ######################################################################
 
