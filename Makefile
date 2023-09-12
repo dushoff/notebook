@@ -78,6 +78,10 @@ skewnormal.gh.md: skewnormal.rmd Makefile
 
 ######################################################################
 
+## chainedStates.md
+
+######################################################################
+
 autopipeR = defined
 
 ## order statistics experiments
