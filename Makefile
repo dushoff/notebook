@@ -66,7 +66,10 @@ Sources += calling.html
 Ignore += calling.HTML
 calling.HTML: calling.html calling.pl
 	$(PUSH)
-	google-chrome --new-window $@ &
+
+call: calling.HTML
+	google-chrome --new-window $< &
+	while true; do $(MAKE) $<; sleep 3; done
 
 ######################################################################
 
