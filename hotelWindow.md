@@ -4,7 +4,7 @@ The average speed passing your window is v_w = 1.6m/0.15s. Take that as approxim
 
 (1.6/0.15)^2/(2*9.8) ## 5.80m
 
-Since the middle is 0.8m from the top, this is 5m from the top.
+Since the middle is 0.8m from the top, this is 5.00m from the top.
 
 This method will not always be good. The acceleration during the window stage should be relatively small compared to the mean velocity.
 
@@ -38,7 +38,7 @@ Simplify some more so that we can square both sides again!
 
 h_t = (1.0134s)^2 * g/2 
 
-1.0134^2 * 9.8/2 ## 5.032
+1.0134^2 * 9.8/2 ## 5.032m
 
 So that's presumably how you were supposed to do it. Notice that the approximation worked pretty well in this case, but I was also a bit worried how you were supposed to know that it would.
 
