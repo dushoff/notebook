@@ -32,7 +32,7 @@ Simplify some more so that we can square both sides again!
 
 (2*(1.6m)/g - δ^2)/(2δ) = sqrt(2h_t/g)
 
-(2*(1.6)/9.8 - 0.15^2)/(2*0.15) ## 1.0134s
+(2*1.6/9.8 - 0.15^2)/(2*0.15) ## 1.0134s
 
 (1.0134s)^2 = 2h_t/g
 
