@@ -61,6 +61,7 @@ multilog.pdf: multilog.tex
 
 units_trick.Rout: units_trick.R
 
+Ignore += hotelWindow.html
 hotelWindow.html: hotelWindow.md
 	pandoc -f gfm -o $@ $< 
 
