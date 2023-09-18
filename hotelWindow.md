@@ -24,6 +24,8 @@ sqrt(2h_b/g) = sqrt(2h_t/g) + δ
 
 2h_b/g = 2h_t/g + 2δ sqrt(2h_t/g) + δ^2
 
+A key point is that we know the difference between h_b and h_t
+
 2/g(h_b-h_t) - δ^2 =  2δ sqrt(2h_t/g)
 
 2*(1.6m)/g - δ^2 = 2δ sqrt(2h_t/g)
@@ -32,7 +34,7 @@ Simplify some more so that we can square both sides again!
 
 (2*(1.6m)/g - δ^2)/(2δ) = sqrt(2h_t/g)
 
-(2*1.6/9.8 - 0.15^2)/(2*0.15) ## 1.0134s
+(2×1.6/9.8 - 0.15^2)/(2*0.15) ## 1.0134s
 
 (1.0134s)^2 = 2h_t/g
 
