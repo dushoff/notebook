@@ -1,5 +1,7 @@
 # notebook (hosted on master now)
 
+# http://dushoff.github.io/notebook/hotelWindow
+
 # http://localhost:4111/notebook/expCensoring
 
 # https://github.com/dushoff/notebook/tree/master
@@ -59,7 +61,8 @@ multilog.pdf: multilog.tex
 
 units_trick.Rout: units_trick.R
 
-## hotelWindow.md
+hotelWindow.html: hotelWindow.md
+	pandoc -f gfm -o $@ $< 
 
 ######################################################################
 

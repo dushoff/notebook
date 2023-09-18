@@ -6,7 +6,7 @@ The average speed passing your window is v_w = 1.6m/0.15s. Take that as approxim
 
 Since the middle is 0.8m from the top, this is 5.00m from the top.
 
-This method will not always be good. The acceleration during the window stage should be relatively small compared to the mean velocity.
+This method will not always be good. The accumulated acceleration (change in velocity) during the window stage should be relatively small compared to the mean velocity.
 
 ## Exact solution
 
