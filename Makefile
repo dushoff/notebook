@@ -59,6 +59,8 @@ multilog.pdf: multilog.tex
 
 units_trick.Rout: units_trick.R
 
+## hotelWindow.md
+
 ######################################################################
 
 .PHONY: calling.HTML
