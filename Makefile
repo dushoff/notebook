@@ -1,5 +1,7 @@
 # notebook (hosted on master now)
 
+# http://dushoff.github.io/notebook/hotelWindow
+
 # http://localhost:4111/notebook/expCensoring
 
 # https://github.com/dushoff/notebook/tree/master
@@ -59,6 +61,10 @@ multilog.pdf: multilog.tex
 
 units_trick.Rout: units_trick.R
 
+Ignore += hotelWindow.html
+hotelWindow.html: hotelWindow.md
+	pandoc -f gfm -o $@ $< 
+
 ######################################################################
 
 .PHONY: calling.HTML
@@ -67,6 +73,9 @@ Ignore += calling.HTML
 calling.HTML: calling.html calling.pl
 	$(PUSH)
 
+call: calling.HTML
+	google-chrome --new-window $< &
+	while true; do $(MAKE) $<; sleep 3; done
 
 ######################################################################
 
@@ -84,6 +93,10 @@ skewnormal.rmd.html: skewnormal.rmd
 ## Here it is refusing to not escape the tex
 skewnormal.gh.md: skewnormal.rmd Makefile
 	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
+
+######################################################################
+
+## chainedStates.md
 
 ######################################################################
 
