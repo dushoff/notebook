@@ -459,6 +459,13 @@ close.pdf: close.txt
 
 ######################################################################
 
+## test curving 2023
+
+orCurve.Rout: orCurve.R
+
+orCurve.mac.out: orCurve.mac
+	maxima -b $< > $@
+
 ## Test curving 2020 online final was too hard.
 ## Not sure what I did here; I think just a simple OR adjustment (unlike the older wiki stuff)
 
