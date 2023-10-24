@@ -1,5 +1,7 @@
 # notebook (hosted on master now)
 
+# http://dushoff.github.io/notebook/hotelWindow
+
 # http://localhost:4111/notebook/expCensoring
 
 # https://github.com/dushoff/notebook/tree/master
@@ -59,6 +61,22 @@ multilog.pdf: multilog.tex
 
 units_trick.Rout: units_trick.R
 
+Ignore += hotelWindow.html
+hotelWindow.html: hotelWindow.md
+	pandoc -f gfm -o $@ $< 
+
+######################################################################
+
+.PHONY: calling.HTML
+Sources += calling.html
+Ignore += calling.HTML
+calling.HTML: calling.html calling.pl
+	$(PUSH)
+
+call: calling.HTML
+	google-chrome --new-window $< &
+	while true; do $(MAKE) $<; sleep 3; done
+
 ######################################################################
 
 ## Quantile-based distributions
@@ -75,6 +93,10 @@ skewnormal.rmd.html: skewnormal.rmd
 ## Here it is refusing to not escape the tex
 skewnormal.gh.md: skewnormal.rmd Makefile
 	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
+
+######################################################################
+
+## chainedStates.md
 
 ######################################################################
 
@@ -451,6 +473,13 @@ close.pdf: close.txt
 	pdfroff $< | cpdf -crop "0.9in 10.8in 1.8in 0.2in" -stdin -o $@ 
 
 ######################################################################
+
+## test curving 2023
+
+orCurve.Rout: orCurve.R
+
+orCurve.mac.out: orCurve.mac
+	maxima -b $< > $@
 
 ## Test curving 2020 online final was too hard.
 ## Not sure what I did here; I think just a simple OR adjustment (unlike the older wiki stuff)
