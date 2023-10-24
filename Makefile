@@ -189,6 +189,8 @@ Ignore += *.bcalc *.bvals
 %.bc.out: %.bc
 	bc -l < $< > $@
 
+plane.bc.out: plane.bc
+
 cryptic_heavy.bc.out: cryptic_heavy.bc
 
 ######################################################################
