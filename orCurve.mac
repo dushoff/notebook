@@ -1,0 +1,7 @@
+prop: x/tot$
+odds: fullratsimp(prop/(1-prop));
+newodds: m*odds+b;
+newprop: fullratsimp(newodds/(1+newodds));
+score: fullratsimp(tot*newprop);
+string(score);
+

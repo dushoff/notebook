@@ -217,6 +217,8 @@ Ignore += *.bcalc *.bvals
 %.bc.out: %.bc
 	bc -l < $< > $@
 
+plane.bc.out: plane.bc
+
 cryptic_heavy.bc.out: cryptic_heavy.bc
 
 ######################################################################
@@ -477,6 +479,13 @@ close.pdf: close.txt
 	pdfroff $< | cpdf -crop "0.9in 10.8in 1.8in 0.2in" -stdin -o $@ 
 
 ######################################################################
+
+## test curving 2023
+
+orCurve.Rout: orCurve.R
+
+orCurve.mac.out: orCurve.mac
+	maxima -b $< > $@
 
 ## Test curving 2020 online final was too hard.
 ## Not sure what I did here; I think just a simple OR adjustment (unlike the older wiki stuff)

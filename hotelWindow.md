@@ -1,8 +1,8 @@
-## Hotel window problem
+# Hotel window problem
 
 A dropped object passes your 1.6 m high hotel window in High-school-physics World in 0.15s. How high was it dropped from? 
 
-## Approximate solultion
+## Approximate solution
 
 The average speed passing your window is v_w = 1.6m/0.15s. Take that as approximately the speed in the _middle_ of the window and use v^2 = 2ad. Then drop point is d = v_w^/2g above the middle of the window.
 
@@ -44,10 +44,6 @@ Simplify some more so that we can square both sides again!
 
 h_t = (1.0134s)^2 * g/2 
 
-1.0134^2 * 9.8/2 ## 5.032m
+1.0134^2 * 9.8/2 ## 5.032m from the top of your window.
 
 So that's presumably how you were supposed to do it. Notice that the approximation worked pretty well in this case, but I was also a bit worried how you were supposed to know that it would.
-
-
-
-
