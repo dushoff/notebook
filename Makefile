@@ -79,6 +79,12 @@ call: calling.HTML
 
 ######################################################################
 
+## Composite of the day (cotd)
+
+composite_list.Rout: composite_list.R
+
+######################################################################
+
 ## Quantile-based distributions
 # Johnson code is in https://github.com/dushoff/scratch
 
