@@ -3,7 +3,7 @@ use 5.10.0;
 
 my $base=100;
 my $mult=27;
-my $max=12;
+my $max=27;
 my $gcf=3;
 my @first;
 
