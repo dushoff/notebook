@@ -86,6 +86,12 @@ call: calling.HTML
 
 ######################################################################
 
+## Composite of the day (cotd)
+
+composite_list.Rout: composite_list.R
+
+######################################################################
+
 ## Quantile-based distributions
 # Johnson code is in https://github.com/dushoff/scratch
 
@@ -219,6 +225,8 @@ Ignore += *.bcalc *.bvals
 
 %.bc.out: %.bc
 	bc -l < $< > $@
+
+plane.bc.out: plane.bc
 
 cryptic_heavy.bc.out: cryptic_heavy.bc
 
@@ -1043,10 +1051,11 @@ elves.out: elves.pl
 elves.html: elves.md
 
 ## Batting averages
-average.md:
+	average.md:
 Ignore += average.out
 average.out: average.pl
 	$(PUSH)
+
 average.Rout: average.R average.out
 
 ### Hmm. this all seems a bunch of nonsense. Understand (document?) before trying to hack.

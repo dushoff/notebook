@@ -68,3 +68,8 @@ divmultbreaks(y)
 divmultbreaks(y, split=TRUE)
 
 exp(splitDecades(log(y)))
+
+ros <- c(0.698, 2.044)
+divmultbreaks(ros)
+divmultbreaks(ros, n=7)
+divmultbreaks(ros, nmin=5)
