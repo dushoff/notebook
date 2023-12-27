@@ -20,6 +20,7 @@ win <- (ts
 	|> distinct()
 	|> mutate(start=-Inf, end=Inf)
 )
+
 mod <- egf(model = egf_model(curve = "logistic", family = "pois")
 	, data_ts = ts
 	, formula_ts = cbind(t, cases) ~ country
