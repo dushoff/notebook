@@ -59,8 +59,15 @@ multilog.pdf: multilog.tex
 
 ######################################################################
 
+## Play with epigrowthfit
+
+egf.Rout: egf.R
+
+######################################################################
+
 units_trick.Rout: units_trick.R
 
+## Inelegant solution to one of M's physics problems
 Ignore += hotelWindow.html
 hotelWindow.html: hotelWindow.md
 	pandoc -f gfm -o $@ $< 
@@ -112,11 +119,13 @@ order.Rout: order.R
 orderStats.Rout: orderStats.R
 
 ## spin Not working well (needs to pass shellpipes stuff, for example)
+## Seems like craziness anyway (rule doesn't specify target)
+## Changed pipeline to read order.md and got a different error 2023 Dec 27 (Wed)
 Ignore += *.MD
 order.MD: order.R
 	Rscript -e "knitr::spin('$<')"
 Ignore += order.pdf order.html
-order.pdf: order.MD
+order.pdf: order.md
 	$(pandocs)
 
 ######################################################################
