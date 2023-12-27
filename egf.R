@@ -23,11 +23,13 @@ win <- (ts
 mod <- egf(model = egf_model(curve = "logistic", family = "pois")
 	, data_ts = ts
 	, formula_ts = cbind(t, cases) ~ country
-	, formula_parameters = ~ country
+	, formula_parameters = ~ 0+country
 	, data_windows = win
 	, formula_windows = cbind(start, end) ~ country
 	, se = TRUE
 )
 
-summary(mod)
-
+mod$effects
+coef(mod)
+confint(mod)
+predict(mod)
