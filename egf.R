@@ -1,6 +1,8 @@
 library(epigrowthfit)
 library(dplyr)
 
+
+
 ts <- read.table(header=TRUE, text = "\
 t cases country
 1 9 Canada
@@ -21,6 +23,17 @@ win <- (ts
 	|> mutate(start=-Inf, end=Inf)
 )
 
+modzero <- egf(model = egf_model(curve = "logistic", family = "pois")
+	, data_ts = ts
+	, formula_ts = cbind(t, cases) ~ country
+	, formula_parameters = ~ country
+	, data_windows = win
+	, formula_windows = cbind(start, end) ~ country
+	, se = TRUE
+)
+
+options(contrasts=replace(getOption("contrasts"), "unordered", "contr.sum"))
+
 mod <- egf(model = egf_model(curve = "logistic", family = "pois")
 	, data_ts = ts
 	, formula_ts = cbind(t, cases) ~ country
@@ -30,7 +43,7 @@ mod <- egf(model = egf_model(curve = "logistic", family = "pois")
 	, se = TRUE
 )
 
-mod$effects
-coef(mod)
-confint(mod)
-predict(mod)
+fixef(modzero)
+fixef(mod)
+## confint(mod)
+## predict(mod, log=FALSE)
