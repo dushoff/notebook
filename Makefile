@@ -65,6 +65,12 @@ egf.Rout: egf.R
 
 ######################################################################
 
+######################################################################
+
+## 2024 is a CIPS!
+
+cips.Rout: cips.R
+
 units_trick.Rout: units_trick.R
 
 ## Inelegant solution to one of M's physics problems
