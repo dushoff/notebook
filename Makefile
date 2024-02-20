@@ -1,14 +1,15 @@
 # notebook (hosted on master now)
 
-# http://dushoff.github.io/notebook/hotelWindow
+# http://localhost:4111/notebook/ComplexFactoring
 
-# http://localhost:4111/notebook/expCensoring
+# http://dushoff.github.io/notebook/hotelWindow
 
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
 # http://localhost:4111/notebook/shifts.html
 
+# http://dushoff.github.io/notebook/ComplexFactoring
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -580,7 +581,10 @@ Ignore += $(wildcard rmd.md)
 hetSusc%.md: hetSusc%.wikitext
 	pandoc -f mediawiki -t gfm -o $@ $< 
 
-ComplexFactoring.md: ComplexFactoring.wikitext
+## Edit by hand ComplexFactoring.md from ComplexFactoring.wikitext
+
+
+
 
 ######################################################################
 
