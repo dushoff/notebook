@@ -7,7 +7,7 @@
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
-# http://localhost:4111/notebook/shifts.html
+# http://localhost:4111/notebook/ComplexFactoring
 
 # http://dushoff.github.io/notebook/ComplexFactoring
 # http://dushoff.github.io/notebook/expCensoring
@@ -420,6 +420,10 @@ backproj.Rout: backproj.R
 
 Sources += facebook.md
 
+######################################################################
+
+panmath = pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
+
 ## Urns problem
 
 Ignore += urns.comb.md
@@ -439,11 +443,29 @@ urns.pdf: urns.comb.md
 ## Now working with explicit URL AND passing through tex
 Ignore += urns.html
 urns.html: urns.check.tex
-	pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
+	$(panmath)
 
 Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
+
+
+######################################################################
+
+## Edit by hand ComplexFactoring.md from ComplexFactoring.wikitext
+
+## ComplexFactoring.html: ComplexFactoring.md
+
+Ignore += ComplexFactoring.tex
+ComplexFactoring.tex: ComplexFactoring.md
+	$(pandocs)
+
+Ignore += ComplexFactoring.html
+ComplexFactoring.html: ComplexFactoring.tex
+	$(panmath)
+
+
+######################################################################
 
 ## Still NOT working with direct path; use a .tex intermediary
 
@@ -581,7 +603,7 @@ Ignore += $(wildcard rmd.md)
 hetSusc%.md: hetSusc%.wikitext
 	pandoc -f mediawiki -t gfm -o $@ $< 
 
-## Edit by hand ComplexFactoring.md from ComplexFactoring.wikitext
+
 
 
 
@@ -1144,8 +1166,9 @@ Sources += _includes/* _layouts/* css/* _sass/*
 
 Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
-Gemfile.sb:
-	/bin/ln -s Gemfile_sb $@
+## Gemfile.sb: 
+Gemfile.%:
+	/bin/ln -s Gemfile_$* Gemfile
 
 ######################################################################
 
