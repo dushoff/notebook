@@ -5,8 +5,9 @@
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
+# http://localhost:4111/notebook/ComplexFactoring.out
 
-# http://dushoff.github.io/notebook/ComplexFactoring
+# http://dushoff.github.io/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -451,6 +452,7 @@ newurns.html: urns.check.tex
 
 ## Edit by hand ComplexFactoring.md from ComplexFactoring.wikitext
 
+## Rename made files to use TEX, &c.
 ## ComplexFactoring.html: ComplexFactoring.md
 
 Ignore += ComplexFactoring.tex
@@ -461,6 +463,12 @@ Ignore += ComplexFactoring.html
 ComplexFactoring.html: ComplexFactoring.tex
 	$(panmath)
 
+## mathjax does not work at all this way for me (at least under jekyll)
+ComplexFactoring.out.md: ComplexFactoring.tex
+	$(panmath)
+
+ComplexFactoring.pan.md: ComplexFactoring.tex
+	$(pandocs)
 
 ######################################################################
 

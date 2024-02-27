@@ -25,6 +25,3 @@ So if $95+22i$ is $ab$, and $97+10i$ is $a\bar b$ (for example), then we should 
 We could now divide 9509 by 37, to finish factoring the composite of the day. But that would be a bit boring. The other thing we could do is the same trick over again. Starting instead with $95-22i$ and $97+10i$, we subtract to get $2+32i$. Factoring out 2 again, we notice we have a prime product again: $1+16i$ times its complex conjugate is 257. So we conclude that 9509=37*257.
 
 I find it pretty cool that this works.
-
-[[Category:Blog posts]]
-
