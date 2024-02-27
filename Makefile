@@ -464,6 +464,7 @@ ComplexFactoring.html: ComplexFactoring.tex
 	$(panmath)
 
 ## mathjax does not work at all this way for me (at least under jekyll)
+## Making pdf this way _does_ work (and I did it accidentally), but probably the same or worse than making it directly from tex
 ComplexFactoring.out.md: ComplexFactoring.tex
 	$(panmath)
 
