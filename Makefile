@@ -1,13 +1,10 @@
 # notebook (hosted on master now)
 
-# http://localhost:4111/notebook/ComplexFactoring
-
 # http://dushoff.github.io/notebook/hotelWindow
 
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
-# http://localhost:4111/notebook/ComplexFactoring
 
 # http://dushoff.github.io/notebook/ComplexFactoring
 # http://dushoff.github.io/notebook/expCensoring
