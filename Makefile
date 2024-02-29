@@ -951,6 +951,12 @@ freqPiano.Rout: freqPiano.R checkFuns.rda
 
 ######################################################################
 
+## Try perm CIs; do the pianos come into play?
+
+permCI.Rout: permCI.R
+
+######################################################################
+
 ## Constrained quadratic
 ## Arising from rubella project
 
