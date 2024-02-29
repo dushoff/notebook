@@ -6,11 +6,9 @@ fontsize: 12pt
 
 I factored a Composite of the Day by using imaginary numbers, which I think is pretty cool.
 
-The number was 9509, which I noticed immediately is
+The number was 9509, which I noticed immediately is $97^2+10^2.$
 
-$$97^2+10^2.$$
-
-Once I know this, I know how to factor it in the "complex plane" (that is, using numbers that have an imaginary part): $9509 = (97+10i)*(97-10i)$, where $i=\sqrt{-1}$. Numbers like $97+10i$ are called [http://en.wikipedia.org/wiki/Gaussian_integer Gaussian integers]. If you don't understand why $9509 = (97+10i)*(97-10i)$, but are still interested in this post, you should take a minute to figure it out.
+Once I know this, I know how to factor it in the "complex plane" (that is, using numbers that have an imaginary part): $9509 = (97+10i)*(97-10i)$, where $i=\sqrt{-1}$. Numbers like $97+10i$ are called [Gaussian integers](http://en.wikipedia.org/wiki/Gaussian_integers). If you don't understand why $9509 = (97+10i)*(97-10i)$, but are still interested in this post, you should take a minute to figure it out.
 
 Once I noticed that $9509=97^2+10^2$, I thought that if I could find another way to write it as the sum of two squares, this would give me an easy way to factor the Composite of the Day (which is of course an important goal). You'll see below why two decompositions allow me to find the factors.
 
@@ -25,6 +23,3 @@ So if $95+22i$ is $ab$, and $97+10i$ is $a\bar b$ (for example), then we should 
 We could now divide 9509 by 37, to finish factoring the composite of the day. But that would be a bit boring. The other thing we could do is the same trick over again. Starting instead with $95-22i$ and $97+10i$, we subtract to get $2+32i$. Factoring out 2 again, we notice we have a prime product again: $1+16i$ times its complex conjugate is 257. So we conclude that 9509=37*257.
 
 I find it pretty cool that this works.
-
-[[Category:Blog posts]]
-
