@@ -1,6 +1,7 @@
 # notebook (hosted on master now)
 
 # http://dushoff.github.io/notebook/hotelWindow
+# http://dushoff.github.io/notebook/snowball
 
 # http://localhost:4111/notebook/expCensoring
 
