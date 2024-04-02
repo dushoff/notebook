@@ -3,13 +3,12 @@
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 
-# http://localhost:4111/notebook/expCensoring
-
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
-# http://localhost:4111/notebook/shifts.html
+# http://localhost:4111/notebook/ComplexFactoring.out
 
+# http://dushoff.github.io/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -420,6 +419,10 @@ backproj.Rout: backproj.R
 
 Sources += facebook.md
 
+######################################################################
+
+panmath = pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
+
 ## Urns problem
 
 Ignore += urns.comb.md
@@ -439,11 +442,37 @@ urns.pdf: urns.comb.md
 ## Now working with explicit URL AND passing through tex
 Ignore += urns.html
 urns.html: urns.check.tex
-	pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
+	$(panmath)
 
 Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
+
+
+######################################################################
+
+## Edit by hand ComplexFactoring.md from ComplexFactoring.wikitext
+
+## Rename made files to use TEX, &c.
+## ComplexFactoring.html: ComplexFactoring.md
+
+Ignore += ComplexFactoring.tex
+ComplexFactoring.tex: ComplexFactoring.md
+	$(pandocs)
+
+Ignore += ComplexFactoring.html
+ComplexFactoring.html: ComplexFactoring.tex
+	$(panmath)
+
+## mathjax does not work at all this way for me (at least under jekyll)
+## Making pdf this way _does_ work (and I did it accidentally), but probably the same or worse than making it directly from tex
+ComplexFactoring.out.md: ComplexFactoring.tex
+	$(panmath)
+
+ComplexFactoring.pan.md: ComplexFactoring.tex
+	$(pandocs)
+
+######################################################################
 
 ## Still NOT working with direct path; use a .tex intermediary
 
@@ -581,7 +610,10 @@ Ignore += $(wildcard rmd.md)
 hetSusc%.md: hetSusc%.wikitext
 	pandoc -f mediawiki -t gfm -o $@ $< 
 
-ComplexFactoring.md: ComplexFactoring.wikitext
+
+
+
+
 
 ######################################################################
 
@@ -929,6 +961,12 @@ freqPiano.Rout: freqPiano.R checkFuns.rda
 
 ######################################################################
 
+## Try perm CIs; do the pianos come into play?
+
+permCI.Rout: permCI.R
+
+######################################################################
+
 ## Constrained quadratic
 ## Arising from rubella project
 
@@ -1141,8 +1179,9 @@ Sources += _includes/* _layouts/* css/* _sass/*
 
 Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
-Gemfile.sb:
-	/bin/ln -s Gemfile_sb $@
+## Gemfile.sb: 
+Gemfile.%:
+	/bin/ln -s Gemfile_$* Gemfile
 
 ######################################################################
 
