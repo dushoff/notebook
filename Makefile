@@ -1,6 +1,7 @@
 # notebook (hosted on master now)
 
 # http://dushoff.github.io/notebook/hotelWindow
+# http://dushoff.github.io/notebook/snowball
 
 # https://github.com/dushoff/notebook/tree/master
 
@@ -960,6 +961,12 @@ blaker.Rout: blaker.R
 
 ### The simplest example
 freqPiano.Rout: freqPiano.R checkFuns.rda
+
+######################################################################
+
+## Try perm CIs; do the pianos come into play?
+
+permCI.Rout: permCI.R
 
 ######################################################################
 
