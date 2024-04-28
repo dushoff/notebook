@@ -65,6 +65,18 @@ egf.Rout: egf.R
 
 ######################################################################
 
+## L-means
+
+Lmeans.html: Lmeans.md
+	pandoc $< --mathjax -s -o $@
+	$(panmath)
+
+## wrapR is a good trick for functional code that we want to share with others!
+Lmeans.Rout: Lmeans.R
+	$(wrapR)
+
+Lmtest.Rout: Lmtest.R Lmeans.rda
+
 ######################################################################
 
 ## 2024 is a CIPS!
@@ -421,6 +433,10 @@ Sources += facebook.md
 
 ######################################################################
 
+## There is a lot of complexity here, and maybe I was spinning
+## Basically things seem to always work online (no complexity needed)
+## and never work offline (or at least not solved yet)
+## Maybe 265號 was an edge case ☺
 panmath = pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
 
 ## Urns problem
