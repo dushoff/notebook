@@ -456,14 +456,17 @@ urns.pdf: urns.comb.md
 
 ## It is not clear what happened 2023 Feb 28 (Tue)
 ## Now working with explicit URL AND passing through tex
+## But it's somehow losing the hyperlink
+## urns.html: urns.md
 Ignore += urns.html
 urns.html: urns.check.tex
 	$(panmath)
 
+## panmath looks complicated, and this works as well?
+## newurns.html: urns.md
 Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
-
 
 ######################################################################
 
