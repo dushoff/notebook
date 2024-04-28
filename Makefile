@@ -67,6 +67,7 @@ egf.Rout: egf.R
 
 ## L-means
 
+Ignore += Lmeans.html
 Lmeans.html: Lmeans.md
 	pandoc $< --mathjax -s -o $@
 	$(panmath)

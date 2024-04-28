@@ -13,4 +13,6 @@ $\approx \log(x) + \varepsilon\log(x)^2/2$
 What are the issues with computing this and inverting it? I think it's probably ok to assume that $\log(x)$ is relatively small in magnitude (maybe warn if it's not?). The quadratic approach leads to more instability, so we should do a naive inversion
 
 If $y \approx \ell + \varepsilon \ell^2/2$, then to first order
-If $\ell \approx y - \varepsilon y^2/2$.
+$\ell \approx y - \varepsilon y^2/2$.
+
+Conclusion: Use the function $(x^p-1)/p$ and its inverse to stably and smoothly compute power means. When $p$ is very small, use a naive quadratic approximation of the two functions.
