@@ -36,5 +36,5 @@ powMean(1:10, p=-10)
 v <- c(1, 2, 4)
 powMean(v, p=-1)
 powMean(v, p=0)
-powMean(v, p=1)
+powMean(v, p=200)
 
