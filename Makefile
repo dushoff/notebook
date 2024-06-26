@@ -22,7 +22,7 @@
 # http://dushoff.github.io/notebook/outputs/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/qbd.html
 
-# http://dushoff.github.io/notebook/average.Rout
+# http://dushoff.github.io/notebook/outputs/average.Rout.pdf
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
