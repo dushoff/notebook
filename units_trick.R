@@ -6,8 +6,8 @@
 
 ## Base units (these numbers are arbitrary)
 ## change them from time to time; if outputs change you likely have a units error
-day = 12
-m = 23
+day = 11
+m = 43
 
 ## Conversions
 hr = day/24
