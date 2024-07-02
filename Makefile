@@ -524,6 +524,8 @@ close.pdf: close.txt
 
 ######################################################################
 
+## Curve curve 
+
 ## test curving 2023
 
 orCurve.Rout: orCurve.R
