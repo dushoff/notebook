@@ -1,6 +1,7 @@
 # notebook (hosted on master now)
 
 # http://dushoff.github.io/notebook/hotelWindow
+# http://dushoff.github.io/notebook/snowball
 
 # https://github.com/dushoff/notebook/tree/master
 
@@ -21,7 +22,7 @@
 # http://dushoff.github.io/notebook/outputs/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/qbd.html
 
-# http://dushoff.github.io/notebook/average.Rout
+# http://dushoff.github.io/notebook/outputs/average.Rout.pdf
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
@@ -63,6 +64,19 @@ multilog.pdf: multilog.tex
 egf.Rout: egf.R
 
 ######################################################################
+
+## L-means
+
+Ignore += Lmeans.html
+Lmeans.html: Lmeans.md
+	pandoc $< --mathjax -s -o $@
+	$(panmath)
+
+## wrapR is a good trick for functional code that we want to share with others!
+Lmeans.Rout: Lmeans.R
+	$(wrapR)
+
+Lmtest.Rout: Lmtest.R Lmeans.rda
 
 ######################################################################
 
@@ -420,6 +434,10 @@ Sources += facebook.md
 
 ######################################################################
 
+## There is a lot of complexity here, and maybe I was spinning
+## Basically things seem to always work online (no complexity needed)
+## and never work offline (or at least not solved yet)
+## Maybe 265號 was an edge case ☺
 panmath = pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
 
 ## Urns problem
@@ -439,14 +457,17 @@ urns.pdf: urns.comb.md
 
 ## It is not clear what happened 2023 Feb 28 (Tue)
 ## Now working with explicit URL AND passing through tex
+## But it's somehow losing the hyperlink
+## urns.html: urns.md
 Ignore += urns.html
 urns.html: urns.check.tex
 	$(panmath)
 
+## panmath looks complicated, and this works as well?
+## newurns.html: urns.md
 Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
-
 
 ######################################################################
 
