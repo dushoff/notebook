@@ -6,9 +6,11 @@
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
-# http://localhost:4111/notebook/ComplexFactoring.out
 
+## Looks good in outputs but not in
+# http://localhost:4111/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/outputs/ComplexFactoring
+
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -1199,7 +1201,7 @@ Sources += _includes/* _layouts/* css/* _sass/*
 
 Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
-## Gemfile.sb: 
+## Gemfile.sb:
 Gemfile.%:
 	/bin/ln -s Gemfile_$* Gemfile
 
