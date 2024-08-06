@@ -294,6 +294,9 @@ ln_ident.Rout: ln_ident.R
 4loop.out: 4loop.pl
 	$(PUSH)
 
+## Adler sequence of sums of squares
+squareSum.Rout: squareSum.R
+
 ######################################################################
 
 Sources += $(wildcard *.bc)
