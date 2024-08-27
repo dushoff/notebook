@@ -581,21 +581,47 @@ sandbox.Rout: sandbox.R
 
 Sources += $(wildcard *.wikitext)
 
-## Wiki import dev
+## This stuff is not working, even though weirder stuff seems to be …
+
+## There is weird stuff below trying to get yaml stuff into md, since, um, something? It looks like there's just a perl script.
+
+.PRECIOUS: %.wikitext.MD
+%.wikitext.MD: %.wikitext wtrmd.pl
+	$(PUSH)
+
+.PRECIOUS: %.wt.md
+%.wt.md: | %.wikitext.MD
+	$(oocopy)
+
+%.math.html: %.md
+	pandoc $< --mathjax -s -o $@
+
+%.mj.html: %.rmd
+	pandoc $< --mathjax -s -o $@
+
+## make powerPhenHet.md
+## powerPhenHet.wt.math.html: powerPhenHet.wt.md
+## powerPhenHet.mj.html: powerPhenHet.rmd
+
+## diff powerPhenHet.rmd powerPhenHet.wikitext.MD
+
+######################################################################
+
+## Wiki import dev deprecating? 2024 Aug 27 (Tue)
 
 %.rmd: %.wikitext wtrmd.pl
 	$(PUSH)
 
-%.rmd.html: %.rmd.md
+%.rmd.html: %.rmd
 	pandoc $< --mathjax -s -o $@
 
-## rmd ⇒ md pipeline
-
+## rmd ⇒ md pipeline; seems weird 2024 Aug 27 (Tue)
 ## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
 ## nomogram.md: nomogram.rmd
 ## permBinom.md: permBinom.rmd
 ## permTables.md: permTables.wikitext; pandoc -f mediawiki -o $@ $<
-
+## powerPhenHet.rmd: powerPhenHet.wikitext
+## powerPhenHet.rmd.html: powerPhenHet.rmd
 Ignore += *rmd_files
 
 Ignore += $(wildcard rmd.md)
@@ -608,15 +634,6 @@ Ignore += $(wildcard rmd.md)
 
 %.md: %.yaml.md %.rmd.md
 	$(cat)
-
-## This is bad because it escapes all the math
-hetSusc%.md: hetSusc%.wikitext
-	pandoc -f mediawiki -t gfm -o $@ $< 
-
-
-
-
-
 
 ######################################################################
 
