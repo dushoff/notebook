@@ -2,7 +2,7 @@
 
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
-# http://dushoff.github.io/notebook/powerPhenHet.wt.math
+# http://dushoff.github.io/notebook/powerPhenHet.wt
 
 # https://github.com/dushoff/notebook/tree/master
 
@@ -15,7 +15,6 @@
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
-# http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/pythagoras.html
 # http://dushoff.github.io/notebook/acf.html
