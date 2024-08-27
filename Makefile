@@ -2,6 +2,7 @@
 
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
+# http://dushoff.github.io/notebook/powerPhenHet.wt.math
 
 # https://github.com/dushoff/notebook/tree/master
 
@@ -619,7 +620,6 @@ Sources += $(wildcard *.wikitext)
 
 ## make powerPhenHet.md
 ## powerPhenHet.wt.math.html: powerPhenHet.wt.md
-## powerPhenHet.mj.html: powerPhenHet.rmd
 
 ## diff powerPhenHet.rmd powerPhenHet.wikitext.MD
 

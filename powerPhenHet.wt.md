@@ -1,3 +1,7 @@
+---
+layout: page
+title: Power law notes for phenomenoligical heterogeneity
+---
 
 ## Intro 
 
