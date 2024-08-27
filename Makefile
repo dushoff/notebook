@@ -69,7 +69,7 @@ egf.Rout: egf.R
 
 ## L-means
 
-Ignore += Lmeans.html
+Ignore += *.html
 Lmeans.html: Lmeans.md
 	pandoc $< --mathjax -s -o $@
 	$(panmath)
@@ -89,7 +89,6 @@ cips.Rout: cips.R
 units_trick.Rout: units_trick.R
 
 ## Inelegant solution to one of M's physics problems
-Ignore += hotelWindow.html
 hotelWindow.html: hotelWindow.md
 	pandoc -f gfm -o $@ $< 
 
@@ -118,7 +117,6 @@ composite_list.Rout: composite_list.R
 
 ## skewnormal.rmd: skewnormal.wikitext
 ## skewnormal.rmd.md: skewnormal.rmd
-Ignore += *.rmd.html
 skewnormal.rmd.html: skewnormal.rmd
 	$(knithtml)
 
@@ -151,7 +149,7 @@ orderStats.Rout: orderStats.R
 Ignore += *.MD
 order.MD: order.R
 	Rscript -e "knitr::spin('$<')"
-Ignore += order.pdf order.html
+Ignore += order.pdf
 order.pdf: order.md
 	$(pandocs)
 
@@ -464,13 +462,11 @@ urns.pdf: urns.comb.md
 ## Now working with explicit URL AND passing through tex
 ## But it's somehow losing the hyperlink
 ## urns.html: urns.md
-Ignore += urns.html
 urns.html: urns.check.tex
 	$(panmath)
 
 ## panmath looks complicated, and this works as well?
 ## newurns.html: urns.md
-Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
 
@@ -485,7 +481,6 @@ Ignore += ComplexFactoring.tex
 ComplexFactoring.tex: ComplexFactoring.md
 	$(pandocs)
 
-Ignore += ComplexFactoring.html
 ComplexFactoring.html: ComplexFactoring.tex
 	$(panmath)
 
@@ -525,7 +520,6 @@ incfuns.pdf: incfuns.comb.md
 
 ## incfuns.comb.jax.html: incfuns.md
 
-Ignore += incfuns.html
 ## incfuns.html: incfuns.md
 incfuns.html: incfuns.check.tex
 	pandoc $< --mathjax -s -o $@
@@ -784,7 +778,6 @@ Ignore += colors.small.png
 	convert -scale 10% $< $@
 
 ## Red-yellow-green recommendation? Green-yellow too similar! 
-Ignore += ## ryg.Rout.html
 ## ryg.Rout.html: ryg.R
 ryg.Rout: ryg.R
 	$(pipeR)
@@ -833,7 +826,6 @@ balls.Rout: balls.R
 
 ## Knitting (hybrid ideas brought together 2019 Jun 25 (Tue))
 
-Ignore += mre.html
 mre.html: mre.rmd
 	$(knithtml)
 
@@ -900,7 +892,6 @@ alice.Rout: alice.R
 
 ## Early Trapman-interval math. Should be subsumed by Park et al. MS
 # http://localhost:4111/notebook/conditional_kernel.html
-Ignore += conditional_kernel.html
 conditional_kernel.html: conditional_kernel.md
 
 combinations.Rout: combinations.R
@@ -1099,7 +1090,6 @@ moments.Rout: moments.R
 # http://localhost:4111/notebook/diversity.html: diversity.md
 
 ## Branch text, hopefully for a manuscript
-Ignore += rarity.html
 rarity.html: rarity.md
 
 ## Playing with Simpson
@@ -1172,7 +1162,6 @@ which.Rout: which.R
 
 # Maybe just give up on blogger…
 
-Ignore += *.cp.html
 ## pythagoras.cp.html: cp.pl
 %.cp.html: _site/%.html cp.pl
 	$(PUSH)
