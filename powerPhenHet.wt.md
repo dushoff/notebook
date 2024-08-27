@@ -3,6 +3,8 @@ layout: page
 title: Power law notes for phenomenological heterogeneity
 ---
 
+Rescued from [math](http://lalashan.mcmaster.ca/theobio/math/index.php/Heterogeneous_susceptibility) 2024 August.
+
 ## Intro 
 
 Thinking about how to model hazard in a population with heterogeneous susceptibility.  Strongly related to the work done specifically for moth viruses, and specifically for the gamma distribution, at [[gamma speculations]].  Note that the "Approximation" section makes an approximation that is exactly equivalent to assuming gamma distributions.
