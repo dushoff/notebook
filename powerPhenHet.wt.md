@@ -76,5 +76,5 @@ $N/N_0 = (1+\kappa F)^{-1/\kappa} \equiv X(F; \kappa)$
 
 What is the relationship between mean susceptibility and proportion surviving?  Should this be suggested as an alternative to Granich heterogeneity?
 
-The answer looks like $\bar s = X^\kappa$; in Granich terms, something like $\beta \propto (1-P)^\kappa$.
+We can invert our last formula to get $\bar s = (N/N_0)^\kappa$; in Granich terms, the prevalence $P$ is analogous to $1-N/N_0, and transmission is proportional to susceptibility, so the answer is power-law phenomenological heterogeneity: $\beta \propto (1-P)^\kappa$.
 

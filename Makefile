@@ -3,8 +3,7 @@
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 # http://dushoff.github.io/notebook/powerPhenHet.wt
-
-# https://github.com/dushoff/notebook/tree/master
+# http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
 
 # http://localhost:4111/notebook/pronouns.html
 
