@@ -6,9 +6,11 @@
 # https://github.com/dushoff/notebook/tree/master
 
 # http://localhost:4111/notebook/pronouns.html
-# http://localhost:4111/notebook/ComplexFactoring.out
 
+## Looks good in outputs but not in
+# http://localhost:4111/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/outputs/ComplexFactoring
+
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -22,7 +24,7 @@
 # http://dushoff.github.io/notebook/outputs/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/qbd.html
 
-# http://dushoff.github.io/notebook/average.Rout
+# http://dushoff.github.io/notebook/outputs/average.Rout.pdf
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
@@ -64,6 +66,19 @@ multilog.pdf: multilog.tex
 egf.Rout: egf.R
 
 ######################################################################
+
+## L-means
+
+Ignore += Lmeans.html
+Lmeans.html: Lmeans.md
+	pandoc $< --mathjax -s -o $@
+	$(panmath)
+
+## wrapR is a good trick for functional code that we want to share with others!
+Lmeans.Rout: Lmeans.R
+	$(wrapR)
+
+Lmtest.Rout: Lmtest.R Lmeans.rda
 
 ######################################################################
 
@@ -279,6 +294,9 @@ ln_ident.Rout: ln_ident.R
 4loop.out: 4loop.pl
 	$(PUSH)
 
+## Adler sequence of sums of squares
+squareSum.Rout: squareSum.R
+
 ######################################################################
 
 Sources += $(wildcard *.bc)
@@ -421,6 +439,10 @@ Sources += facebook.md
 
 ######################################################################
 
+## There is a lot of complexity here, and maybe I was spinning
+## Basically things seem to always work online (no complexity needed)
+## and never work offline (or at least not solved yet)
+## Maybe 265號 was an edge case ☺
 panmath = pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
 
 ## Urns problem
@@ -527,6 +549,8 @@ close.pdf: close.txt
 	pdfroff $< | cpdf -crop "0.9in 10.8in 1.8in 0.2in" -stdin -o $@ 
 
 ######################################################################
+
+## Curve curve 
 
 ## test curving 2023
 
@@ -1199,7 +1223,7 @@ Sources += _includes/* _layouts/* css/* _sass/*
 
 Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
-## Gemfile.sb: 
+## Gemfile.sb:
 Gemfile.%:
 	/bin/ln -s Gemfile_$* Gemfile
 
