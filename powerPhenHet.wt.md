@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Power law notes for phenomenoligical heterogeneity
+title: Power law notes for phenomenological heterogeneity
 ---
 
 ## Intro 
