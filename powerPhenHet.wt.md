@@ -36,7 +36,7 @@ $\frac{dN(s)}{dF} = -sN(s)$.
 
 Integrating over $s$ gives: 
 
-$\frac{dN}{dF} = -sN(s)$ $= -N_1$ $=-\bar s N$, which is nice and makes sense: the instantaneous change in the number of survivors is predicted by the ''mean'' susceptibility.
+$\frac{dN}{dF} = -sN(s)$ $= -N_1$ $=-\bar s N$, which is nice and makes sense: the instantaneous change in the number of survivors is predicted by the mean susceptibility.
 
 The cool part is that we can multiply the master equation by $s^k$ and get a chain of moment equations:
 
@@ -78,5 +78,5 @@ $N/N_0 = (1+\kappa F)^{-1/\kappa} \equiv X(F; \kappa)$
 
 What is the relationship between mean susceptibility and proportion surviving?  Should this be suggested as an alternative to Granich heterogeneity?
 
-We can invert our last formula to get $\bar s = (N/N_0)^\kappa$; in Granich terms, the prevalence $P$ is analogous to $1-N/N_0, and transmission is proportional to susceptibility, so the answer is power-law phenomenological heterogeneity: $\beta \propto (1-P)^\kappa$.
+We can invert our last formula to get $\bar s = (N/N_0)^\kappa$; in Granich terms, the prevalence $P$ is analogous to $1-N/N_0$, and transmission is proportional to susceptibility, so the answer is power-law phenomenological heterogeneity: $\beta \propto (1-P)^\kappa$.
 
