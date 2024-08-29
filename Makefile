@@ -93,6 +93,7 @@ hotelWindow.html: hotelWindow.md
 
 ######################################################################
 
+## Hand raising; calling on people
 .PHONY: calling.HTML
 Sources += calling.html
 Ignore += calling.HTML
@@ -101,7 +102,7 @@ calling.HTML: calling.html calling.pl
 
 call: calling.HTML
 	google-chrome --new-window $< &
-	while true; do $(MAKE) $<; sleep 3; done
+	while true; do $(MAKE) $<; sleep 1; done
 
 ######################################################################
 
