@@ -93,6 +93,9 @@ hotelWindow.html: hotelWindow.md
 
 ######################################################################
 
+## Weitz, Rose gamma sculpting
+sculpting.Rout: sculpting.R
+
 ## Hand raising; calling on people
 .PHONY: calling.HTML
 Sources += calling.html
