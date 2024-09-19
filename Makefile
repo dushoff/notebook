@@ -63,6 +63,8 @@ multilog.pdf: multilog.tex
 
 egf.Rout: egf.R
 
+LF.Rout: LF.R
+
 ######################################################################
 
 ## L-means
