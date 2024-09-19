@@ -2,17 +2,18 @@
 
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
-
-# https://github.com/dushoff/notebook/tree/master
+# http://dushoff.github.io/notebook/powerPhenHet.wt
+# http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
 
 # http://localhost:4111/notebook/pronouns.html
-# http://localhost:4111/notebook/ComplexFactoring.out
 
+## Looks good in outputs but not in
+# http://localhost:4111/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/outputs/ComplexFactoring
+
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
-# http://dushoff.github.io/notebook/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/pronouns.html
 # http://dushoff.github.io/notebook/pythagoras.html
 # http://dushoff.github.io/notebook/acf.html
@@ -22,7 +23,7 @@
 # http://dushoff.github.io/notebook/outputs/skewnormal.rmd.html
 # http://dushoff.github.io/notebook/qbd.html
 
-# http://dushoff.github.io/notebook/average.Rout
+# http://dushoff.github.io/notebook/outputs/average.Rout.pdf
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
@@ -69,7 +70,7 @@ LF.Rout: LF.R
 
 ## L-means
 
-Ignore += Lmeans.html
+Ignore += *.html
 Lmeans.html: Lmeans.md
 	pandoc $< --mathjax -s -o $@
 	$(panmath)
@@ -89,12 +90,15 @@ cips.Rout: cips.R
 units_trick.Rout: units_trick.R
 
 ## Inelegant solution to one of M's physics problems
-Ignore += hotelWindow.html
 hotelWindow.html: hotelWindow.md
 	pandoc -f gfm -o $@ $< 
 
 ######################################################################
 
+## Weitz, Rose gamma sculpting
+sculpting.Rout: sculpting.R
+
+## Hand raising; calling on people
 .PHONY: calling.HTML
 Sources += calling.html
 Ignore += calling.HTML
@@ -103,7 +107,7 @@ calling.HTML: calling.html calling.pl
 
 call: calling.HTML
 	google-chrome --new-window $< &
-	while true; do $(MAKE) $<; sleep 3; done
+	while true; do $(MAKE) $<; sleep 1; done
 
 ######################################################################
 
@@ -118,7 +122,6 @@ composite_list.Rout: composite_list.R
 
 ## skewnormal.rmd: skewnormal.wikitext
 ## skewnormal.rmd.md: skewnormal.rmd
-Ignore += *.rmd.html
 skewnormal.rmd.html: skewnormal.rmd
 	$(knithtml)
 
@@ -151,7 +154,7 @@ orderStats.Rout: orderStats.R
 Ignore += *.MD
 order.MD: order.R
 	Rscript -e "knitr::spin('$<')"
-Ignore += order.pdf order.html
+Ignore += order.pdf
 order.pdf: order.md
 	$(pandocs)
 
@@ -293,6 +296,9 @@ ln_ident.Rout: ln_ident.R
 ## Adler weird problem (abandoned R because it doesn't have good hashes)
 4loop.out: 4loop.pl
 	$(PUSH)
+
+## Adler sequence of sums of squares
+squareSum.Rout: squareSum.R
 
 ######################################################################
 
@@ -461,13 +467,11 @@ urns.pdf: urns.comb.md
 ## Now working with explicit URL AND passing through tex
 ## But it's somehow losing the hyperlink
 ## urns.html: urns.md
-Ignore += urns.html
 urns.html: urns.check.tex
 	$(panmath)
 
 ## panmath looks complicated, and this works as well?
 ## newurns.html: urns.md
-Ignore += newurns.html
 newurns.html: urns.check.tex
 	pandoc $< --mathjax -s -o $@
 
@@ -482,7 +486,6 @@ Ignore += ComplexFactoring.tex
 ComplexFactoring.tex: ComplexFactoring.md
 	$(pandocs)
 
-Ignore += ComplexFactoring.html
 ComplexFactoring.html: ComplexFactoring.tex
 	$(panmath)
 
@@ -522,7 +525,6 @@ incfuns.pdf: incfuns.comb.md
 
 ## incfuns.comb.jax.html: incfuns.md
 
-Ignore += incfuns.html
 ## incfuns.html: incfuns.md
 incfuns.html: incfuns.check.tex
 	pandoc $< --mathjax -s -o $@
@@ -546,6 +548,8 @@ close.pdf: close.txt
 	pdfroff $< | cpdf -crop "0.9in 10.8in 1.8in 0.2in" -stdin -o $@ 
 
 ######################################################################
+
+## Curve curve 
 
 ## test curving 2023
 
@@ -600,21 +604,46 @@ sandbox.Rout: sandbox.R
 
 Sources += $(wildcard *.wikitext)
 
-## Wiki import dev
+## This stuff is not working, even though weirder stuff seems to be …
+
+## There is weird stuff below trying to get yaml stuff into md, since, um, something? It looks like there's just a perl script.
+
+.PRECIOUS: %.wikitext.MD
+%.wikitext.MD: %.wikitext wtrmd.pl
+	$(PUSH)
+
+.PRECIOUS: %.wt.md
+%.wt.md: | %.wikitext.MD
+	$(oocopy)
+
+%.math.html: %.md
+	pandoc $< --mathjax -s -o $@
+
+%.mj.html: %.rmd
+	pandoc $< --mathjax -s -o $@
+
+## make powerPhenHet.md
+## powerPhenHet.wt.math.html: powerPhenHet.wt.md
+
+## diff powerPhenHet.rmd powerPhenHet.wikitext.MD
+
+######################################################################
+
+## Wiki import dev deprecating? 2024 Aug 27 (Tue)
 
 %.rmd: %.wikitext wtrmd.pl
 	$(PUSH)
 
-%.rmd.html: %.rmd.md
+%.rmd.html: %.rmd
 	pandoc $< --mathjax -s -o $@
 
-## rmd ⇒ md pipeline
-
+## rmd ⇒ md pipeline; seems weird 2024 Aug 27 (Tue)
 ## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
 ## nomogram.md: nomogram.rmd
 ## permBinom.md: permBinom.rmd
 ## permTables.md: permTables.wikitext; pandoc -f mediawiki -o $@ $<
-
+## powerPhenHet.rmd: powerPhenHet.wikitext
+## powerPhenHet.rmd.html: powerPhenHet.rmd
 Ignore += *rmd_files
 
 Ignore += $(wildcard rmd.md)
@@ -627,15 +656,6 @@ Ignore += $(wildcard rmd.md)
 
 %.md: %.yaml.md %.rmd.md
 	$(cat)
-
-## This is bad because it escapes all the math
-hetSusc%.md: hetSusc%.wikitext
-	pandoc -f mediawiki -t gfm -o $@ $< 
-
-
-
-
-
 
 ######################################################################
 
@@ -762,7 +782,6 @@ Ignore += colors.small.png
 	convert -scale 10% $< $@
 
 ## Red-yellow-green recommendation? Green-yellow too similar! 
-Ignore += ## ryg.Rout.html
 ## ryg.Rout.html: ryg.R
 ryg.Rout: ryg.R
 	$(pipeR)
@@ -811,7 +830,6 @@ balls.Rout: balls.R
 
 ## Knitting (hybrid ideas brought together 2019 Jun 25 (Tue))
 
-Ignore += mre.html
 mre.html: mre.rmd
 	$(knithtml)
 
@@ -878,7 +896,6 @@ alice.Rout: alice.R
 
 ## Early Trapman-interval math. Should be subsumed by Park et al. MS
 # http://localhost:4111/notebook/conditional_kernel.html
-Ignore += conditional_kernel.html
 conditional_kernel.html: conditional_kernel.md
 
 combinations.Rout: combinations.R
@@ -1077,7 +1094,6 @@ moments.Rout: moments.R
 # http://localhost:4111/notebook/diversity.html: diversity.md
 
 ## Branch text, hopefully for a manuscript
-Ignore += rarity.html
 rarity.html: rarity.md
 
 ## Playing with Simpson
@@ -1150,7 +1166,6 @@ which.Rout: which.R
 
 # Maybe just give up on blogger…
 
-Ignore += *.cp.html
 ## pythagoras.cp.html: cp.pl
 %.cp.html: _site/%.html cp.pl
 	$(PUSH)
@@ -1201,7 +1216,7 @@ Sources += _includes/* _layouts/* css/* _sass/*
 
 Ignore += .sass-cache/ Gemfile Gemfile.lock _site/
 
-## Gemfile.sb: 
+## Gemfile.sb:
 Gemfile.%:
 	/bin/ln -s Gemfile_$* Gemfile
 
