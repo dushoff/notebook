@@ -66,6 +66,12 @@ egf.Rout: egf.R
 
 ######################################################################
 
+## rclone pages
+
+Sources += rclone/index.md rclone/privacy.md rclone/service.md
+
+######################################################################
+
 ## L-means
 
 Ignore += *.html
