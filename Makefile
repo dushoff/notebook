@@ -1,5 +1,6 @@
 # notebook (hosted on master now)
 
+# http://dushoff.github.io/notebook/rclone/
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 # http://dushoff.github.io/notebook/powerPhenHet.wt
