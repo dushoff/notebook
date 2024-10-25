@@ -620,7 +620,7 @@ Sources += $(wildcard *.wikitext)
 
 .PRECIOUS: %.wt.md
 %.wt.md: | %.wikitext.MD
-	$(oocopy)
+	$(pcopy)
 
 %.math.html: %.md
 	pandoc $< --mathjax -s -o $@
