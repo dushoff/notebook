@@ -1,5 +1,6 @@
 # notebook (hosted on master now)
 
+# http://dushoff.github.io/notebook/rclone/
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 # http://dushoff.github.io/notebook/powerPhenHet.wt
@@ -71,6 +72,12 @@ LF.Rout: LF.R
 ## Lucas-Fibonacci
 
 LF.Rout: LF.R
+
+######################################################################
+
+## rclone pages
+
+Sources += rclone/index.md rclone/privacy.md rclone/service.md
 
 ######################################################################
 
