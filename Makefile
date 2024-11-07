@@ -629,7 +629,7 @@ Sources += $(wildcard *.wikitext)
 
 .PRECIOUS: %.wt.md
 %.wt.md: | %.wikitext.MD
-	$(oocopy)
+	$(pcopy)
 
 ## powerPhenHet.wt.math.html: powerPhenHet.wt.md
 %.math.html: %.md
