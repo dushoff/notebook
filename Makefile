@@ -1,9 +1,11 @@
 # notebook (hosted on master now)
 
+# http://localhost:4111/notebook/outputs/powerPhenHet.wt.math
 # http://dushoff.github.io/notebook/rclone/
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 # http://dushoff.github.io/notebook/powerPhenHet.wt
+# http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
 # http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
 
 # http://localhost:4111/notebook/pronouns.html
@@ -629,6 +631,7 @@ Sources += $(wildcard *.wikitext)
 %.wt.md: | %.wikitext.MD
 	$(oocopy)
 
+## powerPhenHet.wt.math.html: powerPhenHet.wt.md
 %.math.html: %.md
 	pandoc $< --mathjax -s -o $@
 
