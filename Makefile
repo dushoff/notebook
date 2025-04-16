@@ -14,7 +14,6 @@
 # http://localhost:4111/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/outputs/ComplexFactoring
 
-# http://dushoff.github.io/notebook/rankReduce.html
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -31,6 +30,7 @@
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
+# http://dushoff.github.io/notebook/outputs/rankReduce.html
 # http://dushoff.github.io/notebook/outputs/newbd.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
