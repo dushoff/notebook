@@ -298,6 +298,9 @@ hetGen.Rout: hetGen.R
 
 ######################################################################
 
+## R script is in the research sandbox
+## rankReduce.html: rankReduce.md
+
 ## Avoid confusing people!
 ## confusing.md:
 ## 
