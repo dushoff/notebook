@@ -14,6 +14,7 @@
 # http://localhost:4111/notebook/outputs/ComplexFactoring
 # http://dushoff.github.io/notebook/outputs/ComplexFactoring
 
+# http://dushoff.github.io/notebook/rankReduce.html
 # http://dushoff.github.io/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
@@ -36,6 +37,7 @@
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/master/orderStats.R
+# https://github.com/dushoff/notebook/blob/master/rankReduce.md
 # https://github.com/dushoff/notebook/blob/master/ryg.R
 # https://github.com/dushoff/notebook/blob/master/outputs/
 # https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
@@ -301,7 +303,8 @@ hetGen.Rout: hetGen.R
 ######################################################################
 
 ## R script is in the research sandbox
-## rankReduce.html: rankReduce.md
+rankReduce.html: rankReduce.md
+	$(panmath)
 
 ## Avoid confusing people!
 ## confusing.md:

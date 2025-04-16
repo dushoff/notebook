@@ -165,42 +165,51 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full"
+  type="text/javascript"></script>
 </head>
 <body>
 <p>We are interested in finding the pseudo-inverse of a “big”
-reduced-rank correlation matrix <span
-class="math inline"><em>A</em> = <em>U</em><sup><em>T</em></sup><em>U</em></span>,
-where <span class="math inline"><em>U</em></span> is a “wide” <span
-class="math inline"><em>r</em> × <em>n</em></span> generator matrix. The
+reduced-rank correlation matrix <span class="math inline">\(A = U^T
+U\)</span>, where <span class="math inline">\(U\)</span> is a “wide”
+<span class="math inline">\(r \times n\)</span> generator matrix. The
 goal is to not do any hard computations with “big matrices”. The
-complementary “small” matrix is <span
-class="math inline"><em>B</em> = <em>U</em><em>U</em><sup><em>T</em></sup></span>.</p>
+complementary “small” matrix is <span class="math inline">\(B = U
+U^T\)</span>.</p>
 <p>This covers only the “generic” case where B is invertible.</p>
 <p>Apparently, as suggested by AI, the (“long”) pseudo-inverse of <span
-class="math inline"><em>U</em></span> is given by <span
-class="math inline"><em>U</em>′ = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−1</sup></span>.
-We can confirm this:</p>
-<p><span
-class="math display"><em>U</em><em>U</em>′ = <em>U</em><em>U</em><sup><em>T</em></sup><em>B</em><sup>−1</sup> = <em>B</em><em>B</em><sup>−1</sup> = <em>I</em>.</span></p>
-<p>The pseudo-inverse of <span class="math inline"><em>A</em></span> is
-then given by <span
-class="math display"><em>A</em>′ = <em>U</em>′<em>U</em>′<sup><em>T</em></sup> = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−2</sup><em>U</em></span></p>
+class="math inline">\(U\)</span> is given by <span
+class="math inline">\(U&#39; = U^T B^{-1}\)</span>. We can confirm
+this:</p>
+<p><span class="math display">\[
+    U U&#39; = U U^T B^{-1} = B B^{-1} = I.
+\]</span></p>
+<p>The pseudo-inverse of <span class="math inline">\(A\)</span> is then
+given by <span class="math display">\[A&#39; = U&#39; U&#39;^T = U^T
+B^{-2} U\]</span></p>
 <p>We confirm this in three steps:</p>
-<p>Construct a mapping matrix <span
-class="math display"><em>M</em> = <em>A</em>′<em>A</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−2</sup><em>U</em> <em>U</em><sup><em>T</em></sup><em>U</em> = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−2</sup>(<em>U</em><em>U</em><sup><em>T</em></sup>)<em>U</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>U</em></span></p>
-<p>Confirm <span class="math display"><em>M</em><em>A</em>′</span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>U</em> <em>U</em><sup><em>T</em></sup><em>B</em><sup>−2</sup><em>U</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup>(<em>B</em><sup>−1</sup><em>U</em><em>U</em><sup><em>T</em></sup>)<em>B</em><sup>−2</sup><em>U</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup><em>B</em><sup>−2</sup><em>U</em></span><span
-class="math display"> = <em>A</em>′</span></p>
-<p>Confirm <span class="math display"><em>A</em><em>M</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup><em>U</em> <em>U</em><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>U</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup>(<em>U</em> <em>U</em><sup><em>T</em></sup><em>B</em><sup>−1</sup>)<em>U</em></span><span
-class="math display"> = <em>U</em><sup><em>T</em></sup><em>U</em></span><span
-class="math display"> = <em>A</em></span></p>
+<p>Construct a mapping matrix <span class="math display">\[
+    M  = A&#39;A
+    \]</span><span class="math display">\[ =  U^T B^{-2} U \ U^T U
+    =  U^T B^{-2} (U U^T) U
+    \]</span><span class="math display">\[ =  U^T B^{-1} U
+\]</span></p>
+<p>Confirm <span class="math display">\[
+    MA&#39;
+    \]</span><span class="math display">\[ = U^T B^{-1} U \ U^T B^{-2} U
+    \]</span><span class="math display">\[ = U^T (B^{-1} U U^T) B^{-2} U
+    \]</span><span class="math display">\[ = U^T  B^{-2} U
+    \]</span><span class="math display">\[ = A&#39;
+\]</span></p>
+<p>Confirm <span class="math display">\[
+    AM
+    \]</span><span class="math display">\[ = U^T U \ U^T B^{-1} U
+    \]</span><span class="math display">\[ = U^T (U \ U^T B^{-1}) U
+    \]</span><span class="math display">\[ = U^T  U
+    \]</span><span class="math display">\[ = A
+\]</span></p>
 </body>
 </html>
