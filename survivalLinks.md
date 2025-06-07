@@ -11,5 +11,5 @@ When hazards can be low, people typically use a log-hazard approach. This can fe
 
 Given these concerns, log odds seem almost like a miracle. They work like hazard at high hazards (which is what you want mechanistically); work like log hazard at low hazard (which is what you need for stability; _and_ also can sensibly take a log(time) offset. The offset works just like log hazard at low hazard (which may be when you most want it to): e.g., a risk of 1% goes to 2% when exposure time doubles. It saturates sensibly at high hazard (whereas log hazard models saturate very quickly: e.g., doubling exposure time makes the 90% risk goes to 95% in the log-odds model, but 99% in the log-hazard model.
 
-Obviously, log odds only _seem like_ a miracle. Sometimes they won't work well, and sometimes either the science or linked parts of a model will mean that you have to use hazards. But I am currently liking them as a default for simple survival applications.
+Of course, log odds only _seem like_ a miracle. Sometimes they won't work well, and sometimes either the science or linked parts of a model will mean that you have to use hazards. But I am currently liking them as a default for simple survival applications.
 
