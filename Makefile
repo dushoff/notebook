@@ -1,6 +1,8 @@
 # notebook (hosted on master now)
 
+# http://localhost:4111/notebook/survivalLinks
 # http://localhost:4111/notebook/outputs/powerPhenHet.wt.math
+
 # http://dushoff.github.io/notebook/rclone/
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
@@ -82,6 +84,11 @@ LF.Rout: LF.R
 ## rclone pages
 
 Sources += rclone/index.md rclone/privacy.md rclone/service.md
+
+######################################################################
+
+## log hazard, hazard, log odds
+## survivalLinks.md
 
 ######################################################################
 
