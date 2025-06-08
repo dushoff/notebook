@@ -6,6 +6,7 @@
 # http://localhost:4111/notebook/outputs/powerPhenHet.wt.math
 
 # http://dushoff.github.io/notebook/rclone/
+# http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 # http://dushoff.github.io/notebook/powerPhenHet.wt
 # http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
@@ -328,6 +329,7 @@ ln_ident.Rout: ln_ident.R
 
 ## Adler sequence of sums of squares
 squareSum.Rout: squareSum.R
+	$(wrapR)
 
 ######################################################################
 
