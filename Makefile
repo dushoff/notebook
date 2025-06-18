@@ -908,7 +908,8 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
-## Statistical clarity
+## Statistical clarity NONE of this is up to date 2025 Jun 18 (Wed)
+## Look in sandbox
 Sources += statstrength.tsv $(wildcard *.desc.tsv)
 
 statstrength.%.ggp.png: statstrength%.Rout ;
