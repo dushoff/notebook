@@ -915,6 +915,7 @@ statstrength.%.ggp.png: statstrength%.Rout ;
 sspix: statstrength.clarity.ggp.png.op statstrength.classic.ggp.png.op statstrength.lakens.ggp.png.op
 ## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
 ## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
+## statstrength.dichotomy.Rout: statstrength.R statstrength.tsv dichotomy.desc.tsv
 ## statstrength.lakens.Rout: statstrength.R statstrength.tsv lakens.desc.tsv
 .PRECIOUS: statstrength.%.Rout
 statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
