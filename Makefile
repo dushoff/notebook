@@ -908,6 +908,8 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
+
+######################################################################
 ## Statistical clarity NONE of this is up to date 2025 Jun 18 (Wed)
 ## Look in sandbox
 Sources += statstrength.tsv $(wildcard *.desc.tsv)
@@ -921,6 +923,8 @@ sspix: statstrength.clarity.ggp.png.op statstrength.classic.ggp.png.op statstren
 .PRECIOUS: statstrength.%.Rout
 statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
 	$(pipeRcall)
+
+######################################################################
 
 ## sucker bet
 
