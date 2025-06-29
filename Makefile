@@ -92,6 +92,8 @@ Sources += rclone/index.md rclone/privacy.md rclone/service.md
 ## log hazard, hazard, log odds
 ## survivalLinks.md
 
+## bolkerSurvival.Rout: bolkerSurvival.R
+
 ######################################################################
 
 ## L-means
