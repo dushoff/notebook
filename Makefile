@@ -60,6 +60,7 @@ current: target
 -include target.mk
 
 -include makestuff/perl.def
+-include makestuff/python.def
 
 ######################################################################
 
@@ -160,6 +161,11 @@ skewnormal.gh.md: skewnormal.rmd Makefile
 	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
 
 ######################################################################
+
+## Pinyin conversion
+
+romanized_names.tsv: names.txt ctable.py
+	$(PITH)
 
 ## chainedStates.md
 
