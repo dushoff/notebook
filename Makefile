@@ -164,6 +164,8 @@ skewnormal.gh.md: skewnormal.rmd Makefile
 
 ## Pinyin conversion
 
+Ignore += romanized_names.tsv
+Sources += names.txt
 romanized_names.tsv: names.txt ctable.py
 	$(PITH)
 
