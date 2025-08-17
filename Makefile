@@ -1,4 +1,4 @@
-# notebook (hosted on master now)
+# notebook (use master branch)
 
 # http://localhost:4111/notebook/survivalLinks
 # http://dushoff.github.io/notebook/survivalLinks
@@ -87,6 +87,13 @@ LF.Rout: LF.R
 ## rclone pages
 
 Sources += rclone/index.md rclone/privacy.md rclone/service.md
+
+######################################################################
+
+## Coins from Walt
+
+coin.out: coin.pl
+	$(PUSH)
 
 ######################################################################
 
