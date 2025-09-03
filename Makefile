@@ -64,6 +64,12 @@ current: target
 
 ######################################################################
 
+## Count-biased probability function (inspired by codon-usage questions)
+
+cbp.Rout: cbp.R
+
+######################################################################
+
 Sources += mldoc.tex multilog.bib multilog.tex
 
 multilog.pdf: multilog.tex
