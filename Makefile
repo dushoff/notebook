@@ -41,6 +41,7 @@
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/master/orderStats.R
+# https://github.com/dushoff/notebook/blob/master/cbp.R
 # https://github.com/dushoff/notebook/blob/master/rankReduce.md
 # https://github.com/dushoff/notebook/blob/master/ryg.R
 # https://github.com/dushoff/notebook/blob/master/outputs/
@@ -66,6 +67,9 @@ current: target
 
 fauxsqr.out: fauxsqr.pl
 	$(PUSH)
+
+## Count-biased probability function (inspired by codon-usage questions)
+cbp.Rout: cbp.R
 
 ######################################################################
 
