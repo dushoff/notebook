@@ -64,6 +64,11 @@ current: target
 
 ######################################################################
 
+fauxsqr.out: fauxsqr.pl
+	$(PUSH)
+
+######################################################################
+
 Sources += mldoc.tex multilog.bib multilog.tex
 
 multilog.pdf: multilog.tex
