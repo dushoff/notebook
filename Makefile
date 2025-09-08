@@ -69,7 +69,7 @@ fauxsqr.out: fauxsqr.pl
 	$(PUSH)
 
 ## Count-biased probability function (inspired by codon-usage questions)
-cbp.Rout: cbp.R
+## cbp.Rout: cbp.R cbp.md
 
 ######################################################################
 
