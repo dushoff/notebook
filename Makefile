@@ -65,6 +65,13 @@ current: target
 
 ######################################################################
 
+## amino acid table stuff
+
+Sources += aatable.tsv
+aatable.loops.txt: aatable.tsv aaloops.pl
+
+######################################################################
+
 ## Count-biased probability function (inspired by codon-usage questions)
 
 cbp.Rout: cbp.R
