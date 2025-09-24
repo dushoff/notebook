@@ -41,7 +41,7 @@
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/master/orderStats.R
-# https://github.com/dushoff/notebook/blob/master/cbp.R
+# https://github.com/dushoff/notebook/blob/master/cbp.md
 # https://github.com/dushoff/notebook/blob/master/rankReduce.md
 # https://github.com/dushoff/notebook/blob/master/ryg.R
 # https://github.com/dushoff/notebook/blob/master/outputs/
@@ -73,8 +73,11 @@ aatable.loops.txt: aatable.tsv aaloops.pl
 ######################################################################
 
 ## Count-biased probability function (inspired by codon-usage questions)
+fauxsqr.out: fauxsqr.pl
+	$(PUSH)
 
-cbp.Rout: cbp.R
+## Count-biased probability function (inspired by codon-usage questions)
+## cbp.Rout: cbp.R cbp.md
 
 ######################################################################
 
