@@ -1,9 +1,15 @@
-# notebook (hosted on master now)
+# notebook (use master branch)
+
+# http://localhost:4111/notebook/survivalLinks
+# http://dushoff.github.io/notebook/survivalLinks
+
+# http://localhost:4111/notebook/outputs/powerPhenHet.wt.math
 
 # http://dushoff.github.io/notebook/rclone/
 # http://dushoff.github.io/notebook/hotelWindow
 # http://dushoff.github.io/notebook/snowball
 # http://dushoff.github.io/notebook/powerPhenHet.wt
+# http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
 # http://dushoff.github.io/notebook/outputs/powerPhenHet.wt.math
 
 # http://localhost:4111/notebook/pronouns.html
@@ -28,12 +34,15 @@
 # http://dushoff.github.io/notebook/colors.html
 # http://dushoff.github.io/notebook/outputs/urns.pdf
 # http://dushoff.github.io/notebook/outputs/urns.html
+# http://dushoff.github.io/notebook/outputs/rankReduce.html
 # http://dushoff.github.io/notebook/outputs/newbd.html
 # http://dushoff.github.io/notebook/outputs/VoCcomp.Rout.pdf
 # http://dushoff.github.io/notebook/outputs/vlaps.Rout.csv
 # http://dushoff.github.io/notebook/outputs/ryg.Rout.html
 
 # https://github.com/dushoff/notebook/blob/master/orderStats.R
+# https://github.com/dushoff/notebook/blob/master/cbp.md
+# https://github.com/dushoff/notebook/blob/master/rankReduce.md
 # https://github.com/dushoff/notebook/blob/master/ryg.R
 # https://github.com/dushoff/notebook/blob/master/outputs/
 # https://github.com/dushoff/notebook/blob/master/outputs/rp.newpyth.Rout.pdf
@@ -52,6 +61,23 @@ current: target
 -include target.mk
 
 -include makestuff/perl.def
+-include makestuff/python.def
+
+######################################################################
+
+## amino acid table stuff
+
+Sources += aatable.tsv
+aatable.loops.txt: aatable.tsv aaloops.pl
+
+######################################################################
+
+## Count-biased probability function (inspired by codon-usage questions)
+fauxsqr.out: fauxsqr.pl
+	$(PUSH)
+
+## Count-biased probability function (inspired by codon-usage questions)
+## cbp.Rout: cbp.R cbp.md
 
 ######################################################################
 
@@ -78,6 +104,20 @@ LF.Rout: LF.R
 ## rclone pages
 
 Sources += rclone/index.md rclone/privacy.md rclone/service.md
+
+######################################################################
+
+## Coins from Walt
+
+coin.out: coin.pl
+	$(PUSH)
+
+######################################################################
+
+## log hazard, hazard, log odds
+## survivalLinks.md
+
+## bolkerSurvival.Rout: bolkerSurvival.R
 
 ######################################################################
 
@@ -145,6 +185,13 @@ skewnormal.gh.md: skewnormal.rmd Makefile
 	Rscript -e 'library("rmarkdown"); render("$<", output_format=md_document(variant="markdown_github"), output_file="$@")'
 
 ######################################################################
+
+## Pinyin conversion
+
+Ignore += romanized_names.tsv
+Sources += names.txt ctable.py
+romanized_names.tsv: names.txt ctable.py
+	$(PITH)
 
 ## chainedStates.md
 
@@ -298,6 +345,10 @@ hetGen.Rout: hetGen.R
 
 ######################################################################
 
+## R script is in the research sandbox
+rankReduce.html: rankReduce.md
+	$(panmath)
+
 ## Avoid confusing people!
 ## confusing.md:
 ## 
@@ -312,6 +363,7 @@ ln_ident.Rout: ln_ident.R
 
 ## Adler sequence of sums of squares
 squareSum.Rout: squareSum.R
+	$(wrapR)
 
 ######################################################################
 
@@ -410,7 +462,7 @@ slow.Rout: slow.R
 	$(run-R)
 
 spline_knots.Rout: spline_knots.R
-	$(makeR)
+	$(pipeR)
 
 ######################################################################
 
@@ -629,6 +681,7 @@ Sources += $(wildcard *.wikitext)
 %.wt.md: | %.wikitext.MD
 	$(pcopy)
 
+## powerPhenHet.wt.math.html: powerPhenHet.wt.md
 %.math.html: %.md
 	pandoc $< --mathjax -s -o $@
 
@@ -889,17 +942,23 @@ Ignore += *.post
 %.post.md: %.md
 	perl -npe 's/layout:\s+page/layout: post/' $< > $@
 
-## Statistical clarity
+
+######################################################################
+## Statistical clarity NONE of this is up to date 2025 Jun 18 (Wed)
+## Look in sandbox
 Sources += statstrength.tsv $(wildcard *.desc.tsv)
 
 statstrength.%.ggp.png: statstrength%.Rout ;
 sspix: statstrength.clarity.ggp.png.op statstrength.classic.ggp.png.op statstrength.lakens.ggp.png.op
 ## statstrength.clarity.Rout: statstrength.R statstrength.tsv clarity.desc.tsv
 ## statstrength.classic.Rout: statstrength.R statstrength.tsv classic.desc.tsv
+## statstrength.dichotomy.Rout: statstrength.R statstrength.tsv dichotomy.desc.tsv
 ## statstrength.lakens.Rout: statstrength.R statstrength.tsv lakens.desc.tsv
 .PRECIOUS: statstrength.%.Rout
 statstrength.%.Rout: statstrength.R statstrength.tsv %.desc.tsv
 	$(pipeRcall)
+
+######################################################################
 
 ## sucker bet
 
