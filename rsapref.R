@@ -1,6 +1,8 @@
-library(readr)
+library(shellpipes)
 
-mix <- as.matrix(read.table(input_files[[1]]))
+loadEnvironments()
+
+mix <- tsvRead(col_names=FALSE) |> as.matrix()
 
 rho <- symMat(mix)
 print(rho)
@@ -8,4 +10,5 @@ print(rho)
 T <- rowSums(rho)
 Tnew <- 1 + T
 
-print(mixAdj(rho, Tnew=Tnew))
+print(popAdj(rho))
+print(popAdj(rho, Tnew=Tnew))

@@ -737,7 +737,7 @@ mixpref.Rout: mixpref.R
 
 ## Try an RSA example -- NOT properly adjusted
 Sources += rsa.tsv
-rsapref.Rout: rsa.tsv mixpref.Rout rsapref.R
+rsapref.Rout: rsapref.R rsa.tsv mixpref.rda
 
 ######################################################################
 
@@ -1302,12 +1302,11 @@ Gemfile.%:
 
 Sources += Makefile
 
-Ignore += makestuff
-msrepo = https://github.com/dushoff
-Makefile: makestuff/Makefile
-makestuff/Makefile:
-	git clone $(msrepo)/makestuff
-	ls $@
+Makefile: makestuff/00.stamp
+makestuff/%.stamp:
+	- $(RM) makestuff/*.stamp
+	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
+	touch $@
 
 -include makestuff/os.mk
 -include makestuff/git.mk
