@@ -86,6 +86,7 @@ mirrors += resources
 
 Sources += aaTable.prompts.txt
 
+Ignore += *.svg *.png
 aaTable.py.out: | matplotlib.pip
 aaTable.png: aaTable.tsv aaTable.py
 	$(PITHOUT)
