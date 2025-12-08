@@ -119,6 +119,10 @@ Sources += rclone/index.md rclone/privacy.md rclone/service.md
 
 ######################################################################
 
+RxIntro.html: RxIntro.md
+
+######################################################################
+
 ## Coins from Walt
 
 coin.out: coin.pl
