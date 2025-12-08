@@ -84,7 +84,7 @@ fauxsqr.out: fauxsqr.pl
 
 mirrors += resources
 
-Sources += aaTable.prompts.txt
+Sources += aaTable.prompts.txt aaTable.tsv
 
 Ignore += *.svg *.png
 aaTable.py.out: | matplotlib.pip
