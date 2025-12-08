@@ -1,0 +1,63 @@
+
+resources/aaTable.jpg
+
+Working on ways to visualize the amino-acid table and better understand viral evolution.
+
+----------------------------------------------------------------------
+
+We started with a two-by scheme for nucleotides (small square), where bond partners are horizontally adjacent and transition-connected nts are vertically adjacent.
+
+Explaining a bit more:
+
+nts for all three codon positions are arranged in this pattern. Position-two (P2) nts have the largest effect on aa, and determine quadrant of each codon. P1 nts are nested inside the P2 quadrants. P3 nts are nested inside P1; these lines are not shown if they don't affect aa result.
+
+So, for example, V (valine) is in the T quadrant, and the G section of that quadrant, corresponding (since the top-level T represents) to GTX. W (tryptophan) is in the G quadrant, T section, G subsection, corresponding to TGG
+
+Circles indicate codons with CpG. The large circle indicates all four codons in the CGX box; each small circle indicates a single codon. 
+
+Arrows indicate potential CpG bridge codons. Each large arrow indicates four codons that can bridge back to an earlier codon. Small arrows each indicate one codon that can bridge forward. The top row should also have small forward arrows. 
+
+Dashed yellow lines link unconnected blocks that represent the same aa. The two serine blocks are in different quadrants because serine has two different P2 nts, which is pretty weird. 
+
+I want code to create visualizations based on this image. I would like to be able to color the amino acids, and I would also like to be able to show quantitative data at the codon level. It should start with clean digital code that can generate the diagram.
+
+----------------------------------------------------------------------
+
+The small square matches the desired orientation, but the big square does not. The left-facing arrows should be long and diagonal (as in the jpg) to indicate that they represent four different codons that all bridge “left”.
+
+The code should not include an aa table, but should read one in a simple .tsv format. It should have a function and a function call. By default it should show only lines that divide amino acids.
+
+----------------------------------------------------------------------
+
+This is some progress, but still a bunch of issues. I am going to paste some code with an argv style that I like, but which is somehow not working properly.
+
+Please:
+
+* Fix my argv stuff so that the script runs
+* Fix the arrows (the large, left arrows should span a whole diagonal of a 2x2 box; the smaller right arrows should be in each small box, whether or not the box is outlined
+* Fix the boundaries (there are a lot of unnecessary boundaries)
+* Add small circles for pos 1-2 CpG (as shown in the original figure).
+
+----------------------------------------------------------------------
+
+Thanks, more progress is needed.
+
+I do like my single-file version, and I don't need an argument count (I am doing everything through make).
+
+I am commenting on your picture, did not run your code:
+
+The arrows are still bad. The right-facing arrows need tails, and they need to span the width of their logical square. The left-facing arrows need to span the diagonal of their 2x2 squares; they should go down to the left, why do some go up? You have them spanning 2x1 squares, do you think my CpG logic is wrong? We also need four “corner” circles, as shown in the original, indicating pos 2-3 CpG (I said that wrong above). The ATCG order is wrong again, and the small square at the top is missing. There are still extra dividing lines.
+
+----------------------------------------------------------------------
+
+Thanks. This definitely represents progress. I am still not running your script; thanks for providing the .png, it makes things quicker.
+
+The left-facing arrows are much better, but weirdly asymmetric. The arrowheads should stay in their boxes; the lines should be symmetric around the center of the square (imagine taking the arrowheads off, but leaving the line to the end of the arrowhead).
+
+The ATCG is still wrong! Not sure why this is an obstacle for you. It's right in the small square, and right also in the original image I shared.
+
+There are still a few extraneous dividing lines (L, I and C are split)
+
+The requested dashed lines to connect the disconnected serine groups are missing. These should connect the letters at the centroids of each box (see below).
+
+New request: I would like to have only one letter per contiguous group of the same acid. Each letter can go at the centroid of its symmetric logical box, except for I, which should be in the linking box, and L, which should be big and fancy and follow the L shape that lysine will have if you get the nt order right.

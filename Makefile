@@ -61,6 +61,7 @@ current: target
 -include target.mk
 
 -include makestuff/perl.def
+pypath =  pyenv
 -include makestuff/python.def
 
 ######################################################################
@@ -80,6 +81,17 @@ fauxsqr.out: fauxsqr.pl
 ## cbp.Rout: cbp.R cbp.md
 
 ######################################################################
+
+mirrors += resources
+
+Sources += aaTable.prompts.txt
+
+aaTable.py.out: | matplotlib.pip
+aaTable.png: aaTable.tsv aaTable.py
+	$(PITHOUT)
+
+aa.py.out: aa.py
+	$(PITH)
 
 Sources += mldoc.tex multilog.bib multilog.tex
 
@@ -1298,7 +1310,7 @@ Gemfile.%:
 
 Sources += Makefile
 
-Makefile: makestuff/00.stamp
+Makefile: makestuff/01.stamp
 makestuff/%.stamp:
 	- $(RM) makestuff/*.stamp
 	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
@@ -1307,8 +1319,11 @@ makestuff/%.stamp:
 -include makestuff/os.mk
 -include makestuff/git.mk
 -include makestuff/visual.mk
+
+-include makestuff/pyenv.mk
 -include makestuff/pipeR.mk
 -include makestuff/texi.mk
 -include makestuff/pandoc.mk
+-include makestuff/mirror.mk
 -include makestuff/pdfpages.mk
 -include makestuff/forms.mk
