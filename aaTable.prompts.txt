@@ -61,3 +61,29 @@ There are still a few extraneous dividing lines (L, I and C are split)
 The requested dashed lines to connect the disconnected serine groups are missing. These should connect the letters at the centroids of each box (see below).
 
 New request: I would like to have only one letter per contiguous group of the same acid. Each letter can go at the centroid of its symmetric logical box, except for I, which should be in the linking box, and L, which should be big and fancy and follow the L shape that lysine will have if you get the nt order right.
+
+----------------------------------------------------------------------
+
+You are not converging and it is frustrating. ATCG order is still wrong. small square at top is missing again. Left-facing arrows are back to an earlier style. Small circles are missing again. Many necessary dividing lines are missing.
+
+The nt arrangement in my original picture is what's desired. You parsed it correctly several times as:
+
+A T
+G C
+
+Your latest picture uses (and explicitly shows)
+
+G C
+A T
+
+----------------------------------------------------------------------
+
+Let's give up on dividing lines completely and instead color regions with pale (pastel) colors (we will later want to put dark quantitative bars on them). Use only  4 or 5 colors; it's fine if non-adjacent (including diagonally touching) aas have the same color. The two serine blocks need to have the same color, though.
+
+The main square is still wrong: it is still following your previous scheme, you've simply changed the guide to what I wanted, not the main picture. The left-facing arrows are still the old, worse style. You've also gone back to putting letters in each square. Let's try one letter per contiguous block; I'll tell you how to move them around later, for now aim for the centroid.
+
+I'll be honest: I'm about to give up on you, which is a shame, because you started strong.
+
+----------------------------------------------------------------------
+
+(Lots of micro-aggression from me now, it keeps making mistakes and reverting).giu
