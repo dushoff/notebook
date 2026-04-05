@@ -66,6 +66,9 @@ pypath =  pyenv
 
 ######################################################################
 
+## Student elections
+election.Rout: election.R
+
 ## amino acid table stuff
 
 Sources += aatable.tsv
