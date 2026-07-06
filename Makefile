@@ -1,7 +1,7 @@
 # notebook (use master branch)
 
 # http://localhost:4111/notebook/survivalLinks
-# http://dushoff.github.io/notebook/survivalLinks
+# http://dushoff.github.io/notebook/average
 
 # http://localhost:4111/notebook/outputs/powerPhenHet.wt.math
 
@@ -1226,7 +1226,7 @@ elves.out: elves.pl
 elves.html: elves.md
 
 ## Batting averages
-	average.md:
+## average.md
 Ignore += average.out
 average.out: average.pl
 	$(PUSH)
