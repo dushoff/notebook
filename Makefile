@@ -358,6 +358,10 @@ hetGen.Rout: hetGen.R
 
 ######################################################################
 
+worldleScore.Rout: worldleScore.R
+
+######################################################################
+
 ## Linton et al. correction notes
 
 # http://dushoff.github.io/notebook/outputs/incfuns.comb.jax.html
