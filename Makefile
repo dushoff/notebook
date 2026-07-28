@@ -1,7 +1,7 @@
 # notebook (use master branch)
 
 # http://localhost:4111/notebook/survivalLinks
-# http://dushoff.github.io/notebook/survivalLinks
+# http://dushoff.github.io/notebook/average
 
 # http://localhost:4111/notebook/outputs/powerPhenHet.wt.math
 
@@ -61,9 +61,13 @@ current: target
 -include target.mk
 
 -include makestuff/perl.def
+pypath =  pyenv
 -include makestuff/python.def
 
 ######################################################################
+
+## Student elections
+election.Rout: election.R
 
 ## amino acid table stuff
 
@@ -80,6 +84,18 @@ fauxsqr.out: fauxsqr.pl
 ## cbp.Rout: cbp.R cbp.md
 
 ######################################################################
+
+mirrors += resources
+
+Sources += aaTable.prompts.txt aaTable.tsv
+
+Ignore += *.svg *.png
+aaTable.py.out: | matplotlib.pip
+aaTable.png: aaTable.tsv aaTable.py
+	$(PITHOUT)
+
+aa.py.out: aa.py
+	$(PITH)
 
 Sources += mldoc.tex multilog.bib multilog.tex
 
@@ -104,6 +120,10 @@ LF.Rout: LF.R
 ## rclone pages
 
 Sources += rclone/index.md rclone/privacy.md rclone/service.md
+
+######################################################################
+
+RxIntro.html: RxIntro.md
 
 ######################################################################
 
@@ -462,7 +482,7 @@ slow.Rout: slow.R
 	$(run-R)
 
 spline_knots.Rout: spline_knots.R
-	$(makeR)
+	$(pipeR)
 
 ######################################################################
 
@@ -733,7 +753,7 @@ mixpref.Rout: mixpref.R
 
 ## Try an RSA example -- NOT properly adjusted
 Sources += rsa.tsv
-rsapref.Rout: rsa.tsv mixpref.Rout rsapref.R
+rsapref.Rout: rsapref.R rsa.tsv mixpref.rda
 
 ######################################################################
 
@@ -1206,7 +1226,7 @@ elves.out: elves.pl
 elves.html: elves.md
 
 ## Batting averages
-	average.md:
+## average.md
 Ignore += average.out
 average.out: average.pl
 	$(PUSH)
@@ -1298,18 +1318,20 @@ Gemfile.%:
 
 Sources += Makefile
 
-Ignore += makestuff
-msrepo = https://github.com/dushoff
-Makefile: makestuff/Makefile
-makestuff/Makefile:
-	git clone $(msrepo)/makestuff
-	ls $@
+Makefile: makestuff/01.stamp
+makestuff/%.stamp:
+	- $(RM) makestuff/*.stamp
+	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
+	touch $@
 
 -include makestuff/os.mk
 -include makestuff/git.mk
 -include makestuff/visual.mk
+
+-include makestuff/pyenv.mk
 -include makestuff/pipeR.mk
 -include makestuff/texi.mk
 -include makestuff/pandoc.mk
+-include makestuff/mirror.mk
 -include makestuff/pdfpages.mk
 -include makestuff/forms.mk

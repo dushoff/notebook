@@ -1,7 +1,9 @@
+library(shellpipes)
+
 ### Functions
 
 symMat <- function(m){
-	stopifnot(class(m) == "matrix")
+	stopifnot(inherits(m, "matrix"))
 	stopifnot(nrow(m) == ncol(m))
 
 	return((m+t(m))/2)
@@ -51,13 +53,14 @@ mix2pref <- function(rho
 ## This is the key function, it takes a mixing matrix, symmetrizes it,
 ## and tries to return a new mixing matrix with the supplied total activity
 ## and similar "preferences"
-popAdj <- function(rho, Tnew
+popAdj <- function(rho, Tnew=NULL
 	, delta=1, alpha=0.1
 	, iterations=40, verbose=FALSE
 ){
 	rho <- symMat(rho)
 
 	T <- rowSums(rho)
+	if(is.null(Tnew)) Tnew=T
 	phi_est <- mix2pref(rho, delta, alpha, iterations, verbose)
 	return(pref2mix(phi_est, Tnew))
 }
@@ -106,3 +109,5 @@ print(popAdj(rho, Tnew, alpha=0.5))
 print(I1 <- indAdj(phi, orig_pop=T))
 print(indAdj(I1, orig_pop=T))
 print(indAdj(I1, orig_pop=T, new_pop=Tnew))
+
+saveEnvironment()
