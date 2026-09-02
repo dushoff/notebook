@@ -317,6 +317,8 @@ Sources += bscale.txt
 %.bcalc: %.txt sf.pl bscale.txt
 	cat bscale.txt $< | bc -l | perl -wf $(filter %.pl, $^) > $@
 
+Ignore += bcalc.tmp
+
 Ignore += *.bcalc *.bvals
 ## waltcount.nopower.ivals.txt:
 ## waltcount.nopower.ivals.bcalc:
