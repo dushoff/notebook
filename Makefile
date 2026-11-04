@@ -1323,6 +1323,7 @@ Gemfile.%:
 ### Makestuff
 
 Sources += Makefile
+msrepo = https://github.com/dushoff
 
 Makefile: makestuff/01.stamp
 makestuff/%.stamp:
