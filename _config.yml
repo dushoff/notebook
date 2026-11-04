@@ -8,3 +8,7 @@ port: 4111
 
 # Build settings
 markdown: kramdown
+
+# Stop jekyll serve from rebuilding whenever it writes its own log
+exclude:
+  - jekyll.log

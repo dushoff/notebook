@@ -19,6 +19,7 @@
 # http://dushoff.github.io/notebook/outputs/ComplexFactoring
 
 # http://dushoff.github.io/notebook/expCensoring
+# http://localhost:4111/notebook/expCensoring
 # http://dushoff.github.io/notebook/shifts.html
 # http://dushoff.github.io/notebook/outputs/multilog.pdf
 # http://dushoff.github.io/notebook/pronouns.html
@@ -602,6 +603,10 @@ ComplexFactoring.pan.md: ComplexFactoring.tex
 scaling.comb.jax.html: scaling.md makestuff/texcomb.pl 
 
 ######################################################################
+
+## Newer incidence function stuff, starting from n=N/K
+
+incidence.Rout: incidence.R
 
 ## Incidence function notes from DAIDD 2022
 
