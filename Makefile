@@ -366,7 +366,8 @@ worldleScore.Rout: worldleScore.R
 
 ## Linton et al. correction notes
 
-# http://dushoff.github.io/notebook/outputs/incfuns.comb.jax.html
+
+# http://dushoff.github.io/notebook/outputs/expCensoring.comb.jax.html
 ## expCensoring.comb.md: expCensoring.md
 
 ######################################################################
