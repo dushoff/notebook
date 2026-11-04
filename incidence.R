@@ -1,5 +1,9 @@
 library(ggplot2); theme_set(theme_bw())
 
+library(shellpipes)
+startGraphics()
+
+## n = N/K
 powFun <- function(n, theta){
 	return(n^(1-theta))
 }
@@ -9,8 +13,7 @@ satFun <- function(n, theta){
 }
 
 ## Human-friendly formula: f = (1-(1-theta)^n)/theta
-## expm1(x) is exp(x)-1 and log1p(x) is log(1+x), so the code below is the same
-## thing, written to stay accurate when theta is small
+## Rewritten with expm1 and log1p for accuracy
 hazFun <- function(n, theta){
 	stopifnot(length(theta)==1)
 	if (theta==0) return(n)
@@ -32,6 +35,24 @@ incPlot <- function(name, fun, theta=seq(0, 1, length.out=5)
 	)
 }
 
-print(incPlot("Power", powFun))
-print(incPlot("Saturating", satFun))
-print(incPlot("Hazard", hazFun))
+## Same families, parameterized by h = f(1/2)
+## h=0.5 is mass action (theta=0); h=1 is frequency dependence (theta=1)
+powFunHalf <- function(n, h){
+	return(powFun(n, 1+log2(h)))
+}
+
+satFunHalf <- function(n, h){
+	return(satFun(n, 2-1/h))
+}
+
+hazFunHalf <- function(n, h){
+	return(hazFun(n, 1-(1/h-1)^2))
+}
+
+halfIncPlot <- function(name, fun, h=seq(0.5, 1.0, by=0.1), ...){
+	return(incPlot(name, fun, theta=h, ...) + labs(color="h"))
+}
+
+print(halfIncPlot("Power", powFunHalf))
+print(halfIncPlot("Saturating", satFunHalf))
+print(halfIncPlot("Hazard", hazFunHalf))
