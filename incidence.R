@@ -1,6 +1,9 @@
 library(ggplot2); theme_set(theme_bw())
+library(dplyr)
+library(tidyr)
 
 library(shellpipes)
+sourceFiles()
 startGraphics()
 
 ## n = N/K
@@ -20,39 +23,59 @@ hazFun <- function(n, theta){
 	return(-expm1(n*log1p(-theta))/theta)
 }
 
-incPlot <- function(name, fun, theta=seq(0, 1, length.out=5)
-	, n=seq(0.01, 1, by=0.01)
-){
-	d <- do.call(rbind, lapply(theta, function(th){
-		data.frame(n=n, theta=th, f=fun(n, th))
-	}))
-	return(ggplot(d)
-		+ aes(n, f, color=as.factor(theta))
+## Same families, parameterized by h = f(1/2)
+## h=0.5 is mass action (theta=0); h=1 is frequency dependence (theta=1)
+## theta as a function of h, for each family
+powThetaHalf <- function(h) 1+log2(h)
+satThetaHalf <- function(h) 2-1/h
+hazThetaHalf <- function(h) 1-(1/h-1)^2
+
+## One tibble with every form × h × n combination; both sets of plots are slices of it
+## h values built from integers so that filtering on h matches exactly
+forms <- list(
+	Power=list(fun=powFun, theta=powThetaHalf)
+	, Saturating=list(fun=satFun, theta=satThetaHalf)
+	, Hazard=list(fun=hazFun, theta=hazThetaHalf)
+)
+incTab <- (expand_grid(form=names(forms), h=(5:10)/10)
+	|> rowwise()
+	|> mutate(theta=forms[[form]]$theta(h))
+	|> reframe(form, h, theta, n=seq(0.01, 1, by=0.01)
+		, f=forms[[form]]$fun(n, theta)
+	)
+	|> mutate(form=factor(form, levels=names(forms)))
+)
+
+## One plot per functional form, colored by h
+for (fm in levels(incTab$form)){
+	print(ggplot(filter(incTab, form==fm))
+		+ aes(n, f, color=as.factor(h))
 		+ geom_line()
-		## + scale_x_log10()
-		+ labs(color="theta")
-		+ ggtitle(name)
+		+ labs(color="h")
+		+ ggtitle(fm)
 	)
 }
 
-## Same families, parameterized by h = f(1/2)
-## h=0.5 is mass action (theta=0); h=1 is frequency dependence (theta=1)
-powFunHalf <- function(n, h){
-	return(powFun(n, 1+log2(h)))
+## One plot per h, colored by functional form
+hPlot <- function(hv){
+	return(ggplot(filter(incTab, h==hv))
+		+ aes(n, f, color=form)
+		+ geom_line()
+		+ labs(color="form")
+		+ ggtitle(paste("h =", hv))
+	)
 }
 
-satFunHalf <- function(n, h){
-	return(satFun(n, 2-1/h))
-}
+hVals <- (6:9)/10
+for (hv in hVals) print(hPlot(hv))
 
-hazFunHalf <- function(n, h){
-	return(hazFun(n, 1-(1/h-1)^2))
+## Same, with force of infection on a logit scale
+## (f=1 at n=1 maps to Inf, so drop that point)
+for (hv in hVals){
+	print(hPlot(hv) + filter(incTab, h==hv, f<1)
+		+ scale_y_continuous(transform="logit"
+			, breaks=c(0.01, 0.03, 0.1, 0.25, 0.5, 0.75, 0.9, 0.97, 0.99, 0.997, 0.999)
+		)
+		+ ggtitle(paste("h =", hv, "(logit scale)"))
+	)
 }
-
-halfIncPlot <- function(name, fun, h=seq(0.5, 1.0, by=0.1), ...){
-	return(incPlot(name, fun, theta=h, ...) + labs(color="h"))
-}
-
-print(halfIncPlot("Power", powFunHalf))
-print(halfIncPlot("Saturating", satFunHalf))
-print(halfIncPlot("Hazard", hazFunHalf))

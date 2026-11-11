@@ -606,7 +606,7 @@ scaling.comb.jax.html: scaling.md makestuff/texcomb.pl
 
 ## Newer incidence function stuff, starting from n=N/K
 
-incidence.Rout: incidence.R
+incidence.Rout: incidence.R makestuff/okabe.R
 
 ## Incidence function notes from DAIDD 2022
 
@@ -1331,9 +1331,9 @@ Gemfile.%:
 Sources += Makefile
 msrepo = https://github.com/dushoff
 
-Makefile: makestuff/01.stamp
-makestuff/%.stamp:
-	- $(RM) makestuff/*.stamp
+Makefile: makestuff01.stamp
+makestuff%.stamp:
+	- $(RM) makestuff*.stamp
 	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
 	touch $@
 
