@@ -1329,8 +1329,10 @@ Gemfile.%:
 ### Makestuff
 
 Sources += Makefile
+Ignore += makestuff
 msrepo = https://github.com/dushoff
 
+Ignore += makestuff*.stamp
 Makefile: makestuff01.stamp
 makestuff%.stamp:
 	- $(RM) makestuff*.stamp
