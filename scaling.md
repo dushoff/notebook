@@ -5,7 +5,7 @@ fontsize: 12pt
 date: 2023 March
 ---
 
-If we have a linear model given by $\hat Y = Xβ$, a good way to think about rescaling the fit is by writing it as  $\hat Y = (XT)(Sβ), where $T$ is a transformation of model matrix, and $S$ is its inverse. Thus, if we fit an lm with model matrix $XT$ the coefficients will be $Sβ$. Thus we can “undo” the scaling and get the original $β$ back by left-multiplying the new $β$ by the same $T$ that we used on $X$! 
+If we have a linear model given by $\hat Y = Xβ$, a good way to think about rescaling the fit is by writing it as  $\hat Y = (XT)(Sβ)$, where $T$ is a transformation of model matrix, and $S$ is its inverse. Thus, if we fit an lm with model matrix $XT$ the coefficients will be $Sβ$. Thus we can “undo” the scaling and get the original $β$ back by left-multiplying the new $β$ by the same $T$ that we used on $X$! 
 
 ## Standard scaling (like `scale()`)
 

@@ -146,7 +146,7 @@ coin.out: coin.pl
 
 Ignore += *.html
 Lmeans.html: Lmeans.md
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --math-method=mathjax -s -o $@
 	$(panmath)
 
 ## wrapR is a good trick for functional code that we want to share with others!
@@ -539,7 +539,7 @@ Sources += facebook.md
 ## Basically things seem to always work online (no complexity needed)
 ## and never work offline (or at least not solved yet)
 ## Maybe 265號 was an edge case ☺
-panmath = pandoc $< --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full -s -o $@
+panmath = pandoc $< --math-method=mathjax:https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js -s -o $@
 
 ## Urns problem
 
@@ -566,7 +566,7 @@ urns.html: urns.check.tex
 ## panmath looks complicated, and this works as well?
 ## newurns.html: urns.md
 newurns.html: urns.check.tex
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --math-method=mathjax -s -o $@
 
 ######################################################################
 
@@ -624,7 +624,7 @@ incfuns.pdf: incfuns.comb.md
 
 ## incfuns.html: incfuns.md
 incfuns.html: incfuns.check.tex
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --math-method=mathjax -s -o $@
 
 incfuns.Rout: incfuns.R
 
@@ -715,10 +715,10 @@ Sources += $(wildcard *.wikitext)
 
 ## powerPhenHet.wt.math.html: powerPhenHet.wt.md
 %.math.html: %.md
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --math-method=mathjax -s -o $@
 
 %.mj.html: %.rmd
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --math-method=mathjax -s -o $@
 
 ## make powerPhenHet.md
 ## powerPhenHet.wt.math.html: powerPhenHet.wt.md
@@ -733,7 +733,7 @@ Sources += $(wildcard *.wikitext)
 	$(PUSH)
 
 %.rmd.html: %.rmd
-	pandoc $< --mathjax -s -o $@
+	pandoc $< --math-method=mathjax -s -o $@
 
 ## rmd ⇒ md pipeline; seems weird 2024 Aug 27 (Tue)
 ## ebolaRisk.rmd: ebolaRisk.wikitext wtrmd.pl
